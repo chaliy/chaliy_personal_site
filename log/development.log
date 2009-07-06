@@ -293,3 +293,8 @@ Completed in 103ms (View: 65, DB: 1) | 200 OK [http://localhost/]
 [0m
   [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
   [4;36;1mSQL (6.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
+
+
+Processing ArchiveController#list (for 127.0.0.1 at 2009-07-07 02:14:15) [GET]
+Rendering archive/list
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
