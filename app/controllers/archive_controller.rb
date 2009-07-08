@@ -1,6 +1,6 @@
 class ArchiveController < ApplicationController
-  def list
-    @entryCount = Entry.find(:all).length()
+  def index
+    @entries = Entry.find(:all)
   end
 
 end

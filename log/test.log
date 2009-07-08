@@ -576,3 +576,21 @@ Processing Admin::EntriesController#update (for 0.0.0.0 at 2009-07-08 00:24:30) 
   [4;35;1mEntry Load (1.0ms)[0m   [0mSELECT * FROM "entries" WHERE ("entries"."id" = 953125641) [0m
 Redirected to http://test.host/admin/entries/953125641
 Completed in 5ms (DB: 2) | 302 Found [http://test.host/admin/entries/953125641?]
+
+
+Processing ArchiveController#index (for 0.0.0.0 at 2009-07-09 00:49:49) [GET]
+
+
+Processing ArchiveController#index (for 0.0.0.0 at 2009-07-09 00:55:20) [GET]
+  [4;36;1mEntry Load (1.0ms)[0m   [0;1mSELECT * FROM "entries" [0m
+
+
+Processing ArchiveController#index (for 0.0.0.0 at 2009-07-09 00:55:38) [GET]
+  [4;36;1mEntry Load (2.0ms)[0m   [0;1mSELECT * FROM "entries" [0m
+
+
+Processing ArchiveController#index (for 0.0.0.0 at 2009-07-09 01:09:52) [GET]
+  [4;36;1mEntry Load (2.0ms)[0m   [0;1mSELECT * FROM "entries" [0m
+Rendering template within layouts/archive
+Rendering archive/index
+Completed in 54ms (View: 45, DB: 7) | 200 OK [http://test.host/]
