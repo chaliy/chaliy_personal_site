@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <title>Mike Chaliy's Home Page</title>
+  <meta http-equiv="Content-Type" content="text/html;" />
+  <%= stylesheet_link_tag "style", :media => "all" %>
+</head>
+<body>
+    <div id="page">
+    
+		<div id="menu">
+			<ul>
+                <li>Blog</li>
+            </ul>
+		</div>
+
+        <div id="header">
+            <h1>Mike Chaliy</h1>
+        </div>
+		
+		<% if flash[:notice] -%>
+      	<div id="notice"><%= flash[:notice] %></div>
+    	<% end -%>
+
+        <div id="content">
+        	
+			<%= yield :layout %>
+
+        </div>
+        
+        <div id="footer">
+            <p>
+                Mike Chaliy &copy; Copyright 2009
+            </p>
+        </div>
+
+    </div>
+</body>
+</html>
