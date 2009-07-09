@@ -35,7 +35,7 @@ ActionController::Routing::Routes.draw do |map|
   #     admin.resources :products
   #   end
   
-  map.root :controller => "archive"
+  map.root :controller => "home"
   
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'

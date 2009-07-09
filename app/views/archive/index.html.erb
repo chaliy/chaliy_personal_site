@@ -1,7 +1,1 @@
-<% @entries.each do |entry| %>
-<div class="entry">
-	<h2><%=h entry.title %></h2>
-	<%= entry.content %>
-	<p class="entry-info">This entry was posted on <%=h entry.pubDate %>.</p>
-</div>    
-<% end %>
+<%= render(:partial => "shared/entry_list", :object => @entries )%>
