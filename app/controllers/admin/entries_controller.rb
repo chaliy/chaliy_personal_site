@@ -1,4 +1,4 @@
-class Admin::EntriesController < ApplicationController
+class Admin::EntriesController < Admin::AdminController
   # GET /entries
   # GET /entries.xml
   def index
