@@ -1,445 +1,4 @@
-
-
-Processing ApplicationController#index (for 127.0.0.1 at 2009-07-06 23:40:16) [GET]
-
-ActionController::RoutingError (No route matches "/javascripts/prototype.js" with {:method=>:get}):
-  -e:2:in `load'
-  -e:2
-
-Rendering rescues/layout (not_found)
-
-
-Processing ApplicationController#index (for 127.0.0.1 at 2009-07-06 23:40:16) [GET]
-
-ActionController::RoutingError (No route matches "/javascripts/effects.js" with {:method=>:get}):
-  -e:2:in `load'
-  -e:2
-
-Rendering rescues/layout (not_found)
-
-
-Processing ApplicationController#index (for 127.0.0.1 at 2009-07-06 23:41:30) [GET]
-
-ActionController::RoutingError (No route matches "/javascripts/prototype.js" with {:method=>:get}):
-  -e:2:in `load'
-  -e:2
-
-Rendering rescues/layout (not_found)
-
-
-Processing ApplicationController#index (for 127.0.0.1 at 2009-07-06 23:41:30) [GET]
-
-ActionController::RoutingError (No route matches "/javascripts/effects.js" with {:method=>:get}):
-  -e:2:in `load'
-  -e:2
-
-Rendering rescues/layout (not_found)
-
-
-Processing ApplicationController#index (for 127.0.0.1 at 2009-07-06 23:42:09) [GET]
-
-ActionController::RoutingError (No route matches "/javascripts/effects.js" with {:method=>:get}):
-  -e:2:in `load'
-  -e:2
-
-Rendering rescues/layout (not_found)
-
-
-Processing ApplicationController#index (for 127.0.0.1 at 2009-07-06 23:42:09) [GET]
-
-ActionController::RoutingError (No route matches "/javascripts/prototype.js" with {:method=>:get}):
-  -e:2:in `load'
-  -e:2
-
-Rendering rescues/layout (not_found)
-
-
-Processing ApplicationController#index (for 127.0.0.1 at 2009-07-06 23:44:13) [GET]
-
-ActionController::RoutingError (No route matches "/javascripts/prototype.js" with {:method=>:get}):
-  C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
-  C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
-  -e:2:in `load'
-  -e:2
-
-Rendering rescues/layout (not_found)
-
-
-Processing ApplicationController#index (for 127.0.0.1 at 2009-07-06 23:44:14) [GET]
-
-ActionController::RoutingError (No route matches "/javascripts/effects.js" with {:method=>:get}):
-  C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
-  C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
-  -e:2:in `load'
-  -e:2
-
-Rendering rescues/layout (not_found)
-  [4;36;1mSQL (23.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.0ms)[0m   [0mselect sqlite_version(*)[0m
-  [4;36;1mSQL (6.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (7.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
-Migrating to CreateEntries (20090706224256)
-  [4;36;1mSQL (1.0ms)[0m   [0;1mselect sqlite_version(*)[0m
-  [4;35;1mSQL (2.0ms)[0m   [0mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime) [0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090706224256')[0m
-  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("entries")[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (8.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime) [0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (8.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (6.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
-  [4;36;1mSQL (5.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (5.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime) [0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (8.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (7.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
-  [4;36;1mSQL (5.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (4.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime) [0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (6.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (16.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
-  [4;36;1mSQL (5.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
-  [4;36;1mSQL (2.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1mselect sqlite_version(*)[0m
-  [4;35;1mSQL (3.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (5.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime) [0m
-  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (6.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (6.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
-  [4;36;1mSQL (5.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
-
-
-Processing ArchiveController#list (for 127.0.0.1 at 2009-07-07 02:05:02) [GET]
-  [4;36;1mEntry Load (1.0ms)[0m   [0;1mSELECT * FROM "entries" [0m
-
-NoMethodError (undefined method `count' for []:Array):
-  app/controllers/archive_controller.rb:3:in `list'
-  C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
-  C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
-  -e:2:in `load'
-  -e:2
-
-Rendered rescues/_trace (88.0ms)
-Rendered rescues/_request_and_response (6.0ms)
-Rendering rescues/layout (internal_server_error)
-
-
-Processing ArchiveController#list (for 127.0.0.1 at 2009-07-07 02:05:18) [GET]
-  [4;35;1mEntry Load (1.0ms)[0m   [0mSELECT * FROM "entries" [0m
-Rendering archive/list
-Completed in 103ms (View: 65, DB: 1) | 200 OK [http://localhost/]
-  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1mselect sqlite_version(*)[0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (5.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime) [0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (7.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (5.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
-  [4;36;1mSQL (6.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (5.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime) [0m
-  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (5.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (6.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
-  [4;36;1mSQL (6.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
-
-
-Processing ArchiveController#list (for 127.0.0.1 at 2009-07-07 02:14:15) [GET]
-Rendering archive/list
-Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/]
-  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (23.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime) [0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (13.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (5.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
-  [4;36;1mSQL (4.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (5.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime) [0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (4.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (7.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
-  [4;36;1mSQL (6.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (4.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime) [0m
-  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (5.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (5.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
-  [4;36;1mSQL (5.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (7.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime) [0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (5.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (7.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
-  [4;36;1mSQL (5.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
-Migrating to CreateEntries (20090706224256)
-Migrating to AddPubDateToEntry (20090707210156)
-  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
-  [4;35;1mSQL (2.0ms)[0m   [0mALTER TABLE "entries" ADD "pubDate" dateTime[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090707210156')[0m
-  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("entries")[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1mselect sqlite_version(*)[0m
-  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (5.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime, "pubDate" datetime) [0m
-  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (4.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (8.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
-  [4;36;1mSQL (4.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090707210156')[0m
-  [4;35;1mSQL (5.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+# Logfile created on Sun Jul 19 22:41:20 +0300 2009  [4;36;1mSQL (2.0ms)[0m   [0;1m SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
@@ -454,7 +13,31 @@ Migrating to AddPubDateToEntry (20090707210156)
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
-  [4;36;1mSQL (6.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;36;1mSQL (5.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (5.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
+  [4;36;1mSQL (4.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090707210156')[0m
+  [4;35;1mSQL (4.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (4.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime, "pubDate" datetime) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (5.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
   [4;35;1mSQL (5.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
   [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
  FROM sqlite_master
@@ -462,18 +45,18 @@ Migrating to AddPubDateToEntry (20090707210156)
 [0m
   [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
   [4;36;1mSQL (4.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090707210156')[0m
-  [4;35;1mSQL (10.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
-  [4;36;1mSQL (2.0ms)[0m   [0;1m SELECT name
+  [4;35;1mSQL (3.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
   [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
   [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
-  [4;36;1mSQL (5.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime, "pubDate" datetime) [0m
+  [4;36;1mSQL (4.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime, "pubDate" datetime) [0m
   [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
@@ -485,30 +68,6 @@ Migrating to AddPubDateToEntry (20090707210156)
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
   [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
-  [4;36;1mSQL (8.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090707210156')[0m
-  [4;35;1mSQL (5.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (7.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime, "pubDate" datetime) [0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (6.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (6.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
   [4;36;1mSQL (5.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090707210156')[0m
   [4;35;1mSQL (5.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
   [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
@@ -527,115 +86,19 @@ Migrating to AddPubDateToEntry (20090707210156)
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
   [4;36;1mSQL (4.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (6.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
-  [4;36;1mSQL (4.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090707210156')[0m
-  [4;35;1mSQL (6.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
-  [4;36;1mSQL (2.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1mselect sqlite_version(*)[0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (5.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime, "pubDate" datetime) [0m
-  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (5.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (8.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
-  [4;36;1mSQL (5.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090707210156')[0m
-  [4;35;1mSQL (6.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (4.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime, "pubDate" datetime) [0m
-  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (8.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (6.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
-  [4;36;1mSQL (12.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090707210156')[0m
-  [4;35;1mSQL (11.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
-  [4;36;1mSQL (3.0ms)[0m   [0;1mselect sqlite_version(*)[0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (5.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime, "pubDate" datetime) [0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (5.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (5.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (9.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
   [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
   [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
-  [4;36;1mSQL (4.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090707210156')[0m
-  [4;35;1mSQL (6.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+  [4;36;1mSQL (9.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090707210156')[0m
+  [4;35;1mSQL (5.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
   [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (22.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime, "pubDate" datetime) [0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (6.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (6.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
-  [4;36;1mSQL (7.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090707210156')[0m
-  [4;35;1mSQL (6.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
-  [4;36;1mSQL (2.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
   [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
   [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
  FROM sqlite_master
@@ -646,8 +109,8 @@ Migrating to AddPubDateToEntry (20090707210156)
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
-  [4;36;1mSQL (11.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (5.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (8.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (6.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
   [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
@@ -659,8 +122,8 @@ Migrating to AddPubDateToEntry (20090707210156)
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
-  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
   [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
@@ -670,7 +133,7 @@ Migrating to AddPubDateToEntry (20090707210156)
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
-  [4;36;1mSQL (4.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
   [4;35;1mSQL (5.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
   [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
  FROM sqlite_master
@@ -683,56 +146,14 @@ Migrating to AddPubDateToEntry (20090707210156)
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
-  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (5.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime, "pubDate" datetime) [0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (7.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (7.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
-  [4;36;1mSQL (8.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090707210156')[0m
-  [4;35;1mSQL (5.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
-
-
-Processing Admin::EntriesController#index (for 127.0.0.1 at 2009-07-08 00:25:08) [GET]
-  [4;36;1mEntry Load (9.0ms)[0m   [0;1mSELECT * FROM "entries" [0m
-Rendering admin/entries/index
-Completed in 151ms (View: 113, DB: 9) | 200 OK [http://localhost/admin/entries/]
-
-
-Processing ArchiveController#list (for 127.0.0.1 at 2009-07-08 00:25:23) [GET]
-  [4;35;1mEntry Load (0.0ms)[0m   [0mSELECT * FROM "entries" [0m
-Rendering archive/list
-Completed in 34ms (View: 17, DB: 0) | 200 OK [http://localhost/]
-
-
-Processing Admin::EntriesController#index (for 127.0.0.1 at 2009-07-08 00:36:19) [GET]
-  [4;36;1mEntry Load (2.0ms)[0m   [0;1mSELECT * FROM "entries" [0m
-Rendering admin/entries/index
-Completed in 37ms (View: 5, DB: 2) | 200 OK [http://localhost/admin/entries/]
-  [4;36;1mSQL (3.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (6.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
   [4;36;1mSQL (1.0ms)[0m   [0;1mselect sqlite_version(*)[0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
-  [4;36;1mSQL (6.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime, "pubDate" datetime) [0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+  [4;36;1mSQL (10.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime, "pubDate" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
@@ -742,324 +163,78 @@ Completed in 37ms (View: 5, DB: 2) | 200 OK [http://localhost/admin/entries/]
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
-  [4;35;1mSQL (2.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
   [4;36;1mSQL (5.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090707210156')[0m
-  [4;35;1mSQL (4.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
+  [4;35;1mSQL (9.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
   [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
   [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
   [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
-  [4;35;1mSQL (4.0ms)[0m   [0m SELECT name
+  [4;35;1mSQL (12.0ms)[0m   [0m SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
-  [4;36;1mSQL (22.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime, "pubDate" datetime) [0m
+  [4;36;1mSQL (8.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime, "pubDate" datetime) [0m
   [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
-  [4;36;1mSQL (47.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (117.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
-  [4;36;1mSQL (45.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090707210156')[0m
-  [4;35;1mSQL (54.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1mselect sqlite_version(*)[0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (155.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime, "pubDate" datetime) [0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (331.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (105.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (18.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (6.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
   [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
-  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
-  [4;36;1mSQL (128.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090707210156')[0m
-  [4;35;1mSQL (86.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
-
-
-Processing ArchiveController#list (for 127.0.0.1 at 2009-07-09 01:08:16) [GET]
-Rendering template within layouts/archive
-Rendering archive/list
-
-ActionView::TemplateError (You have a nil object when you didn't expect it!
-You might have expected an instance of Array.
-The error occurred while evaluating nil.each) on line #2 of app/views/archive/list.html.erb:
-1: <h1>Blog</h1>
-2: <% @entries.each do |entry| %>
-3: <div class="entry">
-4: 	<h2><%=h entry.title %></h2>
-5: 	<%=h entry.content %>
-
-    app/views/archive/list.html.erb:2
-    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
-    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
-    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
-    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
-    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
-    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
-    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
-    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
-    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
-    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
-    -e:2:in `load'
-    -e:2
-
-Rendered rescues/_trace (267.0ms)
-Rendered rescues/_request_and_response (11.0ms)
-Rendering rescues/layout (internal_server_error)
-  [4;36;1mSQL (2.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (2.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (32.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime, "pubDate" datetime) [0m
-  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (212.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (141.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
-  [4;36;1mSQL (264.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090707210156')[0m
-  [4;35;1mSQL (114.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
-
-
-Processing ArchiveController#index (for 127.0.0.1 at 2009-07-09 01:10:42) [GET]
-  [4;36;1mEntry Load (1.0ms)[0m   [0;1mSELECT * FROM "entries" [0m
-Rendering template within layouts/archive
-Rendering archive/index
-Completed in 1535ms (View: 1500, DB: 1) | 200 OK [http://localhost/]
-
-
-Processing ApplicationController#index (for 127.0.0.1 at 2009-07-09 01:10:44) [GET]
-
-ActionController::RoutingError (No route matches "/stylesheets/Images/header-background.gif" with {:method=>:get}):
-  C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
-  C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
-  C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
-  -e:2:in `load'
-  -e:2
-
-Rendering rescues/layout (not_found)
-
-
-Processing ArchiveController#index (for 127.0.0.1 at 2009-07-09 01:11:29) [GET]
-  [4;35;1mEntry Load (1.0ms)[0m   [0mSELECT * FROM "entries" [0m
-Rendering template within layouts/archive
-Rendering archive/index
-Completed in 32ms (View: 6, DB: 1) | 200 OK [http://localhost/]
-
-
-Processing Admin::EntriesController#index (for 127.0.0.1 at 2009-07-09 01:11:45) [GET]
-  [4;36;1mEntry Load (1.0ms)[0m   [0;1mSELECT * FROM "entries" [0m
-Rendering admin/entries/index
-Completed in 58ms (View: 32, DB: 1) | 200 OK [http://localhost/admin/entries/]
-
-
-Processing Admin::EntriesController#new (for 127.0.0.1 at 2009-07-09 01:11:47) [GET]
-Rendering admin/entries/new
-
-ActionView::TemplateError (undefined method `entries_path' for #<ActionView::Base:0x579827c>) on line #3 of app/views/admin/entries/new.html.erb:
-1: <h1>New entry</h1>
-2: 
-3: <% form_for(@entry) do |f| %>
-4:   <%= f.error_messages %>
-5: 
-6:   <p>
-
-    app/views/admin/entries/new.html.erb:3
-    app/controllers/admin/entries_controller.rb:29:in `new'
-    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
-    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
-    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
-    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
-    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
-    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
-    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
-    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
-    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
-    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
-    -e:2:in `load'
-    -e:2
-
-Rendered rescues/_trace (166.0ms)
-Rendered rescues/_request_and_response (0.0ms)
-Rendering rescues/layout (internal_server_error)
-
-
-Processing Admin::EntriesController#new (for 127.0.0.1 at 2009-07-09 01:12:43) [GET]
-Rendering admin/entries/new
-Completed in 711ms (View: 653, DB: 0) | 200 OK [http://localhost/admin/entries/new]
-
-
-Processing Admin::EntriesController#create (for 127.0.0.1 at 2009-07-09 01:15:27) [POST]
-  Parameters: {"commit"=>"Create", "authenticity_token"=>"KttP3ksP7ONEzeFHREF9JmGOnR7Gd4lBDGSGUrGmwog=", "entry"=>{"pubDate(3i)"=>"8", "name"=>"Test", "title"=>"Test", "content"=>"<div class=\"summary\">\r\n        <h3><a href=\"/questions/679138/what-tooling-do-you-use-to-do-design-by-contract\" class=\"question-hyperlink\" rel=\"canonical\" title=\"I used to use Microsoft CodeContracts for three weeks and now half of my code is just contracts. I have dozens of unproved places, I cannot use runtime-check because IL rewrite pre &hellip; \">What tooling do you use to do Design by Contract?</a></h3>\r\n        <div class=\"tags t-design-by-contract t-code-contracts t-ZZZnet\">\r\n            <a href=\"/questions/tagged/design-by-contract\" class=\"post-tag\" title=\"show questions tagged 'design-by-contract'\" rel=\"tag\">design-by-contract</a> <a href=\"/questions/tagged/code-contracts\" class=\"post-tag\" title=\"show questions tagged 'code-contracts'\" rel=\"tag\">code-contracts</a> <a href=\"/questions/tagged/.net\" class=\"post-tag\" title=\"show questions tagged '.net'\" rel=\"tag\">.net</a> \r\n        </div>\r\n        <div class=\"started\">\r\n            <span title=\"4/22/2009 2:08:14 PM UTC\" class=\"relativetime\">apr 22 at 14:08</span>\r\n            <a href=\"/users/16587/gortok\" rel=\"canonical\">Gortok</a> <span class=\"reputation-score\" title=\"reputation score\">10.5k</span><span title=\"15 silver badges\"><span class=\"badge2\">&#9679;</span><span class=\"badgecount\">15</span></span><span title=\"44 bronze badges\"><span class=\"badge3\">&#9679;</span><span class=\"badgecount\">44</span></span>\r\n        </div>\r\n    </div>\r\n", "pubDate(1i)"=>"2009", "pubDate(2i)"=>"7"}}
-  [4;35;1mEntry Create (2.0ms)[0m   [0mINSERT INTO "entries" ("name", "pubDate", "updated_at", "title", "content", "created_at") VALUES('Test', '2009-07-08 00:00:00', '2009-07-08 22:15:27', 'Test', '<div class="summary">
- <h3><a href="/questions/679138/what-tooling-do-you-use-to-do-design-by-contract" class="question-hyperlink" rel="canonical" title="I used to use Microsoft CodeContracts for three weeks and now half of my code is just contracts. I have dozens of unproved places, I cannot use runtime-check because IL rewrite pre &hellip; ">What tooling do you use to do Design by Contract?</a></h3>
- <div class="tags t-design-by-contract t-code-contracts t-ZZZnet">
- <a href="/questions/tagged/design-by-contract" class="post-tag" title="show questions tagged ''design-by-contract''" rel="tag">design-by-contract</a> <a href="/questions/tagged/code-contracts" class="post-tag" title="show questions tagged ''code-contracts''" rel="tag">code-contracts</a> <a href="/questions/tagged/.net" class="post-tag" title="show questions tagged ''.net''" rel="tag">.net</a> 
- </div>
- <div class="started">
- <span title="4/22/2009 2:08:14 PM UTC" class="relativetime">apr 22 at 14:08</span>
- <a href="/users/16587/gortok" rel="canonical">Gortok</a> <span class="reputation-score" title="reputation score">10.5k</span><span title="15 silver badges"><span class="badge2">&#9679;</span><span class="badgecount">15</span></span><span title="44 bronze badges"><span class="badge3">&#9679;</span><span class="badgecount">44</span></span>
- </div>
- </div>
-', '2009-07-08 22:15:27')[0m
-Redirected to http://localhost:3000/admin/entries/1
-Completed in 130ms (DB: 2) | 302 Found [http://localhost/admin/entries]
-
-
-Processing Admin::EntriesController#show (for 127.0.0.1 at 2009-07-09 01:15:27) [GET]
-  Parameters: {"id"=>"1"}
-  [4;36;1mEntry Load (1.0ms)[0m   [0;1mSELECT * FROM "entries" WHERE ("entries"."id" = 1) [0m
-Rendering admin/entries/show
-Completed in 52ms (View: 19, DB: 1) | 200 OK [http://localhost/admin/entries/1]
-
-
-Processing ArchiveController#index (for 127.0.0.1 at 2009-07-09 01:15:31) [GET]
-  [4;35;1mEntry Load (1.0ms)[0m   [0mSELECT * FROM "entries" [0m
-Rendering template within layouts/archive
-Rendering archive/index
-Completed in 44ms (View: 23, DB: 1) | 200 OK [http://localhost/]
-
-
-Processing ArchiveController#index (for 127.0.0.1 at 2009-07-09 01:16:00) [GET]
-  [4;36;1mEntry Load (1.0ms)[0m   [0;1mSELECT * FROM "entries" [0m
-Rendering template within layouts/archive
-Rendering archive/index
-Completed in 191ms (View: 165, DB: 1) | 200 OK [http://localhost/]
-
-
-Processing ArchiveController#index (for 127.0.0.1 at 2009-07-09 01:16:35) [GET]
-  [4;35;1mEntry Load (2.0ms)[0m   [0mSELECT * FROM "entries" [0m
-Rendering template within layouts/archive
-Rendering archive/index
-Completed in 53ms (View: 26, DB: 2) | 200 OK [http://localhost/]
-
-
-Processing ArchiveController#index (for 127.0.0.1 at 2009-07-09 01:17:04) [GET]
-  [4;36;1mEntry Load (2.0ms)[0m   [0;1mSELECT * FROM "entries" [0m
-Rendering template within layouts/archive
-Rendering archive/index
-Completed in 60ms (View: 38, DB: 2) | 200 OK [http://localhost/]
-
-
-Processing ArchiveController#index (for 127.0.0.1 at 2009-07-09 22:19:04) [GET]
-  [4;36;1mEntry Load (25.0ms)[0m   [0;1mSELECT * FROM "entries" [0m
-Rendering template within layouts/archive
-Rendering archive/index
-Completed in 7947ms (View: 7904, DB: 25) | 200 OK [http://localhost/]
-
-
-Processing ArchiveController#index (for 127.0.0.1 at 2009-07-09 22:19:53) [GET]
-  [4;35;1mEntry Load (1.0ms)[0m   [0mSELECT * FROM "entries" [0m
-Rendering template within layouts/archive
-Rendering archive/index
-
-ActionView::TemplateError (Missing template archive/_entry_list.erb in view path app/views) on line #1 of app/views/archive/index.html.erb:
-1: <%= render(:partial => "entry_list", :object => @entries )%>
-
-    app/views/archive/index.html.erb:1
-    -e:2:in `load'
-    -e:2
-
-Rendered rescues/_trace (226.0ms)
-Rendered rescues/_request_and_response (6.0ms)
-Rendering rescues/layout (internal_server_error)
-
-
-Processing ArchiveController#index (for 127.0.0.1 at 2009-07-09 22:21:29) [GET]
-  [4;36;1mEntry Load (2.0ms)[0m   [0;1mSELECT * FROM "entries" [0m
-Rendering template within layouts/archive
-Rendering archive/index
-Rendered shared/_entry_list (1048.0ms)
-Completed in 1158ms (View: 1120, DB: 2) | 200 OK [http://localhost/]
-  [4;36;1mSQL (2.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (9.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
-  [4;36;1mSQL (4.0ms)[0m   [0;1mselect sqlite_version(*)[0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (82.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime, "pubDate" datetime) [0m
-  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;36;1mSQL (12.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (7.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
-  [4;36;1mSQL (2.0ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
-  [4;36;1mSQL (12.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090707210156')[0m
-  [4;35;1mSQL (6.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
+  [4;36;1mSQL (4.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090707210156')[0m
+  [4;35;1mSQL (4.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
   [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
   [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
   [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
-  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
-  [4;36;1mSQL (14.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime, "pubDate" datetime) [0m
-  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+  [4;36;1mSQL (5.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime, "pubDate" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
-  [4;36;1mSQL (9.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (6.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (8.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (7.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
   [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
   [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
-  [4;36;1mSQL (17.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090707210156')[0m
-  [4;35;1mSQL (9.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
-
-
-Processing HomeController#index (for 127.0.0.1 at 2009-07-09 22:24:11) [GET]
-  [4;35;1mEntry Load (1.0ms)[0m   [0mSELECT * FROM "entries" [0m
-Rendering home/index
-Rendered shared/_entry_list (28.0ms)
-Completed in 125ms (View: 78, DB: 1) | 200 OK [http://localhost/]
+  [4;36;1mSQL (7.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090707210156')[0m
+  [4;35;1mSQL (6.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (5.0ms)[0m   [0;1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime, "pubDate" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (6.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (8.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
+  [4;36;1mSQL (7.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090707210156')[0m
+  [4;35;1mSQL (5.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090706224256')[0m
