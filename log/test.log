@@ -1,1 +1,12 @@
 # Logfile created on Sun Jul 19 22:40:03 +0300 2009
+
+Processing DraftsController#index (for 0.0.0.0 at 2009-07-22 18:00:09) [GET]
+Rendering template within layouts/default
+Rendering drafts/index
+Completed in 3ms (View: 1, DB: 0) | 200 OK [http://test.host/drafts]
+
+
+Processing DraftsController#index (for 0.0.0.0 at 2009-07-22 18:00:49) [GET]
+Rendering template within layouts/default
+Rendering drafts/index
+Completed in 5ms (View: 2, DB: 0) | 200 OK [http://test.host/drafts]
