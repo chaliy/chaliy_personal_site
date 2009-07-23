@@ -1,7 +1,8 @@
 class Draft
-  attr_accessor :title
-  attr_accessor :content
-  attr_accessor :pubDate
+  attr_reader :title
+  attr_reader :name
+  attr_reader :content
+  attr_reader :pubDate
   
   def initialize(title, name, content)
     @title = title
@@ -11,7 +12,10 @@ class Draft
   
   def self.page
     
-    [Draft.new("Test", "Test", "Test"), Draft.new("Test", "Test", "Test")]
+    index = EntryIndex.new "./content/drafts"
+    index.entries.map { |entry|
+        Draft.new(entry.title, entry.title, entry.content)
+    }
     
   end
   

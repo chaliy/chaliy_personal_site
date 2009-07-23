@@ -1,7 +1,7 @@
 require 'spec/spec_helper'
 
 describe EntryFile do
-  it "should read content" do
+  it "should parse content" do
     entry = EntryFile.new
     text = <<A2
 ---
@@ -15,7 +15,7 @@ A2
     
   end
 
-  it "should read title" do
+  it "should parse title" do
     entry = EntryFile.new
     text = <<A2
 ---
@@ -26,6 +26,15 @@ A2
     entry.read_text(text)
     entry.title.should == "Etalone title" 
 
+  end
+
+  it "should read from file" do
+    entry = EntryFile.new
+    
+    entry.read_file(File.dirname(__FILE__) + "/example.text")
+    
+    entry.title.should_not be_empty
+    
   end
 
 end

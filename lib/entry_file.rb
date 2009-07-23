@@ -2,6 +2,11 @@ class EntryFile
   
   attr_reader :title
   attr_reader :content
+  
+  def read_file(input_path)
+    input_text = File.read(input_path)
+    read_text(input_text)
+  end
     
   def read_text(input_text)
     
