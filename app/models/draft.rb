@@ -9,7 +9,7 @@ class Draft
     @name = name
     @content = content
   end
-  
+    
   def self.page
     
     index = EntryIndex.new "./content/drafts"

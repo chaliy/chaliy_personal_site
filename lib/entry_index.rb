@@ -10,6 +10,7 @@ class EntryIndex
     entry_pathes.map {|path| 
       entry = EntryFile.new
       entry.read_file path
+      entry
     }    
     
   end
