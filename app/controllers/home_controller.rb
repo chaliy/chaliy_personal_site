@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   layout nil
   
   def index
-    @entries = Entry.find(:all)
+    @entries = Entry.public_page
   end
 
 end

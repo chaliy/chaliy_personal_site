@@ -1,7 +1,7 @@
 class DraftsController < ApplicationController
   
   def index
-    @entries = Draft.page
+    @entries = Entry.drafts_page
   end
 
 end
