@@ -1,13 +1,18 @@
+require 'maruku'
+
 class Draft
   attr_reader :title
   attr_reader :name
+  attr_reader :content_markup
   attr_reader :content
   attr_reader :pubDate
   
   def initialize(title, name, content)
     @title = title
     @name = name
-    @content = content
+    @content_markup = content
+    doc = Maruku.new(content)
+    @content = doc.to_html
   end
     
   def self.page

@@ -5,5 +5,5 @@ Well, you probably know that Poor Man's Dependency Injection is big no-no? No? T
 So for now we know for sure that Poor Man's Dependency Injection is something terrible, unacceptable and unprofessional.  Not to say that this has some background. 
 
 
-[1] http://www.lostechies.com/blogs/jimmy_bogard/archive/2009/07/03/how-not-to-do-dependency-injection-in-nerddinner.aspx
-[2] http://www.lostechies.com/blogs/jimmy_bogard/archive/2009/07/14/when-is-poor-man-s-dependency-injection-appropriate.aspx
+[1]: http://www.lostechies.com/blogs/jimmy_bogard/archive/2009/07/03/how-not-to-do-dependency-injection-in-nerddinner.aspx
+[2]: http://www.lostechies.com/blogs/jimmy_bogard/archive/2009/07/14/when-is-poor-man-s-dependency-injection-appropriate.aspx

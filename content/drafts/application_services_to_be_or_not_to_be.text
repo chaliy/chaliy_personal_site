@@ -1,5 +1,7 @@
 ---
-titile: Application Services, to be or not to be
+title: Application Services, to be or not to be
 ---
-This post is dedicated for people who already use Application Services Pattern (most commonly referenced as Service Layer Pattern [1] http://martinfowler.com/eaaCatalog/serviceLayer.html).
+This post is dedicated for people who already use Application Services Pattern (most commonly referenced as [Service Layer Pattern][1]).
 You definitely aware about Application Layer 
+
+[1]: http://martinfowler.com/eaaCatalog/serviceLayer.html
