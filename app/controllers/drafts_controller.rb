@@ -10,14 +10,4 @@ class DraftsController < ApplicationController
     
   end
   
-  def atom
-    
-    @entries = Entry.drafts_page
-    
-    respond_to do |format|
-      format.atom
-    end
-      
-  end
-  
 end
