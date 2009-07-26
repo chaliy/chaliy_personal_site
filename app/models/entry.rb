@@ -1,3 +1,5 @@
+require 'maruku'
+
 class Entry
   attr_reader :title
   attr_reader :name
@@ -15,13 +17,13 @@ class Entry
     
   def self.drafts_page
     
-    self.page "./content/drafts"
+    self.page "#{RAILS_ROOT}/content/drafts"
     
   end
   
   def self.public_page
     
-    self.page "./content/public"
+    self.page "#{RAILS_ROOT}/content/public"
     
   end
   
