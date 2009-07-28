@@ -5,11 +5,12 @@ class Entry
   attr_reader :name
   attr_reader :content_markup
   attr_reader :content
-  attr_reader :pubDate
+  attr_reader :published_on
   
-  def initialize(title, name, content)
+  def initialize(title, name, published_on, content)
     @title = title
     @name = name
+    @published_on = published_on
     @content_markup = content
     doc = Maruku.new(content)
     @content = doc.to_html
@@ -17,21 +18,21 @@ class Entry
     
   def self.drafts_page
     
-    self.page "#{RAILS_ROOT}/content/drafts"
+    self.page :drafts
     
   end
   
   def self.public_page
     
-    self.page "#{RAILS_ROOT}/content/public"
+    self.page :published
     
   end
   
   private
-    def self.page(path)
-      index = EntryIndex.new path
-      index.entries.map { |entry|
-          Entry.new(entry.title, entry.title, entry.content)
+    def self.page(t)
+      index = EntryIndex.new "#{RAILS_ROOT}/content"
+      index.entries(t).map { |entry|
+          Entry.new(entry.title, entry.name, entry.published_on, entry.content)
       }
     end
     
