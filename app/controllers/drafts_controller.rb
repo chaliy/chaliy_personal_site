@@ -5,7 +5,7 @@ class DraftsController < ApplicationController
     
     respond_to do |format|
       format.html
-      format.atom
+      format.atom { render :layout => false }
     end
     
   end
