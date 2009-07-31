@@ -17,6 +17,18 @@ class EntryIndex
     
   end
   
+  def find(year, month, name)
+    ensureIndex
+    
+    found_entries = @entries.select do |entry|
+      publiched_on = entry.published_on; 
+      (publiched_on.year == year && publiched_on.month == month && entry.name == name)
+    end
+    
+    found_entries.first
+    
+  end
+  
   private
   
   def ensureIndex

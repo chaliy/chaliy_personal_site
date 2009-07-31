@@ -33,8 +33,10 @@ ActionController::Routing::Routes.draw do |map|
   
   map.root :controller => "home"
   
+  map.connect 'drafts.atom', :controller => 'drafts', :action => 'index', :format => 'atom'    
+  map.connect 'drafts/:year/:month/:name', :controller => 'drafts', :action => 'entry'
+   
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
-  
-  map.connect 'drafts.atom', :controller => 'drafts', :action => 'index', :format => 'atom'
+   
 end

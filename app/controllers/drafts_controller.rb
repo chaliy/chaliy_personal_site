@@ -10,4 +10,10 @@ class DraftsController < ApplicationController
     
   end
   
+  def entry(year, month, name)
+    
+    @entry = Entry.find(year, month, name);
+    
+  end
+  
 end

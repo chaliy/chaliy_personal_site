@@ -28,6 +28,11 @@ class Entry
     
   end
   
+  def self.find(year, month, name)
+     index = EntryIndex.new "#{RAILS_ROOT}/content"
+     index.find(year, month, name)
+  end
+  
   private
     def self.page(t)
       index = EntryIndex.new "#{RAILS_ROOT}/content"
