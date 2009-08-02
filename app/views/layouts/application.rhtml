@@ -7,16 +7,8 @@
 </head>
 <body>
     <div id="page">
-    
-		<div id="menu">
-			<ul>
-                <li>Blog</li>
-            </ul>
-		</div>
-
-        <div id="header">
-            <h1>Mike Chaliy</h1>
-        </div>
+    	
+		<%= render(:partial => "shared/application_header" )%>    	       
 		
 		<% if flash[:notice] -%>
       	<div id="notice"><%= flash[:notice] %></div>

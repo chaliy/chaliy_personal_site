@@ -13,32 +13,25 @@ class Entry
     @published_on = published_on
     @content_markup = content
     doc = Maruku.new(content)
-    @content = doc.to_html
-  end
-    
-  def self.drafts_page
-    
-    self.page :drafts
-    
+    @content = doc.to_html       
   end
   
-  def self.public_page
-    
-    self.page :published
-    
+  def self.from_entry(entry)
+    Entry.new(entry.title, entry.name, entry.published_on, entry.content)
   end
+  
+  def perma_link
+    drafts_entry_path(@name, @published_on.year, @published_on.month)
+  end
+    
+  def self.page(t)    
+    EntryIndex.instance.entries(t).map { |entry|
+        Entry.from_entry(entry)
+    }
+  end  
   
   def self.find(year, month, name)
-     index = EntryIndex.new "#{RAILS_ROOT}/content"
-     index.find(year, month, name)
+     Entry.from_entry(EntryIndex.instance.find(year, month, name))
   end
-  
-  private
-    def self.page(t)
-      index = EntryIndex.new "#{RAILS_ROOT}/content"
-      index.entries(t).map { |entry|
-          Entry.new(entry.title, entry.name, entry.published_on, entry.content)
-      }
-    end
-    
+     
 end

@@ -98,6 +98,11 @@ label
 	color: #111;
 }
 
+#content ol{
+	padding-left: 50px;
+}
+
+
 #columns
 {
 }

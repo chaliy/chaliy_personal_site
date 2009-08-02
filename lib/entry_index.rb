@@ -1,7 +1,8 @@
 class EntryIndex
+  include Singleton
   
-  def initialize(path)
-    @path = path
+  def initialize()
+    @path = "#{RAILS_ROOT}/content"
   end
   
   def entries(t)
@@ -22,12 +23,12 @@ class EntryIndex
     
     found_entries = @entries.select do |entry|
       publiched_on = entry.published_on; 
-      (publiched_on.year == year && publiched_on.month == month && entry.name == name)
+      (publiched_on.year == year.to_i && publiched_on.month == month.to_i && entry.name == name)
     end
     
     found_entries.first
     
-  end
+  end  
   
   private
   

@@ -11,7 +11,7 @@ class EntryFile
 
   
   def read_file(input_path)
-    input_name = File.basename(input_path)
+    input_name = File.basename(input_path, ".text")
     input_text = File.read(input_path)
     read_text(input_name, input_text)
   end
@@ -30,7 +30,7 @@ class EntryFile
       
       @content = content_text.strip()
       @title = header["title"]
-      @published_on = header["published_on"]
+      @published_on = header["published_on"] || Date.today 
       @published = header["published"]
     end
    
