@@ -14,12 +14,20 @@
 		<% if flash[:notice] -%>
       	<div id="notice"><%= flash[:notice] %></div>
     	<% end -%>
+		
+		<div id="main-column">
 
-        <div id="content">
-        	
-			<%= yield :layout %>
-
-        </div>
+	        <div id="content">
+	        	
+				<%= yield :layout %>
+	
+	        </div>
+			
+		</div>
+		
+		<div id="sidebar-column">
+			<%= render(:partial => "shared/sidebar")%>
+		</div>
         
         <div id="footer">
             <p>
