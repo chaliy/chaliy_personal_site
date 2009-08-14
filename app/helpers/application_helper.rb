@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def test_so
-    "dsgdfg"
+  def blog_syndication_url
+    "http://feeds.feedburner.com/chaliy"
   end
 end

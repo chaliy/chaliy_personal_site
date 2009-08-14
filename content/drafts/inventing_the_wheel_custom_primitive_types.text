@@ -3,13 +3,13 @@ title: Inventing the wheel. Custom primitive types
 ---
 What I hate in .NET is strings. Even not strings, rather nullable behavior of them. I do not know why MSFT decided to make them nullable, but IMHO this was really stupid. My code is overloaded with stupid contracts to ensure that input string is not null!
 
-Solution is obvious. I needed to implement my own string. It’s easy. Most of the time I spent to name new class.  This is how StringValue was born! Implementation is trivial, *link to code here*.
+Solution is obvious. I needed to implement my own string. It's easy. Most of the time I spent to name new class.  This is how StringValue was born! Implementation is trivial, *link to code here*.
 
 After few weeks of using StringValue. I realized that there is special kind of strings. Identifier strings. Often they are case-incentive. This is how IdentifierString class was born.
 
 Next step was easy. Many of my domain properties like description, content are semantically long texts. This is how Text was born. Btw, semantic is not the only benefit. You can see "features", but most interesting is automatic mapping to the database fields *tbd*.
 
-Well, for now that’s all. At least for strings :). I also have bunch for numerics and dates.
+Well, for now that's all. At least for strings :). I also have bunch for numerics and dates.
 
 Of course. Money. Just semantical decimal.
 

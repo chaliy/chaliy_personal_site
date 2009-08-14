@@ -5,7 +5,7 @@ There are dozens of best-practices, patterns, recomendations... Sometimes I catc
 
 Recent example is persistence ignorance and question if domain entities should have persistence identifier. On the first side, you should prohibit identitiy fields and rather use domain identy fields. On other side well know benefits of the unique identification. What to choose?
 
-Of course, "it depends". First is to be pragmatic. For example, if you developing domain model, most probably it’s easy to follow common practise and do not use identities. But do not be fooled, this is just principle. I you need identifier to be serialized on a wire or you need identity for some other purposes like referencing outside of the application, just open it.
+Of course, "it depends". First is to be pragmatic. For example, if you developing domain model, most probably it's easy to follow common practise and do not use identities. But do not be fooled, this is just principle. I you need identifier to be serialized on a wire or you need identity for some other purposes like referencing outside of the application, just open it.
 
 At this point, many people ask me:
 
