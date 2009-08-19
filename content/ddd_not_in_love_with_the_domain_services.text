@@ -1,0 +1,42 @@
+---
+title: "DDD: Not in love with the Domain Services! Hope I am not along!"
+published_on: 2009-08-19
+published: true
+---
+*Not so kind to be angry for the first post... 100 excuses!*
+
+When approaching the DDD some of the model code goes to the [Domain Services][1]. IMHO, this is some sort of "allowed" or "acceptable" solution when you cannot do something in pure model. Examples are access to the external services and operations on the multiple entities. You know.
+
+The following article describes what is wrong with Domain Services.
+
+### No single place to start (or to learn)
+
+Imagine you have the `Order.Approve()` and the `ApprovalService.Approve()`.The `ApprovalService` do some stuff and then delegate actual approve to the `Order`. You never can be sure whatever you use right method! If you are not author of the both, you can easily miss the `ApprovalService` and just directly call the `Order`.  Any solution that comes to the mind does not guarantee results or introduces much more problems than actually solves! 
+
+### Dependency/Reference Hog
+ 
+The main goal of the Domain Services is to "orchestrate" business operation. Often that means huge amount of external services, references out of the boundaries, access to the different partitions of your model. You can review the uses section of your services. Sometimes it looks terrible. Do you see a problem now? 
+
+Well, the solution is obvious. To make tools like [NDepend][7] happy, just use composition. This will likely make your uses section slightly smaller. However, problem is still here. The service is still complex and you cannot do something with it.
+
+### Testability
+
+Yes, sure you use the [DI][2] so you can test all your code. But, please compare your Domain Service tests with Model tests. What I look here: Model tests are just instantiation of the entity, doing something and checking results. Everything like introduction tests in books on TDD. Tests for the Domain Services are slightly different. They require  [the mocks][3] for the dependencies. They require assertions of [the indirect output][4]. For sure, I like model tests much more!
+
+### What to do then?
+
+In most cases, this depends what you want to overcome (I you want of course).
+
+For example to overcome problem with the API spread across the model, you can introduce [Service Layer Pattern][6].  Another way is to mark everything you are not expect be public as internal or implement them as explicit interfaces.
+
+For dependencies and testability, I can suggest making Domain Services as stupid as you can. For example, move some code to the next layer ([Service Layer Pattern][6]). 
+
+Not to mention [Domain Events (Udi Dahan's version)][5]. This is very promising Domain Services killer. For now, it is my default approach. I will write more on this in near feature.
+
+[1]: http://dddsample.sourceforge.net/characterization.html#Services
+[2]: http://en.wikipedia.org/wiki/Dependency_injection
+[3]: http://xunitpatterns.com/Mock%20Object.html
+[4]: http://xunitpatterns.com/indirect%20output.html
+[5]: http://www.udidahan.com/2008/08/25/domain-events-take-2/
+[6]: http://martinfowler.com/eaaCatalog/serviceLayer.html
+[7]: http://www.ndepend.com/Screenshots.aspx

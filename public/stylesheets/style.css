@@ -66,7 +66,7 @@ label
 	height: 60px;
 	line-height: 60px;
 }
-#header h1
+#header
 {
 	color: #fff;
 	font-size: 20px;
@@ -78,7 +78,7 @@ label
 	text-align: justify;
 }
 
-#content h2
+.entry h1
 {	
 	font-size: 24px;
 	font-weight: 100;
@@ -88,20 +88,48 @@ label
 	letter-spacing: -1px;
 	clear: both;
 }
-#content h2 a
+.entry h1 a
 {
 	color: #9EA036;
 	text-decoration: none;
 }
-#content h2 a:hover
+.entry h1 a:hover
 {
 	color: #111;
+}
+
+.entry-list .entry h2
+{	
+	font-size: 24px;
+	font-weight: 100;
+	border: 1px solid #D3D463;
+	background: #E5E695;
+	padding: 10px 3px 7px 3px;
+	letter-spacing: -1px;
+	clear: both;
+}
+.entry-list .entry h2 a
+{
+	color: #9EA036;
+	text-decoration: none;
+}
+.entry-list .entry h2 a:hover
+{
+	color: #111;
+}
+
+#content h3
+{	
+	color: #9ea036;
+	padding: 4px;
+	font-size: 15px;
+	font-weight:bolder;	
+	clear: both;
 }
 
 #content ol{
 	padding-left: 50px;
 }
-
 
 #columns
 {
