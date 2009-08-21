@@ -40,7 +40,9 @@ class EntryIndex
         entry = EntryFile.new
         entry.read_file path
         entry
-      }
+      }.sort {|a, b| 
+        a.published_on <=> b.published_on
+      }.reverse
       
     end
   end

@@ -29,8 +29,8 @@ class EntryFile
       header = YAML.load($1)
       
       @content = content_text.strip()
-      @title = header["title"]
-      @published_on = header["published_on"] || Date.today 
+      @title = header["title"]      
+      @published_on = header["published_on"] == nil ? Date.today : DateTime.parse(header["published_on"]) 
       @published = header["published"]
     end
    
