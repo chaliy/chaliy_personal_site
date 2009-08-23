@@ -9,9 +9,9 @@ Ha-ha! Funny thing, there are no templates for the [T4 (Text Templates)][1] in t
 [Download T4 (Text Template) Template for Visual Studio 2008][2]
 
 --
-![Installer](/files/texttemplate/installer.png)
+![Installer](http://chaliy.name/files/texttemplate/installer.png)
 
 BTW, I hope someday MSFT will implement normal editor features for the T4. Unfortunately, for now even Visual Studio 2010 is stupid notepad.
 
 [1]: http://msdn.microsoft.com/en-us/library/bb126445.aspx
-[2]: /files/texttemplate/v1_0/TextTemplate.vsi
+[2]: http://chaliy.name/files/texttemplate/v1_0/TextTemplate.vsi
