@@ -24,6 +24,7 @@ class BlogController < ApplicationController
   def entry
     
     @entry = Entry.find(params[:year], params[:month], params[:name]);
+    @title = @entry.title 
     
   end
   

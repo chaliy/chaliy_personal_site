@@ -1,3 +1,6 @@
+<% content_for :head do -%>
+  <title>Mike Chaliy: <%=h @entry.title %></title>
+<% end -%>
 <div class="entry">	
 	<h1><%=link_to @entry.title, blog_pretty_entry_url(@entry) %></h1>	
 	<%= @entry.content %>
