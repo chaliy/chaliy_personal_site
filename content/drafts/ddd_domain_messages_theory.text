@@ -1,11 +1,11 @@
 ---
 title: DDD. Domain Messages - Theory
 ---
-** Problem
+### Problem
 
 I love the DDD approach to model business operations, I love not to bother about a database, I love the testability and of course, I love readability. So everything is cool? No! I just hate to model operations that evolves more than one root aggregate.  Few weeks ago, I discovered Domain -Events- Messages (Later why Messages). Probably Domain Messages was the best finding for last year. Following stuff is my extraction on topic.
 
-** Domain Services
+### Domain Services
 
 We need some background. So, first question:
 
@@ -37,4 +37,4 @@ Common issue with DDD is situations when business operation evolves more than on
 
 For example, you are modeling file system.  You need to model user quota, so when user creates new file, system should ensure that there are some space.  To do this we create entity Quota that will keep AllowedSpace and CurrentUsage. For physical file, we use File entity, no surprises here. When user creates new File we check if Quota
 
-[1] http://dddsample.sourceforge.net/characterization.html#Services
+[1]: http://dddsample.sourceforge.net/characterization.html#Services
