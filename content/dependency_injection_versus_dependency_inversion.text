@@ -8,7 +8,7 @@ From time to time, I hear questions what is the difference between `Dependency I
 
 ### The Dependency Inversion Principle
 
-As per title, `Dependency Inversion` is The Principle. Means that this is just theoretical stuff and this is your responsibility to invent how to implement it. Original publication (at list I think so) was at `Object Mentor` - [The Dependency Inversion Principle][1].  
+As per title, `Dependency Inversion` is The Principle. Means that this is just theoretical stuff and this is your responsibility to invent how to implement it. The original publication (at least I think so) was at `Object Mentor` - [The Dependency Inversion Principle][1]. 
 
 Publication defines this principle in two sentences:
 
