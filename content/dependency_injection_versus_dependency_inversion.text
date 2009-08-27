@@ -4,54 +4,55 @@ published_on: 2009-08-27T16:47
 published: true
 categories: [DI, Principles, Patterns, Design]
 ---
-From time to time, I hear questions what the difference between `Dependency Injection` (`DI`), `Dependency Inversion` (also `DI`) and `Inversion of Control` (`IoC`). Despite you can make decision yourself, I will gather all related stuff in this post.
+From time to time, I hear questions what is the difference between `Dependency Injection` (`DI`), `Dependency Inversion` (also `DI`), `Inversion of Control` (`IoC`) and so on. Despite you can make decision yourself, I will gather all related stuff in this post. Also check my recommendations. Hope you like them.
 
-## The Dependency Inversion Principle
+### The Dependency Inversion Principle
 
 As per title, `Dependency Inversion` is The Principle. Means that this is just theoretical stuff and this is your responsibility to invent how to implement it. Original publication (at list I think so) was at `Object Mentor` - [The Dependency Inversion Principle][1].  
 
 Publication defines this principle in two sentences:
 
->> A. High level modules should not depend upon low level modules. Both should depend upon abstractions.
->> B. Abstractions should not depend upon details. Details should depend upon abstractions.
+> High level modules should not depend upon low level modules. Both should depend upon abstractions.
+
+> Abstractions should not depend upon details. Details should depend upon abstractions.
 
 As you can see, it is very general. Whole bunch of patterns helps to solve this problem.
 
->> It is recommended to use in high-level design battles. It could help to bring down your opponents.
+<p class="author-note">It is recommended to use in high-level design battles. It could help to bring down your opponents.</p>
 
-## The Dependency Injection Pattern
+### The Dependency Injection Pattern
 
 Yes-yes, it's pattern. This is one of the concrete solutions to the application/code composition problem. And yes this solution is implementation of the `Dependency Inversion Principle`. Probably the most known place to read is `Martin Fowler` - [Inversion of Control Containers and the Dependency Injection pattern][2]. 
 
->> You can use this term in battles with ruby fans. This is something that most of the ruby developers do not aware about. It is common in .NET word so you can look trite and predictable.
+<p class="author-note">You can use this term in battles with ruby fans. This is something that most of the ruby developers do not aware about. It is common in .NET word so you can look trite and predictable.</p>
 
-## The Inversion of Control 
+### The Inversion of Control 
 
 There is no clear answer what the `Inversion of Control` is. Some people say this is the principle, some people - the pattern. Because name does not suggest implementation, I prefer to refer this as the principle.  Anyways this is just another name of the `Dependency Inversion Principle` or the `Dependency Injection Pattern`, respectively.
 
->> Because this term is common in Java Word, you can use it in battles with .NET guys. Also you can use when not sure what you need the principle or the pattern.  Not to mention, it sounds way cool. 
+<p class="author-note">Because this term is common in Java Word, you can use it in battles with .NET guys. Also you can use when not sure what you need the principle or the pattern.  Not to mention, it sounds way cool.</p>
 
-## Hollywood Principle
+### Hollywood Principle
 
 The [Hollywood Principle][3] is another name of the `Inversion of Control Principle`. 
 
->> Don't call us, we'll call you.
+> Don't call us, we'll call you.
 
 Simple!
 
->> Well, if you want look as solid, proven architect this term is for you. It sounds very antique. Do not forget to quote "Don't call us, we'll call you."
+<p class="author-note">Well, if you want look as solid, proven architect this term is for you. It sounds very antique. Do not forget to quote "Don't call us, we'll call you."</p>
 
-## The Inversion of Control Container
+### The Inversion of Control Container
 
 It is hard to not mention the `Inversion of Control Containers`. This is common name of the libraries that implement the `Dependency Injection Pattern`. Why `Inversion of Control`? Probably because of the history.
 
->> The only usage is at work.
+<p class="author-note">The only usage is at work.</p>
 
-## The Service Locator Pattern
+### The Service Locator Pattern
 
 The [Service Locator][4] is another cool stuff. For some reasons many people think that there is no relationship between `Service Locator` and `DI`. Not true. The `Service Locator` is yet another implementation of the `Dependency Inversion Principle`.  And yes `Service Locator` is competitor for the `Dependency Injection Pattern`.  
 
->> It is hard to believe but I cannot recommend mentioning this pattern at all. This pattern is only for gourmets.
+<p class="author-note">It is hard to believe but I cannot recommend mentioning this pattern at all. This pattern is only for gourmets.</p>
 
 
 [1]:  http://objectmentor.com/resources/articles/dip.pdf

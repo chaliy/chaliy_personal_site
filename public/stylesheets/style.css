@@ -80,12 +80,14 @@ label
 
 .entry h1
 {	
-	font-size: 24px;
+	font-size: 18px;
 	font-weight: 100;
 	border: 1px solid #D3D463;
 	background: #E5E695;
 	padding: 10px 3px 7px 3px;
 	letter-spacing: -1px;
+	line-height: 20px;
+	text-align: left;
 	clear: both;
 }
 .entry h1 a
@@ -100,12 +102,14 @@ label
 
 .entry-list .entry h2
 {	
-	font-size: 24px;
+	font-size: 18px;
 	font-weight: 100;
 	border: 1px solid #D3D463;
 	background: #E5E695;
 	padding: 10px 3px 7px 3px;
 	letter-spacing: -1px;
+	line-height: 20px;
+	text-align: left;
 	clear: both;
 }
 .entry-list .entry h2 a
@@ -129,6 +133,22 @@ label
 
 #content ol{
 	padding-left: 50px;
+}
+
+#content blockquote {
+	margin: 20px;
+	border:solid 1px #DEDEDE; 
+	background:#EFEFEF;
+	color:#222222;
+	padding:4px;
+}
+
+#content .author-note {
+	margin: 20px;
+	border:solid 1px #DEDEDE;	
+	color:#222222;
+	padding:4px;
+	font-style:italic;
 }
 
 #columns
