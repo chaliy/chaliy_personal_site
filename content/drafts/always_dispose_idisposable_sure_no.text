@@ -1,4 +1,5 @@
 ---
 title: Always dispose IDisposable! Sure? No!
+published_on: 2009-08-29T12:10
 ---
 BinaryWriter has 

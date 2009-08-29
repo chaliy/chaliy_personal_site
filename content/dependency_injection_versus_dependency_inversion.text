@@ -30,7 +30,7 @@ Yes-yes, it's pattern. This is one of the concrete solutions to the application/
 
 There is no clear answer what the `Inversion of Control` is. Some people say this is the principle, some people - the pattern. Because name does not suggest implementation, I prefer to refer this as the principle.  Anyways this is just another name of the `Dependency Inversion Principle` or the `Dependency Injection Pattern`, respectively.
 
-<p class="author-note">Because this term is common in Java Word, you can use it in battles with .NET guys. Also you can use when not sure what you need the principle or the pattern.  Not to mention, it sounds way cool.</p>
+<p class="author-note">Because this term is common in Java World, you can use it in battles with .NET guys. Also you can use when not sure what you need the principle or the pattern.  Not to mention, it sounds way cool.</p>
 
 ### Hollywood Principle
 

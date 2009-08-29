@@ -1,5 +1,6 @@
 ---
 title: Inventing the wheel. Custom primitive types
+published_on: 2009-08-29T12:10
 ---
 What I hate in .NET is strings. Even not strings, rather nullable behavior of them. I do not know why MSFT decided to make them nullable, but IMHO this was really stupid. My code is overloaded with stupid contracts to ensure that input string is not null!
 
