@@ -1,0 +1,53 @@
+---
+title: Virtual by default, is that good or not?
+published_on: 2009-08-30T16:48
+published: true
+categories: [Code, C#, Java]
+---
+<p class="author-note">Inspired by background of the `Jimmy Bogard`'s - <a href="http://www.lostechies.com/blogs/jimmy_bogard/archive/2009/08/28/my-favorite-nhibernate-exception.aspx">My favorite NHibernate exception</a>. </p> 
+
+Here, at `Just Applications`, we are using [Google Web Toolkit (GWT)][2] as our client side framework. Personally for me that means that last few months I spent in average 30% of my work time coding with `Java`.  After years of `C#` coding this is freaking awesome experience! 
+
+<p class="author-note"> BTW, I am sure that there are just two real ways to learn stuff. One is red pill and second is to use stuff in real work.</p>
+
+Of course, been `C#` developer, I found stuff I do not like in `Java`. For example, unlike in `C#` where `class` members are sealed/final by default, in `Java` they are virtual by default.
+
+So let start with some myths.
+
+### Myth 1. It's all about testability
+
+![Mythbusters]
+
+I know only two places where virtual members could help. One is stubbing/mocking and second is trying to change behavior of the SUT.
+
+So, stubbing... In most cases, stubbing requires classes not to be sealed/final and so for members you would like to override. This is due the fact that stub is often inherited from your class. Therefore having everything virtual is direct solution! It could be true. Unless you are okay to have default constructor on your class. Unless you are agreeing that small change to our code can break half of your tests... From my experience, both of these problems kill an idea of stubbing real implementations. Solution to these problems is obvious. Just extract interface and do all stubbing around it.
+
+Next is changing behavior of the SUT. Sometimes when class was not designed with testing in mind you have to check indirect results or you have to do something tricky to isolate code.  This is often referred as testing legacy code. Of course, in this situation making everything virtual could help. Actually even more help you can get after making everything you need public. But hey! This is anti-pattern for regular testing! This is leakage of the implementation details into the test!
+
+So at least for me testability is not an argument in the Great Virtual Battle!
+
+### Myth 2. It's all about extensibility
+
+This is my favorite! This is about extensibility though inheritance! 
+
+So, I have written some code. Why to restrict usage of the class by making it sealed? Why not to support freedom? 
+
+Well, there are some facts:
+
+1. Sealed as well as privates and internals helps you to provide useful API. They just hide stuff not required for API. When members of a class did not intend to be overridden, why not to restrict this at compilation time?
+
+2. When you design API, you probably should think how to make usage as obvious as you can. Inheritance is yet another usage. If your class will have everything virtual, how your user will know what is expected to be overridden?
+
+3. Your code should be tested. But please imagine how many invariants your will have if everything will be overridable? This is just hard to design inheritance API.
+
+Main point of these items is that if you allow something, you should support this. I prefer not to spend time to support invariants that will not occur with 99% probability.
+
+Solution is not obvious, but generally well known. It is [Composition][4]. Let your classes to be composable in a way your user would like.
+
+<p class="author-note">BTW, did you ever extend DataGrid? I did. It was most terrible experience I ever had. You override something, and some stuff stop working, you override something else, and another unexpected stuff stops working...</p>
+
+[1]: http://www.lostechies.com/blogs/jimmy_bogard/archive/2009/08/28/my-favorite-nhibernate-exception.aspx
+[2]: http://code.google.com/intl/webtoolkit/webtoolkit/
+[3]: http://xunitpatterns.com/SUT.html
+[4]: http://en.wikipedia.org/wiki/Object_composition
+[Mythbusters]: http://upload.wikimedia.org/wikipedia/en/thumb/c/cf/Mythbusters_title_screen.jpg/250px-Mythbusters_title_screen.jpg

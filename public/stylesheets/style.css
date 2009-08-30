@@ -135,6 +135,11 @@ label
 	padding-left: 50px;
 }
 
+#content img{
+	float: right;
+	margin: 10px;
+}
+
 #content blockquote {
 	margin: 20px;
 	border:solid 1px #DEDEDE; 
