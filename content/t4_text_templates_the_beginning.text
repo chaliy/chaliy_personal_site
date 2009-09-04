@@ -1,0 +1,60 @@
+---
+title: T4 (Text Templates) - The Beginning
+published_on: 2009-09-05T00:11
+published: true
+categories: [T4]
+---
+This is the first post in my ongoing series about [T4 (Text Templates) ][1]. I will describe basics to ensure that we are talking on the same language. If you know what T4 is, just skip this stuff.
+
+### What is that?
+
+The **Text Templates** or simply **T4** is general purpose text templates that comes out of the box with Visual Studio (starting from Visual Studio 2008). `Text Templates` look and behave very similar to the `ASPX`, `ASP` or even `PHP` files. Both are just templates that allows code included in. Unlike `ASPX`, `T4` does not allow code behaind.
+
+### How to start?
+
+Easy. Create text file with extension `.tt` and content:
+
+	<#@ template debug="false" hostspecific="false" language="C#" #>
+	<#@ assembly Name="System.Core.dll" #>
+	<#@ output extension=".cs" #>
+	class Test
+	{
+		public void DoSomething()
+		{
+			System.Console.WriteLine("Generated at {0}", 
+				"<#= DateTime.Now.ToString() #>");
+		}
+	}
+	
+Press Ctrl+S and now you can see generated code. 
+
+![Generated results](http://chaliy.name/files/t4_text_templates_the_beginning/generated-results.png)
+
+Thats it, you have done with your first `Text Template`.
+
+BTW, the `Visual Studio 2010` already comes with templates for `Text Templates` (funny, yeh?) out of the box. For the `Visual Studio 2008` you can use [custom T4 templates][2].
+
+### Where to read more?
+
+[Generating Artifacts By Using Text Templates][1] - Text Templates landing page on MSDN
+
+[Oleg Sych, Site Archives T4][3] - awesome blog about T4, for example - [Pros and Cons of T4 in Visual Studio 2008][4].
+
+[T4 on Patterns and Practices Guidance][5] - Many examples
+
+### What next?
+
+I already have drafts about building DSL with T4. Also I have some tips to share. So let hope to see something interesting.
+
+--
+
+This post in Ukrainian - [T4 (Visual Studio Text Templates) - The Beginning][6]
+
+
+
+[1]:  http://msdn.microsoft.com/en-us/library/bb126445(VS.80).aspx
+[2]: http://chaliy.name/blog/2009/8/templates_for_templates_t4_text_template_for_visual_studio_2008
+[3]: http://www.olegsych.com/tag/t4/
+[4]: http://www.olegsych.com/2009/01/pros-and-cons-of-t4-in-visual-studio-2008/
+[5]: http://www.pnpguidance.net/Tag/T4.aspx
+[6]: http://dev.net.ua/blogs/mikechaliy/archive/2009/02/04/7654.aspx
