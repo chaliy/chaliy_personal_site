@@ -156,6 +156,26 @@ label
 	font-style:italic;
 }
 
+#content table th{		
+	border: 1px solid #d3d463;
+	color: #9ea036;
+	text-align: left;
+	padding: 6px 12px 6px 12px;
+	background-color: #e5e695;
+}
+
+#content table td{		
+	border: 1px solid #d3d463;
+	padding: 6px 12px 6px 12px;
+}
+
+#content pre code {
+	background-color: #f8f8f8;
+	border: #ddd 1px solid;
+	display: block;
+	padding: 10px;
+}
+
 #columns
 {
 }
