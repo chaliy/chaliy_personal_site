@@ -1,0 +1,7 @@
+---
+title: T4(Text Template) - Under the hood
+published_on: 2009-09-06T10:01
+published: false
+categories: [T4, Adwanced]
+---
+Under the hood, template engine generate single class that looks like. with `TransformText`method. Everything between header directives and end of the file will be in the context of this method.

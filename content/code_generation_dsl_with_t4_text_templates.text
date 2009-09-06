@@ -1,0 +1,86 @@
+---
+title: Code-generation DLS with T4 (Text Templates)
+published_on: 2009-09-06T11:12
+published: false
+categories: [T4, DSL, "Code Generation"]
+---
+Sometimes you have to write many repeatable code. First what comes in mind and can illustrate such code are data contracts for the web-services or data access layer. You have write dozens of properties, attributes or methods. 
+
+Many modern languages support concept of the metaprogramming, this helps to write code constructs that replace repeatable code! 
+
+Ruby code
+
+	attr_reader :title
+
+compared to C#:
+
+	public string Title {get{return this.title; } };
+	
+Unfortunately, metaprogramming is not a case for C#. One of the solutions to this problem is code generation. In short words you are taking some data, make transformation and as output you are getting code file in your favorite language. In the following post I will describe code generation DSL with T4 (Text Templates).
+
+### Problem
+
+For demonstration purposes I will use one of the real problems form my ongoing work. We are working on much componentized system. Each component has its own deployment requirements. To make deployments as flexible as possible we use .NET Configuration. The only thing I hate in .NET Configuration is fact that 80% of the `ConfigurationSection` code is useless. [Here][1] you can view at one of the example configuration sections.
+
+So we need generate configuration section. The only data required as input is:
+
+Name      |Type
+---------|--------
+Server    |string
+Database|string
+Username|string
+Timeout  |int
+
+As you may see, most of the attributes have type `string` so generator should assume `string` as default type.
+
+### T4 
+
+First of all we need T4 template. Schema I often use is one template for both DSL and code generation.  I call this definition template.
+
+On the other side there are target templates. 
+
+This schema allows as many tra
+
+This schema allows single definition template used with many target templates. Target templates just reference definition template.
+
+
+### DSL
+
+The obvious start is DSL. We will start with simple structure that holds support information like name of the .NET configuration section as well as list of the configuration attributes. Code worth a thousand words:
+
+	public class Section{
+		public string Name {get;set;}
+		public IList<Property> Properties = new List<Property>();
+	}
+	public class Property{
+		public string Name {get;set;}
+	}
+	
+We need to embed this DSL to the template, to do this we will use `<#+ ... #>` section.  This is very similar to the `ASPX` code `<script runat="server"> ... </script>`.
+
+Next step is target template.
+
+### Target template
+
+Next step is actual code generation.
+
+### Template - Code Generation
+
+T4 templates are simple text files with code includes.
+
+Simple enough. Later we will use this structure to generate actual code.
+
+	new Section
+	{
+		Namespace = "Community.Example",
+		Name = "DataConnectionConfiguration",
+		Path = "community/data",
+		Properties = 
+		{
+			new Property{Name = "Server"}
+	
+		}
+	}
+
+
+[1]: http://github.com/chaliy/config_language/blob/71c8f6fc0b0eb2c3ae223aec05cda78f8afc4f9c/Example/DataConnection.cs
