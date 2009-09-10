@@ -4,7 +4,7 @@ published_on: 2009-09-06T11:12
 published: false
 categories: [T4, DSL, "Code Generation"]
 ---
-Sometimes you have to write many repeatable code. First what comes in mind and can illustrate such code are data contracts for the web-services or data access layer. You have write dozens of properties, attributes or methods. 
+Sometimes you have to write many repeatable code. First what comes in mind and can illustrate such code are data contracts for the web-services or data access layer. You have to write dozens of properties, attributes or methods. 
 
 Many modern languages support concept of the metaprogramming, this helps to write code constructs that replace repeatable code! 
 

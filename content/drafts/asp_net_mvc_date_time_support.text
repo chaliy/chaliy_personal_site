@@ -1,0 +1,10 @@
+---
+title: ASP.NET MVC DateTime Serialization format
+published: false
+published_on: 2009-09-03T12:10
+---
+As expected ASP.NET MVC uses CultureInfo.CurrentCulture for simple values.
+
+http://msdn.microsoft.com/en-us/library/1k1skd40.aspx
+
+return DateTimeParse.Parse(s, DateTimeFormatInfo.GetInstance(provider), DateTimeStyles.None);

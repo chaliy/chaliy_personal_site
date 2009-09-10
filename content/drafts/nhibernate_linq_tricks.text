@@ -1,0 +1,8 @@
+---
+title: NHibernate.Linq tricks
+published: false
+published_on: 2009-09-03T13:10
+---
+### Select by date part of the DateTime
+
+	expr.Where(i => i.OrderDate >= date && i.OrderDate < date.AddDays(1));

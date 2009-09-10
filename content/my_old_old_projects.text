@@ -1,0 +1,30 @@
+---
+title: "My Old-old projects. Landing page."
+published_on: 2009-09-10T17:28
+published: false
+---
+> If you was redirected here, most likely you are interesting in project that is no longer supported. 
+
+From time to time, it happens that some projects become outdated. I have bunch of such projects. In some cases, they are not interesting for me any more (like XmlEditableDataSource or RebarToolbar), in other cases I just have no time to support them. 
+
+This post serves two purposes. Main purpose is to be landing page for no longer existing projects. "No longer" is not generally true, of course, they exist. Most of the source code still exists. So if something got your attention, do not hesitate to contact me, I will be happy to send you source code or binaries.
+
+Second purpose is actually to list old and outdated projects. I will update this post from time to time, with new outdated code ?.
+
+Project Name | Description   | Availability
+-------------|---------------|-------------
+Xml Editable Data Source| As per name this is implementation of the IDataSource similar to XML data source, but with editing compatibles. | Source code
+Reabar Toolbar | Custom renderer to standard .NET Toolbar to render the same toolbar as IE6 have. Uses themes API. | Source Code
+Google Sitemap | HttpHandler to render standard [sitemap][5], based on data from ASP.NET Sitemap | Source Code
+XML Membership provides | Read-only Roles/Membership provider for XML data. | Source Code
+DbPro Generators| Project provides Lorem Ipusm Generator for Visual Studio for Database Edition.| [Codeplex][1]
+SAWSDL Implementation for WCF | Aim of the project is to provide SAWSDL implementation for WCF. Unfortunately, the WCF lacks extensibility | [Codeplex][2]
+Syndication Extensions | Implementation of the [Media RSS Module][3]. | [Codeplex][4]
+
+Do not hesitate to contact me, I will be happy to send you source code or binaries.
+
+[1]: http://dbprogenerators.codeplex.com/
+[2]: http://sawsdl.codeplex.com/
+[3]:  http://video.search.yahoo.com/mrss
+[4]: http://syndicationext.codeplex.com/
+[5]: http://www.sitemaps.org/
