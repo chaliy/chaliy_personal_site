@@ -19,7 +19,7 @@ Rebar ToolStrip Renderer | Custom renderer for standard .NET [Toolbar(ToolStrip)
 VS2005 ToolStrip Renderer  | Custom renderer for standard .NET [Toolbar(ToolStrip)][9]. Renders toolbar similar to Visual Studio 2005. | Source Code
 Google Sitemap | The HttpHandler to render standard [sitemap][5], based on data from ASP.NET Sitemap. | Source Code
 XML Membership Provider | Read-only Roles/Membership provider for XML data. | Source Code
-DbPro Generators| Project provides Lorem Ipusm Generator for Visual Studio for Database Edition.| [Codeplex][1]
+DbPro Generators| Project provides Lorem Ipusm Generator for Visual Studio Database Edition.| [Codeplex][1]
 SAWSDL Implementation for WCF | Aim of the project is to provide SAWSDL implementation for WCF. | [Codeplex][2]
 Syndication Extensions | Implementation of the [Media RSS Module][3]. | [Codeplex][4]
 
