@@ -28,7 +28,7 @@ Go further. Next super intuitive exception message is:
 
 ### The property 'Xxxx' on type 'Xxxx.Xxxxx' is not a valid property. Properties whose types are collection of primitives or complex types are not supported.
 
-Had I mentioned that for some reasons neither of these exceptions does not break Visual Studio in debug mode? It is true. Anyways, reason and solution by [Pedram Rezaei][1]. The reason is `Data Services` are not so clever (or simply stupid) to understand how to map complex types. So you have to help them. You have to add another root for this complex type. Suppose your `Xxxx` was `Order`. Then you have to alter your context with:
+Had I mentioned that for some reasons neither of these exceptions break Visual Studio in debug mode? It is true. Anyways, reason and solution by [Pedram Rezaei][1]. The reason is `Data Services` are not so clever (or simply stupid) to understand how to map complex types. So you have to help them. You have to add another root for this complex type. Suppose your `Xxxx` was `Order`. Then you have to alter your context with:
 
 	public IQueryable<Order> Orders { get { return /*Somewhere*/ } }
 
