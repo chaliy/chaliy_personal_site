@@ -23,6 +23,27 @@ a:hover
 	text-decoration: underline;
 	color: #111;
 }
+a.twitter{
+	padding-left: 22px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	background-image: url('../images/services/twitter.png');
+	background-repeat: no-repeat;
+}
+a.skype{
+	padding-left: 22px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	background-image: url('../images/services/skype.png');
+	background-repeat: no-repeat;
+}
+a.linkedin{
+	padding-left: 22px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	background-image: url('../images/services/linkedin.png');
+	background-repeat: no-repeat;
+}
 label
 {
 	display:block;	
