@@ -27,6 +27,13 @@ label
 {
 	display:block;	
 }
+
+ol{
+	padding-left: 30px;
+}
+ul{
+	padding-left: 30px;
+}
 #page
 {
 	margin: 0 auto;
@@ -131,10 +138,6 @@ label
 	clear: both;
 }
 
-#content ol{
-	padding-left: 50px;
-}
-
 #content img{
 	float: right;
 	margin: 10px;
@@ -181,9 +184,8 @@ label
 }
 
 #main-column
-{
-	float: left;
-	width: 570px;
+{	
+	width: 740px;
 }
 #sidebar-column
 {
