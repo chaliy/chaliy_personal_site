@@ -8,8 +8,8 @@ body
 {
 	background: #fff url(../images/header-background.gif) repeat-x;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 12px;
-	line-height: 17px;
+	font-size: .9em;
+	line-height: 1.5em;
 	color: #333;
 }
 
