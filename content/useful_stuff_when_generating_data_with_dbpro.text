@@ -1,0 +1,30 @@
+---
+title: Make your DbPro generated test data look better.
+published_on: 2009-09-12T21:10
+published: false
+categories: [dbpro]
+description: 
+---
+Today I want present unusual stuff.
+
+Name | Regular expression
+------|--------------------------------
+Email Address | `((mike)|(admin)|(support)|(test))@[a-z]{3,12}((\.com)|(\.net)|(\.co\.uk)|(\.ua))`
+Comapany Name | ((Power)|(Super)|(Greate)|(Just)) [A-Z][a-z]{3,9} ((LTD)|(Inc)|(Corp))
+Last Name | [A-Z][a-z]{3,9}(chenko|ev|ns|er)
+First Name | [A-Z][a-z]{3,9}
+County | (London|Kiev|Khrakiv|Paris)
+Address | [A-Z][a-z]{8,15} [A-Z][a-z]{8,15} ( Av| Str){0,1}
+Postal Code | [0-9]{3,4}-[0-9]{4,5}
+Country | (UA|UK|AZ|FR)
+Telephone Number | \+[0-9]{1}([0-9]{3})-[0-9]{3}-[0-9]{4}
+Order Number | ORD[0-9]{8,8}
+
+Const GUID 
+
+select CAST('11111111-1111-1111-1111-111111111111' as uniqueidentifier) as Value from sys.tables
+
+Const string:
+Regex Expression : Const
+
+
