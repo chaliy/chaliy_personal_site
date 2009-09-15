@@ -1,0 +1,11 @@
+---
+title: Stuff to know when starting with ADO.NET Data Services (Part 2)
+published_on: 2009-09-15T19:51
+published: false
+categories: ["ADO.NET Data Services", Newbie]
+description: Next short of my journey with ADO.NET Data Services.
+---
+
+### The server encountered an error processing the request. The exception message is 'Unable to load the specified metadata resource.'. See server logs for more details.
+
+http://stackoverflow.com/questions/689355/metadataexception-unable-to-load-the-specified-metadata-resource

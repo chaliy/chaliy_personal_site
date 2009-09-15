@@ -1,0 +1,12 @@
+---
+title: History of the one LINQ query to Entity Framework
+published_on: 2009-09-15T17:24
+published: false
+categories: ["ADO.NET Data Services", "Entity Framework", LINQ]
+description: Next short of my journey with ADO.NET Data Services.
+---
+From last week, our approach to reporting has been changed. Now we use ADO.NET Data Services on top of the Entity Framework Model. Today was the first day, when I was not able to express query in terms of the ADO.NET Data Services query options. 
+
+Often this is not a problem because `Data Services` supports awesome feature - [Service Operations][1]. Even more exiting that methods return IQueryable<T> automatically get support for all query options like $filter and $orderby.
+
+[1]: http://blogs.msdn.com/marcelolr/archive/2008/01/21/service-operations-in-ado-net-data-services.aspx
