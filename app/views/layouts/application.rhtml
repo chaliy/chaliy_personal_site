@@ -19,13 +19,8 @@
 		<%= yield :layout %>
 		
 	</div>
-	
-	<div id="footer">
-        <p>
-            Mike Chaliy &copy; Copyright 2009
-        </p>
-    </div>
-    
+		
+    <%= render(:partial => "shared/application_footer" )%>
 	<%= render(:partial => "shared/ga")%>
 </body>
 </html>
