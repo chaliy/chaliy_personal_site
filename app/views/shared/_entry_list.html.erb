@@ -1,9 +1,10 @@
 <div class="entry-list">
-	<% @entries.each do |entry| %>
-	<div class="entry">	
-		<h2><%=link_to entry.title, blog_pretty_entry_url(entry)  %></h2>
+	<% @entries.each do |entry| %>	
+	<h1><%=link_to entry.title, blog_pretty_entry_url(entry) %></h1>
+	<div class="entry">
 		<%= entry.content %>
-		<p class="entry-info">This entry was posted on <%=h entry.published_on %>.</p>
+		<p class="entry-info">This entry was posted This entry was posted <%=h time_ago_in_words(entry.published_on) %>. <%=link_to "Permalink", blog_pretty_entry_url(entry) %></p>
 	</div>
+	<hr />
 	<% end %>
 </div>

@@ -4,6 +4,8 @@ class EntryFile
   attr_reader :name
   attr_reader :published_on
   attr_reader :content
+  attr_reader :description
+  attr_reader :categories
   
   def published?() 
     @published 
@@ -30,8 +32,10 @@ class EntryFile
       
       @content = content_text.strip()
       @title = header["title"]      
-      @published_on = header["published_on"] == nil ? Date.today : DateTime.parse(header["published_on"]) 
+      @published_on = DateTime.parse(header["published_on"])      
       @published = header["published"]
+      @description = header["description"]
+      @categories = header["categories"] || []
     end
    
   end

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 	<title>Mike Chaliy's Home Page</title>
-	<meta http-equiv="Content-Type" content="text/html;" />
+	<%= render(:partial => "shared/head" )%>
 	<%= stylesheet_link_tag "style", :media => "all" %>
 	<!-- OpenID -->
 	<link rel="openid.server" href="http://pip.verisignlabs.com/server" />
@@ -15,29 +15,34 @@
 	<%= render(:partial => "verifications" )%>
 </head>
 <body>
-    <div id="page">
     
-		<%= render(:partial => "shared/application_header" )%>
-		
-      	<% if flash[:notice] -%>
-      	<div id="notice"><%= flash[:notice] %></div>
-    	<% end -%>
-		
-		<div id="main-column">
-			<div id="content">
-        				
-				<%= render(:partial => "shared/entry_list", :object => @entries )%>
-
-        	</div>		
-		</div>
-				
-        <div id="footer">
-            <p>
-                Mike Chaliy &copy; Copyright 2009
-            </p>
-        </div>
-
+	<%= render(:partial => "shared/application_header" )%>
+	
+  	<% if flash[:notice] -%>
+  	<div id="notice"><%= flash[:notice] %></div>
+	<% end -%>
+	
+	<div id="main">
+			
+		<h1>Last posts</h1>				
+		<% @entries.each do |entry| %>
+		<dt>
+			<strong><%=link_to entry.title, blog_pretty_entry_url(entry) %></strong><br />
+			<em class="info"><%=h time_ago_in_words(entry.published_on) %></em>
+		</dt>
+		<dd>			
+			<%=h entry.description %> <%=link_to "Read more!", blog_pretty_entry_url(entry) %>						
+		</dd>
+		<hr />
+		<% end %>				        	
+	</div>
+			
+    <div id="footer">
+        <p>
+            Mike Chaliy &copy; Copyright 2009
+        </p>
     </div>
+    
 	<%= render(:partial => "shared/ga")%>
 </body>
 </html>

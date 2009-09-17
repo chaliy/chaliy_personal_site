@@ -1,4 +1,5 @@
-require 'maruku'
+require 'maruku' 
+require 'action_view'
 
 class Entry
   attr_reader :title
@@ -6,18 +7,24 @@ class Entry
   attr_reader :content_markup
   attr_reader :content
   attr_reader :published_on
+  attr_reader :description
+  attr_reader :categories
+  attr_reader :keywords
   
-  def initialize(title, name, published_on, content)
+  def initialize(title, name, published_on, content, description, categories)
     @title = title
     @name = name
     @published_on = published_on
     @content_markup = content
     doc = Maruku.new(content)
     @content = doc.to_html       
-  end
+    @description = description || make_description(content)
+    @categories = categories
+    @keywords = categories.join(", ") 
+  end  
   
   def self.from_entry(entry)
-    Entry.new(entry.title, entry.name, entry.published_on, entry.content)
+    Entry.new(entry.title, entry.name, entry.published_on, entry.content, entry.description, entry.categories)
   end
   
   def perma_link
@@ -32,6 +39,11 @@ class Entry
   
   def self.find(year, month, name)
      Entry.from_entry(EntryIndex.instance.find(year, month, name))
-  end
+ end
+ 
+ private
+ def make_description(s)
+   s = Maruku.new(s[0...450] + "...");
+ end
      
 end
