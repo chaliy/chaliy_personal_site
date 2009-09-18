@@ -2,7 +2,8 @@
 title: T4 (Text Templates) - The Beginning
 published_on: 2009-09-05T00:11
 published: true
-categories: [T4]
+categories: [T4, Newbie]
+description: Introduction to the [T4 (Text Templates)](http://msdn.microsoft.com/en-us/library/bb126445(VS.80).aspx).
 ---
 This is the first post in my ongoing series about [T4 (Text Templates) ][1]. I will describe basics to ensure that we are talking on the same language. If you know what T4 is, just skip this stuff.
 
@@ -52,7 +53,7 @@ This post in Ukrainian - [T4 (Visual Studio Text Templates) - The Beginning][6]
 
 
 
-[1]:  http://msdn.microsoft.com/en-us/library/bb126445(VS.80).aspx
+[1]: http://msdn.microsoft.com/en-us/library/bb126445(VS.80).aspx
 [2]: http://chaliy.name/blog/2009/8/templates_for_templates_t4_text_template_for_visual_studio_2008
 [3]: http://www.olegsych.com/tag/t4/
 [4]: http://www.olegsych.com/2009/01/pros-and-cons-of-t4-in-visual-studio-2008/
