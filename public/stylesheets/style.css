@@ -61,13 +61,15 @@ em.info {
 	font-size: .7em;
 }
 h1{	
-	margin-top: 10px;
+	margin-top: 25px;
 	padding: 4px;
 	font-size: 1.6em;
 	font-weight:bold;	
 }
 h2{	
 	padding: 4px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	font-size: 1.4em;
 	font-weight:bold;	
 }
