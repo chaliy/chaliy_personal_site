@@ -8,6 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/Sources/UpdatableXmlDataSource/Default.aspx', :controller => 'sources', :action => 'outdated'   
   
   # blog
+  # redirected posts
   map.blog 'blog/', :controller => 'blog', :action => 'index'
   map.blog_drafts 'blog/drafts', :controller => 'blog', :action => 'drafts'
   map.blog_atom 'blog.atom', :controller => 'blog', :action => 'index', :format => 'atom'

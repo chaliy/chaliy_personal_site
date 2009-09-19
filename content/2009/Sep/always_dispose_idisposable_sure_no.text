@@ -1,0 +1,60 @@
+---
+title: Always call IDisposable.Dispose! Sure? No!
+published_on: 2009-09-19T18:39
+published: true
+description: Personally, guidance to dispose everything looks bit overwhelmed. I show `BinaryWriter` as one of the examples of the "broken" `IDisposable` implementations.
+categories: [Guidance]
+tags: [IDisposable]
+---
+Sometime ago there was discussion on [StackOverflow][1] about [BinaryWriter implementation][2]. As you may know `BinaryWriter` and all other .NET `Wrtiers` implement [`IDisposable`][3]. You also might be aware about guidance to always call `Dispose`. Boring...
+
+	using(var s = File.OpenWrite("1.txt")){
+		using(var w = new StreamWriter(s)){
+			...
+		}
+	}
+
+The question is... Why? So you have `Stream` and it has resources to dispose. Then you have `Writer`... And... It does not have resources to dispose. Why to dispose then? I do not know.
+
+So why they implement `IDisposable`? I think about this as a *marketing for newbie developers*. Most examples in `MSDN` looks like:
+
+	using (var sw = new StreamWriter("1.txt")) {
+		...
+	}
+
+Without `IDisposable` this code will fail to close handlers to file. For me this is just leaked design of the `StreamWriter`.
+
+At the end of the day, I can formulate my `IDisposable` usage.
+
+**By default, always call `Dispose`. But if you sure what are you doing - do not call!**
+
+How to ensure that call to `Dispose` is not required? Following is my checklist:
+
+1. Think about usage semantics. In most cases, this gives 90% of sure;
+2. Use .NET Reflector. It can unhide some stuff you may not aware about;
+3. Read documentation. This also can help to decide;
+
+Anyway, add comment to the code. This will be helpful for [maintainers][4] and will reduce questions during reviews.
+
+### And remember:
+
+1. `Dispose` it contract. If one marking code with this contract, for sure he want to say something;
+2. Things changing. Behaviour of the `Dispose` could also change. You will have nothing to say, when your code will not work on .NET 5.0;
+
+### BTW
+
+1. `DataSet` implements `IDisposable`. This is because of usage in .NET Remoting and Design Time support. In addition `DataTable`, `DataView` and even `DataColumn` are the same. And no they do not clean data;
+2. `SqlCommand` and everything derived from`DbCommand`. It does exactly nothing. Why it have? What resources it suppose to own?
+3. Something not expected at all - 'SqlCommandBuilder'. What is expected `Dispose` do nothing notable here;
+4. Each `Component` implements `IDisposable`. Even if does not own resources. Think about WinForms `BindingSource`, 'ErrorProvider';
+5. Ha!, `IEnumerator<T>` is also here! This is dark side!
+6. And at the end [WCF Clients has "broken" `IDisposable` implementation][5];
+7. Some stuff could use, `IDisposable` as syntax sugar.
+
+Enjoy! Happy coding!
+
+[1]: http://stackoverflow.com/
+[2]: http://stackoverflow.com/questions/1084813/why-a-binarywriter-closes-the-outer-stream-on-disposal-and-how-to-prevent-that
+[3]: http://msdn.microsoft.com/en-us/library/system.idisposable.aspx
+[4]: http://c2.com/cgi/wiki?MaintenanceProgrammer
+[5]: http://blog.davidbarrett.net/archive/2007/11/22/117058.aspx

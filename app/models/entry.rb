@@ -1,5 +1,4 @@
-require 'maruku' 
-require 'action_view'
+require 'maruku'
 
 class Entry
   attr_reader :title
@@ -38,12 +37,20 @@ class Entry
   end  
   
   def self.find(year, month, name)
-     Entry.from_entry(EntryIndex.instance.find(year, month, name))
- end
+    e = EntryIndex.instance.find(year, month, name)
+    Entry.from_entry(e) if e != nil
+  end
+  
+  def self.findByName(name)
+    e = EntryIndex.instance.findByName(name)
+    Entry.from_entry(e) if e != nil
+  end
  
- private
- def make_description(s)
-   s = Maruku.new(s[0...450] + "...");
- end
+ 
+ 
+  private
+  def make_description(s)
+    s = Maruku.new(s[0...450] + "...");
+  end
      
 end

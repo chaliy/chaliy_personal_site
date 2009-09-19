@@ -30,6 +30,18 @@ class EntryIndex
     
   end  
   
+  def findByName(name)
+    ensureIndex
+    
+    found_entries = @entries.select do |entry|
+      publiched_on = entry.published_on; 
+      (entry.name == name)
+    end
+    
+    found_entries.first
+    
+  end
+  
   private
   
   def ensureIndex
