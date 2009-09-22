@@ -1,0 +1,53 @@
+---
+title: Data Access approaches in our application
+published_on: 2009-09-23T00:24
+published: ftrue
+categories: ["Data Access", "Entity Framework", Linq2Sql, NHibernate]
+description: We are building regular enterprise application. Domain is boring. The only interesting thing is technologies. Today is a good time to share how we do Data Access.
+---
+We are building regular enterprise application. The Domain is boring. The only interesting thing is technologies. This night is a good time to share how we do `Data Access`.
+
+### NHibernate
+
+We are approaching `DDD`. So we need `POCO` and [NHibernate][1] is good choice. The only problem with NHibernate is mappings. XML mappings makes me crazy. To overcome this we use [FluentNHibernate][2], in particular it's Auto-Mapping features. All is convention based, so adding new entity does not require any further configuration.
+
+### LINQ to SQL (Linq2Sql)
+
+One of the problems with NHibernate is support for SQL UDFs(User Defined Functions). This is hard to get them work. Even harder to get them configured in AutoMapped way. So in situations when we need call UDF(User Defined Function) we just make hand written [LINQ to SQL][3] context.
+
+	private class ProductFunctions : DataContext
+	{
+		public ProductFunctions(IDbConnection connection)
+			: base(connection) { }
+
+		[Function(IsComposable = true)]
+		public IQueryable<ProductListItem> QueryProductList(Guid contextId, 
+			string productNumberFilter, string titleFilter,
+			string SKUFilter, Guid? productTagIDFilter)
+		{
+			return CreateMethodCallQuery<ProductListItem>(this,
+				((MethodInfo)(MethodBase.GetCurrentMethod())),
+				contextId, productNumberFilter, titleFilter,
+				SKUFilter, productTagIDFilter);
+		}
+	}
+
+Name of the UDF(User Defined Function) will be the same as name of the method (e.g. QueryProductList). If you need custom name, you can do this with FunctionAttribute. Pretty easy. And seems to me this is the less overheated solution for calling functions.
+
+BTW, the `ProductListItem` is real `POCO`. Without attributes, without virtual properties. Just class as how you expect to see it.
+
+### Entity Framework
+
+Building User Interface, I started feeling that we are doing to many coding. Customer need list for this, customer need list for that, and so on and so on. From coder perspective every list needs DTO, parsing arguments, doing some filtering. Of course we need way to automate this. One of the solution is to employ [ADO.NET Data Services][5]. So now we have [Entity Framework][4] Model, and then publish it to the ADO.NET Data Services. Works as a charm.
+
+### That is it!
+
+As you can see, we try to solve problems with tool that is most applicable in particular situations. I think this is good example of the positive experience not to be strictly MS guy or Alt.NET guy. Let us see how this will work in real live. 
+
+Happy coding!
+
+[1]: http://www.nhforge.org/
+[2]: http://fluentnhibernate.org/
+[3]: http://msdn.microsoft.com/en-us/library/bb386976.aspx
+[4]: http://msdn.microsoft.com/en-us/library/aa697427(VS.80).aspx
+[5]: http://msdn.microsoft.com/en-us/data/bb931106.aspx

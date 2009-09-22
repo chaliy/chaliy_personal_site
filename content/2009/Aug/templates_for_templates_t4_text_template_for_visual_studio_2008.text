@@ -3,6 +3,7 @@ title: Templates for Templates. T4 (Text Template) Template for the Visual Studi
 published: true
 published_on: 2009-08-22T01:00
 categories: [T4, "Visual Studio"]
+description: Funny thing, there are no templates for the [T4 (Text Templates)](http://msdn.microsoft.com/en-us/library/bb126445.aspx) in the Visual Studio 2008! Well, this fix.
 ---
 Ha-ha! Funny thing, there are no templates for the [T4 (Text Templates)][1] in the Visual Studio 2008! *IMHO this the main reason why most of the developers not aware about them.* Well, it's easy to fix. Following is `Visual Studio Installer` with single 'C# T4 template'.
 

@@ -31,7 +31,7 @@
 			<em class="info"><%=h time_ago_in_words(entry.published_on) %></em>
 		</dt>
 		<dd>			
-			<%=h entry.description %> <%=link_to "Read more!", blog_pretty_entry_url(entry) %>						
+			<%= entry.description %> <%=link_to "Read more!", blog_pretty_entry_url(entry) %>						
 		</dd>
 		<hr />
 		<% end %>				        	
