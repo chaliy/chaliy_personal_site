@@ -3,6 +3,7 @@ title: Virtual by default, is that good or not?
 published_on: 2009-08-30T16:48
 published: true
 categories: [Code, C#, Java]
+description: Discussion (or monologues) about Java "virtual by default" behavior compared to C#.
 ---
 <p class="author-note">Inspired by background of the `Jimmy Bogard`'s - <a href="http://www.lostechies.com/blogs/jimmy_bogard/archive/2009/08/28/my-favorite-nhibernate-exception.aspx">My favorite NHibernate exception</a>. </p> 
 

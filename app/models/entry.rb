@@ -15,9 +15,8 @@ class Entry
     @name = name
     @published_on = published_on
     @content_markup = content
-    doc = Maruku.new(content)
-    @content = doc.to_html       
-    @description = description || make_description(content)
+    @content = maruku(content)       
+    @description = maruku(description)
     @categories = categories
     @keywords = categories.join(", ") 
   end  
@@ -46,11 +45,9 @@ class Entry
     Entry.from_entry(e) if e != nil
   end
  
- 
- 
   private
-  def make_description(s)
-    s = Maruku.new(s[0...450] + "...");
+  def maruku(s)
+    Maruku.new(s).to_html
   end
      
 end

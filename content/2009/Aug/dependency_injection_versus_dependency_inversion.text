@@ -3,6 +3,7 @@ title: Dependency Injection versus Dependency Inversion
 published_on: 2009-08-27T16:47
 published: true
 categories: [DI, Principles, Patterns, Design]
+description: What is `Dependency Injection` (`DI`), `Dependency Inversion` (also `DI`), `Inversion of Control` (`IoC`) and so on.
 ---
 From time to time, I hear questions what is the difference between `Dependency Injection` (`DI`), `Dependency Inversion` (also `DI`), `Inversion of Control` (`IoC`) and so on. Despite you can make decision yourself, I will gather all related stuff in this post. Also check my recommendations. Hope you like them.
 

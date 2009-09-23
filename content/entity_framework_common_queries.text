@@ -1,0 +1,35 @@
+---
+title: LINQ to Entities less known queries
+published_on: 2009-09-22T00:01
+published: false
+categories: ["Entity Framework", LINQ]
+description: 
+---
+Form time to time I am facing cases that has well know solution in `SQL`, but less intuitive in `LINQ`. Following is such "cases" and solutions for them.
+
+### How to check if query return at least something
+In `SQL` you just write `EXISTS` clause and you have result. Analog in LINQ word is Any. So.
+
+	var r = from c in ds.Customers
+		  select c;
+
+	var result = r.Any();
+
+Result is bit overcomlicated:
+
+	SELECT 
+		CASE 
+			WHEN ( EXISTS (SELECT 1 AS [C1] FROM [SalesLT].[Customer] AS [Extent1] )) 
+			THEN cast(1 as bit) 
+			WHEN ( NOT EXISTS (SELECT 1 AS [C1] FROM [SalesLT].[Customer] AS [Extent2])) 
+			THEN cast(0 as bit) 	
+		END AS [C1]
+	FROM  ( SELECT 1 AS X ) AS [SingleRowTable1]
+	
+As for me better reuslts will be with the following:
+
+	WHEN ( EXISTS (SELECT 1 AS [C1] FROM [SalesLT].[Customer] AS [Extent1] )) 
+	THEN cast(1 as bit) 	
+	ELSE cast(0 as bit) 
+	
+But we have leave?

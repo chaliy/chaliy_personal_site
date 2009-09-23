@@ -1,8 +1,0 @@
----
-title: Data Access approaches in our application
-published_on: 2009-09-17T10:24
-published: false
-categories: ["Data Access", "Entity Framework", Linq2Sql, NHibernate]
-description: 
----
-We are building regualar enterprise application. Domain is boring. The only intersting thing is technologies. Today is a good time to share how do Data Access.

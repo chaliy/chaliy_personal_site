@@ -3,6 +3,7 @@ title: Read all lines of the file with Java, Ruby and C#
 published_on: 2009-09-07T00:11
 published: true
 categories: [C#, Ruby, Java, Funny]
+description: Compare how to read all lines of the text file with Ruby, Java and C#.
 ---
 [Yehuda Katz][2], in his post "[My 10 Favorite Things About the Ruby Language][1]", provides example of the reading all lines of the file, with `Java` and `Ruby`.
 
