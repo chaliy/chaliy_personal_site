@@ -1,0 +1,8 @@
+---
+title: Thougths on non-blocking sequentual number generation
+published_on: 2009-09-23T12:01
+published: false
+categories: [Distributed]
+description: 
+---
+So you have application. It runs on claster (cloud, farm).

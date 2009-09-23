@@ -1,0 +1,13 @@
+---
+title: Our Data Access testing approaches
+published_on: 2009-09-23T17:01
+published: false
+categories: ["Entity Framework", LINQ]
+description: 
+---
+To continue [Data Access theme][1] not a worth to mention how we teasting all this stuff. So let start from Domain Model.
+
+### Domain Model Mappings
+
+
+[1]: data_access_in_our_application.text
