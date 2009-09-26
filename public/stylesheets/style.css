@@ -79,10 +79,10 @@ h3{
 	font-weight:bold;	
 }
 img.left{
+	float: left;
+}
+img.right{
 	float: right;
-	margin: 10px;
-	border:solid 1px #DEDEDE;
-	padding:3px;
 }
 #menu
 {

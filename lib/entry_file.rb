@@ -6,6 +6,7 @@ class EntryFile
   attr_reader :content
   attr_reader :description
   attr_reader :categories
+  attr_reader :image_url
   
   def published?() 
     @published 
@@ -36,6 +37,7 @@ class EntryFile
       @published = header["published"]
       @description = header["description"]
       @categories = header["categories"] || []
+      @image_url = header["image"]
     end
    
   end

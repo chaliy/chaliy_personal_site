@@ -31,9 +31,12 @@
 			<em class="info"><%=h time_ago_in_words(entry.published_on) %></em>
 		</dt>
 		<dd>			
-			<%= entry.description %> <%=link_to "Read more!", blog_pretty_entry_url(entry) %>						
+			<% if entry.image_url != nil %>			
+			<img src="<%= entry.image_url %>" class="left" />
+			<% end %>
+			<%= entry.description %> <%=link_to "Read more!", blog_pretty_entry_url(entry) %>
 		</dd>
-		<hr />
+		<hr style="clear:both" >
 		<% end %>				        	
 	</div>
 			
