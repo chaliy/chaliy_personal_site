@@ -9,8 +9,9 @@ class Entry
   attr_reader :description
   attr_reader :categories
   attr_reader :keywords
+  attr_reader :image_url
   
-  def initialize(title, name, published_on, content, description, categories)
+  def initialize(title, name, published_on, content, description, categories, image_url)
     @title = title
     @name = name
     @published_on = published_on
@@ -18,11 +19,12 @@ class Entry
     @content = maruku(content)       
     @description = maruku(description)
     @categories = categories
-    @keywords = categories.join(", ") 
+    @keywords = categories.join(", ")
+    @image_url = image_url
   end  
   
   def self.from_entry(entry)
-    Entry.new(entry.title, entry.name, entry.published_on, entry.content, entry.description, entry.categories)
+    Entry.new(entry.title, entry.name, entry.published_on, entry.content, entry.description, entry.categories, entry.image_url)
   end
   
   def perma_link

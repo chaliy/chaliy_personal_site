@@ -1,0 +1,24 @@
+---
+title: Application Services, to be or not to be
+published: true
+published_on: 2009-09-27T00:10
+description: We dropped out Application Layer. And nothing changed. This post is all about overuse of the Application Layer.
+categories: [DDD, Architecture]
+keywords: ["Application Services", "Service Layer", "The Pragmatic Way"]
+image: http://chaliy.name/files/application_services_to_be_or_not_to_be/application_layer_rip_icon.png
+---
+This entry is dedicated for people who already use Application Services Pattern (most commonly referenced as [Service Layer Pattern][1]).
+
+![RIP of the Application Layer](http://chaliy.name/files/application_services_to_be_or_not_to_be/application_layer_rip.png)
+
+You are probably aware about role Application Services layer plays in modern architectures. And I am aware. And this why Application Services Pattern was my default pattern for ages. I used to use it with domain driven applications (DDD), data driven (with business logic in so called managers) and even in distributed, where all logic was on the server. 
+
+But, time is going and I started realizing that Application Services layer lacks its responsibility. Strong sign of this is when you do not know how to name tests for  particular unit. In my case I was failing to name tests that just delegate calls from UI to Domain Entities. What tests should test? Call delegation? Level of abstraction? This all is not functional!
+
+Anyway, let return back to Application Services. In last project we are using MVC pattern for UI part and DDD for domain logic. For wiring them up together, we used what..? Yes. Application Services. Diagrams look cool. Good separation of layers. Looks great! But. Price of this is thousands of useless code. Useless tests. Useless mocks. Half of the code to implement use case was useless for this use case! Even worse, refactoring existing use cases are also hard. Imagine how much stuff you need just to add argument to domain service?
+
+So after hard thinking, we dropped Application Services. We decided to go the pragmatic way. When we will need it, we will implement it. But not earlier.
+
+Hope this makes sense!
+
+[1]: http://martinfowler.com/eaaCatalog/serviceLayer.html

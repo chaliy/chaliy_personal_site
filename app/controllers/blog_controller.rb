@@ -30,6 +30,7 @@ class BlogController < ApplicationController
     respond_to do |format|
       format.html
       format.atom { render :layout => false }
+      format.rss { render :layout => false }
     end
   end
   

@@ -2,39 +2,7 @@
 title: DDD. Domain Messages - Theory
 published_on: 2009-08-29T12:10
 ---
-### Problem
-
-I love the DDD approach to model business operations, I love not to bother about a database, I love the testability and of course, I love readability. So everything is cool? No! I just hate to model operations that evolves more than one root aggregate.  Few weeks ago, I discovered Domain -Events- Messages (Later why Messages). Probably Domain Messages was the best finding for last year. Following stuff is my extraction on topic.
-
-### Domain Services
-
-We need some background. So, first question:
-
-*How did I live without Domain Messages before? *
-
-Well I used to use an obvious solution. The recommended to deal is (Domain Service)[1]. Most often, this is class with few methods that do some stuff on entities supplied from application layer.
-
-	class ApproveCustomerService{
-		public  void Approve(Customer customer, Approve approve){
-			// Do all stuff here...		
-		}
-	}
-	
-I general this class delegates most of the work to the entities. The Domain Service is actually "orchestrate" calls to the entities. Another usage is situations when you need external services. Domain Services are "ijectable" by other Domain Services, Repositories and even Infrastructure Services. 
-
-I think this is enough for second question:
-
-*Seems Domain Services do everything you need! Why bother?*
-
-Ok, it is true. Technically, services could do all stuff I need...  But! 
-
- 1. What about process 
- 
-In short, just class that implements single or more business operations. It is easy to write such classes. 
-
-
-Common issue with DDD is situations when business operation evolves more than one root aggregate. To illustrate 
-
+Common issue with DDD is situations when business operation envolves more than one root aggregate.
 
 For example, you are modeling file system.  You need to model user quota, so when user creates new file, system should ensure that there are some space.  To do this we create entity Quota that will keep AllowedSpace and CurrentUsage. For physical file, we use File entity, no surprises here. When user creates new File we check if Quota
 

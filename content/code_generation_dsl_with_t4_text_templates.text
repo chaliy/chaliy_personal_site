@@ -4,23 +4,13 @@ published_on: 2009-09-06T11:12
 published: false
 categories: [T4, DSL, "Code Generation"]
 ---
-Sometimes you have to write many repeatable code. First what comes in mind and can illustrate such code are data contracts for the web-services or data access layer. You have to write dozens of properties, attributes or methods. 
+Sometimes you have to write many repeatable code. Examples are data contracts for the web-services or data access layer or user interface. This often means writing dozens properties, classes ... borring ....
 
-Many modern languages support concept of the metaprogramming, this helps to write code constructs that replace repeatable code! 
-
-Ruby code
-
-	attr_reader :title
-
-compared to C#:
-
-	public string Title {get{return this.title; } };
-	
-Unfortunately, metaprogramming is not a case for C#. One of the solutions to this problem is code generation. In short words you are taking some data, make transformation and as output you are getting code file in your favorite language. In the following post I will describe code generation DSL with T4 (Text Templates).
+One of the solutions to this problem is code generation. In short words you are taking some data, make transformation and as output you are getting code file in your favorite language. In the following post I will describe code generation with T4 (Text Templates) and DSL(Domain Specific Language) that will be the input data.
 
 ### Problem
 
-For demonstration purposes I will use one of the real problems form my ongoing work. We are working on much componentized system. Each component has its own deployment requirements. To make deployments as flexible as possible we use .NET Configuration. The only thing I hate in .NET Configuration is fact that 80% of the `ConfigurationSection` code is useless. [Here][1] you can view at one of the example configuration sections.
+For demonstration purposes I will use the real problem form my ongoing work. We are working on very componentized system. Each component has its own deployment requirements. To make deployments as flexible as possible we use .NET Configuration. The only problem with .NET Configuration is fact that 80% of the custom `ConfigurationSection` code is useless. Looks like a lie? Well, to prove please view [here][1].  This is regular secion. Most of the stuff is dublicated. Anyway, let us return to problem.
 
 So we need generate configuration section. The only data required as input is:
 
@@ -35,18 +25,11 @@ As you may see, most of the attributes have type `string` so generator should as
 
 ### T4 
 
-First of all we need T4 template. Schema I often use is one template for both DSL and code generation.  I call this definition template.
-
-On the other side there are target templates. 
-
-This schema allows as many tra
-
-This schema allows single definition template used with many target templates. Target templates just reference definition template.
-
+First of all we need empty T4 template (for details - ["T4 (Text Templates)"][2]. When done, we need to defined DSL.
 
 ### DSL
 
-The obvious start is DSL. We will start with simple structure that holds support information like name of the .NET configuration section as well as list of the configuration attributes. Code worth a thousand words:
+We will start with simple structure that holds support information like name of the .NET configuration section as well as list of the configuration attributes. Code worth a thousand words:
 
 	public class Section{
 		public string Name {get;set;}
@@ -84,3 +67,4 @@ Simple enough. Later we will use this structure to generate actual code.
 
 
 [1]: http://github.com/chaliy/config_language/blob/71c8f6fc0b0eb2c3ae223aec05cda78f8afc4f9c/Example/DataConnection.cs
+[2]: http://chaliy.name/blog/2009/9/t4_text_templates_the_beginning

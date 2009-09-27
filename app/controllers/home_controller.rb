@@ -1,8 +1,7 @@
 class HomeController < ApplicationController
   
   def index
-    @entries = Entry.page(:published)
-    
+    @entries = Entry.page(:published)      
     render :layout => false
   end
   
