@@ -1,5 +1,5 @@
 require 'models/entry'
-require File.dirname(__FILE__) + '../../../lib/entry_store'
+require File.dirname(__FILE__) + '/../../lib/entry_store'
 
 class HomeController < ApplicationController
   
