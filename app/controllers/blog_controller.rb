@@ -1,3 +1,6 @@
+require 'models/entry'
+require 'lib/entry_store'
+
 class BlogController < ApplicationController
   
   def index
@@ -10,11 +13,11 @@ class BlogController < ApplicationController
   
   def entry
     
-    @entry = Entry.find(params[:year], params[:month], params[:name]);
+    @entry = EntryStore::Index.find(params[:year], params[:month], params[:name]);
     
     # handle moved post...
     if @entry == nil
-      possibleEntry = Entry.findByName(params[:name])
+      possibleEntry = EntryStore::Index.findByName(params[:name])
       if possibleEntry != nil
         newUrl = blog_entry_url(:name => possibleEntry.name, :year => possibleEntry.published_on.year, :month => possibleEntry.published_on.month)
         redirect_to newUrl, :status=>:moved_permanently
@@ -25,7 +28,7 @@ class BlogController < ApplicationController
      
   private
   def entries(t)
-    @entries = Entry.page(t)
+    @entries = EntryStore::Index.page(t)
     
     respond_to do |format|
       format.html

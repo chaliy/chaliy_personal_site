@@ -1,7 +1,7 @@
 <% content_for :head do -%>
 	<title>Mike Chaliy: <%=h @entry.title %></title>
 	<meta name="description" content="<%=h @entry.description %>" />
-	<meta name="keywords" content="<%=h @entry.keywords %>" />
+	<meta name="keywords" content="<%=h @entry.keywords_as_text %>" />
 <% end -%>
 <h1><%= h @entry.title %></h1>
 <div class="entry">	

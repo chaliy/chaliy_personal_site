@@ -4,6 +4,7 @@ published_on: 2009-09-17T12:46
 published: true
 categories: ["ADO.NET Data Services", "Entity Framework", LINQ]
 description: The story about progressive enchantments to the single LINQ to Entities queries. Some sort of stuff to know, when doing LINQ.
+last_updated_on: 2009-09-27T12:46
 ---
 From last week, our approach to reporting has been changed. Now we use ADO.NET Data Services on top of the Entity Framework Model. Today was the first day, when I was not able to express query in terms of the ADO.NET Data Services query options. 
 
@@ -193,5 +194,8 @@ I am fully with these results. So this code will fly in production.
 
 Enjoy!
 
+**UPDATE** Unfortunately, this post does not provide right solution. Please see [The right way to do INNER JOIN in LINQ to Entity][3].
+
 [1]: http://blogs.msdn.com/marcelolr/archive/2008/01/21/service-operations-in-ado-net-data-services.aspx
 [2]: http://chaliy.name/files/history_of_the_one_linq_query_to_entity_framework/short1_generated_stuff.sql
+[3]: http://chaliy.name/blog/2009/9/the_right_way_to_do_inner_join_in_linq_to_entities

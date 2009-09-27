@@ -5,4 +5,8 @@ published: false
 categories: [Distributed]
 description: 
 ---
-So you have application. It runs on claster (cloud, farm).
+So you have application. It runs on claster (cloud, farm). You need generate human readable number (e.g. Order Number). The most obvious options is:
+
+### Central Location
+
+You have central authority. It can issue numbers.
