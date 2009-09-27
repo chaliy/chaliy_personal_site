@@ -1,0 +1,41 @@
+---
+title: The right way to do INNER JOIN in LINQ to Entity
+published_on: 2009-09-27T12:46
+published: true
+categories: ["Entity Framework", LINQ]
+keywords: ["INNER JOIN", "JOIN"]
+description: Despite of my last [belief](http://chaliy.name/blog/2009/9/history_of_the_one_linq_query_to_entity_framework "History of the one LINQ to Entities query"), that code will not fly into the production. Why? Because I found the right way to do `INNER JOIN` in `Entity Framework`!
+---
+![Model](http://chaliy.name/files/history_of_the_one_linq_query_to_entity_framework/relationships.png)
+Despite of my last [belief][1], that code will not fly into the production. Why? Because I found the right way to do `INNER JOIN` in `Entity Framework`! 
+
+The problem I have to solve is the following:
+
+I have regular Order model. A Customer has many Orders, an Order has many OrderItems, many OrderItems have the Product. I have to get all Products that given Customer have bought.
+
+### So The Right Solution
+
+is the most easy code. And is actually the most correct one:
+
+	var r = from p in ds.OrderProducts
+			from oi in p.OrderItems
+			where oi.Order.Customer.CustomerID == customerId
+			select p;
+		
+Why I did not thought about the simplest possible code? I do not know. Probably because of `SQL` background... And of course, resulting generated `SQL`:
+		
+	SELECT 
+	...
+	FROM   [Invoicing].[OrderProduct] AS [Extent1]
+	INNER JOIN [Invoicing].[OrderItem] AS [Extent2] 
+		ON [Extent1].[OrderProductID] = [Extent2].[OrderProductID]
+	INNER JOIN [Invoicing].[Order] AS [Extent3] 
+		ON [Extent2].[OrderID] = [Extent3].[OrderID]
+	WHERE cast('f925c22b-8379-4dd9-a1f6-9c8f0113f235' as uniqueidentifier) 
+		= [Extent3].[CustomerID]
+	
+Pretty? Yes! This code is equal to one I wrote myself!
+
+Hope this eventually helps :)
+	
+[1]: http://chaliy.name/blog/2009/9/history_of_the_one_linq_query_to_entity_framework
