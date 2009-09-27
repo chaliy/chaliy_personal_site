@@ -1,6 +1,6 @@
 ---
 title: The right way to do INNER JOIN in LINQ to Entity
-published_on: 2009-09-27T12:46
+published_on: 2009-09-27T17:36
 published: true
 categories: ["Entity Framework", LINQ]
 keywords: ["INNER JOIN", "JOIN"]

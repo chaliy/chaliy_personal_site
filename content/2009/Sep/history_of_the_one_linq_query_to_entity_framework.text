@@ -1,6 +1,6 @@
 ---
 title: History of the one LINQ to Entities query
-published_on: 2009-09-17T12:46
+published_on: 2009-09-17T17:50
 published: true
 categories: ["ADO.NET Data Services", "Entity Framework", LINQ]
 description: The story about progressive enchantments to the single LINQ to Entities queries. Some sort of stuff to know, when doing LINQ.
