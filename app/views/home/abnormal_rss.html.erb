@@ -1,0 +1,20 @@
+<% content_for :head do -%>
+	<title>Mike Chaliy: Abnormal RSS</title>
+	<style>
+		a.abnormal-button{
+			display: block;
+			margin: 25px auto 25px auto;			
+			width: 261px;
+			border: none;
+		}
+		a.abnormal-button:visited{
+			border: none;
+		}
+	</style>	
+<% end -%>
+<a class="abnormal-button" type="application/atom+xml" title="Mike Chaliy, Blog" href="<%= blog_syndication_url %>"">
+	<img border="0" src="/images/abnormal_rss.jpg">
+</a>
+<span class="unimportanant-info">
+	Original image is by <a href="http://blog.mediawhiz.com/">http://blog.mediawhiz.com/</a>.
+</span>

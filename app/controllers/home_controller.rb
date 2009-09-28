@@ -17,5 +17,8 @@ class HomeController < ApplicationController
     
   def contacts    
   end
+
+  def abnormal_rss    
+  end
     
 end

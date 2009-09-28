@@ -191,3 +191,7 @@ img.right{
 .clear {
 	clear:both;
 }
+.unimportanant-info {
+	color: silver;
+	font-size: .8em;
+}
