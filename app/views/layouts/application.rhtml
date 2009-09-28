@@ -2,8 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>  
 <%= yield :head %>
-<%= render(:partial => "shared/head" )%>
-	<%= stylesheet_link_tag "style", :media => "all" %>
+<%= render(:partial => "shared/head" )%>	
 	<link rel="alternate" type="application/atom+xml" title="Mike Chaliy, Blog" href="<%= blog_syndication_url %>" />
 </head>
 <body>
