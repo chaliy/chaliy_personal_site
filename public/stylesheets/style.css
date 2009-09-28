@@ -110,13 +110,26 @@ img.right{
 	color: #111;
 }
 
-#header
+#header p
 {
 	height: 55px;
 	line-height: 60px;
 	color: #fff;
 	font-size: 20px;
 	margin-bottom: 20px;
+	width: 500px;	
+}
+#header .rss {
+	background-image: url("/images/rss.png");
+	text-indent: -20000px;
+	display: block;
+	width: 48px;
+	height: 48px;
+	position: relative;
+	top: -70px;
+	left: 700px;
+}
+#header {
 }
 #footer
 {
