@@ -20,5 +20,5 @@ class HomeController < ApplicationController
 
   def abnormal_rss    
   end
-    
-end
+
+ end
