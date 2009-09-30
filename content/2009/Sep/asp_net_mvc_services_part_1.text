@@ -1,12 +1,12 @@
 ---
-title: "ASP.NET MVC Services (Part #1)"
+title: "ASP.NET MVC Web Services (Part #1)"
 published_on: 2009-09-30T11:10
 published: true
 categories: ["ASP.NET MVC", JSON]
 keywords: [ControllerActionInvoker]
-description: What do you think about `ASP.NET MVC` as platform for service based applications? What about `JSON` services? Possible you would like that.
+description: What do you think about `ASP.NET MVC` as platform for web service based applications? What about `JSON` Web Services? Possible you would like that.
 ---
-What do you think about `ASP.NET MVC` as platform for service based applications? What about `JSON` services? Look at the following code:
+What do you think about `ASP.NET MVC` as platform for web service based applications? What about `JSON` Web Services? Look at the following code:
 
 	public class OrderPorcessingController
 	{
@@ -39,6 +39,8 @@ For example, I can test it without any `ASP.NET MVC` bindings:
 		var result = processing.PromoteOrder("TestOrder");
 		Assert.Equals(OrderStatus.Promoted, result.NewStatus);
 	}
+	
+And at the end I have endpoint `/OrderPorcessing/PromoteOrder` that accept argument `orderNumber` and return `JSON`.
 	
 Cool?
 
