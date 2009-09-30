@@ -1,0 +1,85 @@
+---
+title: "ASP.NET MVC Services (Part #1)"
+published_on: 2009-09-30T11:10
+published: true
+categories: ["ASP.NET MVC", JSON]
+keywords: [ControllerActionInvoker]
+description: What do you think about `ASP.NET MVC` as platform for service based applications? What about `JSON` services? Possible you would like that.
+---
+What do you think about `ASP.NET MVC` as platform for service based applications? What about `JSON` services? Look at the following code:
+
+	public class OrderPorcessingController
+	{
+		public OrderPromotionResult PromoteOrder(string orderNumber)
+		{
+			var orders = new OrderRepository();
+			var order = orders.GetOrderByNumber(orderNumber);
+
+			order.PromoteOrder();
+
+			return new OrderPromotionResult
+			{
+				NewStatus = order.Status
+			};
+		}
+	}
+	
+	public class OrderPromotionResult
+	{
+		public OrderStatus NewStatus { get; set; }
+	}
+	
+This code is actually `ASP.NET MVC` `Controller`. The only notable difference is return type. I return custom object. Not inherited from `ActionResult`. For me looks good. 
+
+For example, I can test it without any `ASP.NET MVC` bindings:
+
+	public void Should_change_status()
+	{
+		var processing = new OrderPorcessingController();
+		var result = processing.PromoteOrder("TestOrder");
+		Assert.Equals(OrderStatus.Promoted, result.NewStatus);
+	}
+	
+Cool?
+
+### Implementation
+
+Under the hood `ASP.NET MVC`, when action return type not inherited from `ActionResult` wraps it's `ToString()` to [`ContentResult`][4]. Not so useful on the client side. 
+
+Of course, `ASP.NET MVC` has extensibility point that exactly fits. Well, not exactly true. It has at least two such points. Custom [`ControllerActionInvoker`][1] and no less custom [`IActionFilter`][2]. In our production code we use custom `IActionFilter`, however this post is about Custom `ControllerActionInvoker`.
+
+### Custom `ControllerActionInvoker`
+
+	public class ServiceActionInvoker : ControllerActionInvoker
+	{
+		protected override ActionResult CreateActionResult(
+			ControllerContext controllerContext,
+			ActionDescriptor actionDescriptor,
+			object actionReturnValue)
+		{
+			ActionResult actionResult = (actionReturnValue as ActionResult) ??
+				new JsonResult { Data = actionReturnValue };
+
+			return actionResult ?? new EmptyResult();
+		}       
+	}
+	
+Yes, it overrides `CreateActionResult` and wraps result to the [`JsonResult`][3] instead of [`ContentResult`][4]. That it.
+
+To use this stuff you need to override [`CreateActionInvoker`][5].
+
+	protected override IActionInvoker CreateActionInvoker()
+	{
+		return new ServiceActionInvoker();
+	}
+
+Enjoy!
+
+P.S. Code with example could be found at [GitHub][6].
+
+[1]: http://msdn.microsoft.com/en-us/library/system.web.mvc.controlleractioninvoker.aspx
+[2]: http://msdn.microsoft.com/en-us/library/system.web.mvc.iactionfilter.aspx
+[3]: http://msdn.microsoft.com/en-us/library/system.web.mvc.jsonresult.aspx
+[4]: http://msdn.microsoft.com/en-us/library/system.web.mvc.contentresult.aspx
+[5]: http://msdn.microsoft.com/en-us/library/system.web.mvc.controller.createactioninvoker(VS.100).aspx
+[6]: http://github.com/chaliy/asp_net_mvc_services

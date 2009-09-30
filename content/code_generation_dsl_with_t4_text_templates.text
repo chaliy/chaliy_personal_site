@@ -4,7 +4,7 @@ published_on: 2009-09-06T11:12
 published: false
 categories: [T4, DSL, "Code Generation"]
 ---
-Sometimes you have to write many repeatable code. Examples are data contracts for the web-services or data access layer or user interface. This often means writing dozens properties, classes ... borring ....
+Sometimes you have to write many repeatable code. Good examples are data/message contracts for the web-services or data access layer. This often means writing dozens properties, classes ... borring ....
 
 One of the solutions to this problem is code generation. In short words you are taking some data, make transformation and as output you are getting code file in your favorite language. In the following post I will describe code generation with T4 (Text Templates) and DSL(Domain Specific Language) that will be the input data.
 

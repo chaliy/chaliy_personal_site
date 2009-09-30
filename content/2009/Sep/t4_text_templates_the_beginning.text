@@ -3,7 +3,7 @@ title: T4 (Text Templates) - The Beginning
 published_on: 2009-09-05T00:11
 published: true
 categories: [T4, Newbie]
-description: Introduction to the [T4 (Text Templates)](http://msdn.microsoft.com/en-us/library/bb126445(VS.80).aspx).
+description: Introduction to the T4 (Text Templates), nothing interesting if you already have used T4
 ---
 This is the first post in my ongoing series about [T4 (Text Templates) ][1]. I will describe basics to ensure that we are talking on the same language. If you know what T4 is, just skip this stuff.
 
