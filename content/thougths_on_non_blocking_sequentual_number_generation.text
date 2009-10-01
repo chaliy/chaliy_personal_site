@@ -5,8 +5,9 @@ published: false
 categories: [Distributed]
 description: 
 ---
-So you have application. It runs on claster (cloud, farm). You need generate human readable number (e.g. Order Number). The most obvious options is:
+Right now we are facing a requirment to generatate readable sequentual numbers. Yeh... some Order Numbers, some Customer Numbers, that kind of stuff. Nothing new. The problem is that we cannot leverage on the standart patterns that use central authority. Having cenral authority always means huge destributed locks and this goes even worth in load balanced farms.
 
-### Central Location
+Fortunatelly, [Igor][1] has a briliant idea. Simply setup constraint for this field.
 
-You have central authority. It can issue numbers.
+[1]: http://igor.quatrocode.com/
+
