@@ -1,0 +1,101 @@
+<#@ template debug="true" hostspecific="false" language="C#" #>
+<#@ assembly Name="System.Core.dll" #>
+<#@ import namespace = "System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<# var section = 
+	new Section
+	{
+		Namespace = "Community.Example",
+		Name = "DataConnectionConfiguration",
+		Path = "community/data",
+		Properties = 
+		{
+			new Property{Name = "Server"},
+			new Property{Name = "Database"},
+			new Property{Name = "Username"},
+			new Property{Name = "Timeout", Type = "int"}			
+		}
+	};
+#>
+namespace <#= section.Namespace #>
+{
+	using System.Configuration;
+	using System.Diagnostics.Contracts;
+
+	public class <#= section.Name #> : ConfigurationSection
+	{
+		private const string Path = "<#= section.Path #>";
+
+		private static readonly ConfigurationPropertyCollection PropertyRegistry =
+			new ConfigurationPropertyCollection
+			{
+<# foreach(var property in section.Properties) { #>
+				new ConfigurationProperty("<#= CamelCase(property.Name) #>", typeof (<#= property.Type #>), null, ConfigurationPropertyOptions.IsRequired),
+<# } #>
+			};
+
+		protected override ConfigurationPropertyCollection Properties
+		{
+			get
+			{
+				return PropertyRegistry;
+			}
+		}
+<# foreach(var property in section.Properties) { #>	
+		[ConfigurationProperty("<#= CamelCase(property.Name) #>", IsRequired = true)]
+		public <#= property.Type #> <#= property.Name #>
+		{
+			get
+			{
+				return (<#= property.Type #>)base["<#= CamelCase(property.Name) #>"];
+			}
+			set
+			{
+				base["<#= CamelCase(property.Name) #>"] = value;
+			}
+		}
+<# } #>
+
+		public static <#= section.Name #> GetDefault()
+		{
+			Contract.Ensures(Contract.Result<<#= section.Name #>>() != null);
+
+			var configuration = (<#= section.Name #>)ConfigurationManager.GetSection(Path);
+			if (configuration == null)
+			{
+				throw new ConfigurationErrorsException("Configuration section ('<#= section.Path #>') was not found.");
+			}
+			
+			return configuration;
+		}
+	}
+}
+<#+
+// DSL
+public class Section{
+	public string Namespace {get;set;}
+	public string Name {get;set;}
+	public string Path {get;set;}
+	public IList<Property> Properties = new List<Property>();
+}
+public class Property{
+	public Property(){
+		Type = "string";		
+	}
+	public string Name {get;set;}
+	public string Type {get;set;}
+}
+
+#>
+<#+
+// Helper methods
+private static string CamelCase(string input)
+{
+	if (input != null && input.Length > 1)
+	{
+		return input.Substring(0, 1).ToLower() + input.Substring(1);
+	}
+	
+	return input;
+}
+#>
