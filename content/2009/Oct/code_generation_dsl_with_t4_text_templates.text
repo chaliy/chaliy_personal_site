@@ -1,18 +1,18 @@
 ---
 title: Code-generation DLS with T4 (Text Templates)
 published_on: 2009-10-02T00:12
-published: false
+published: true
 categories: [T4, DSL, "Code Generation"]
 keywords: [ConfigurationSection, Templating]
-description: Need a real example of the T4 (Text Templates)?
+description: Bored with repeatable code? Need a real example of the T4 (Text Templates)? Need tools to write .NET Configuration Sections? This post is all about this stuff.
 ---
-Sometimes you have to write many repeatable code. Good examples are data/message contracts for the web-services or data access layer. This often means writing dozens properties, classes ... borring ....
+Sometimes you have to write many repeatable code. Good examples are data/message contracts for the web-services or data access layer. This often means writing dozens properties, classes ... boring ....
 
 One of the solutions to this problem is code generation. In short words you are taking some data, make transformation and as output you are getting code file in your favorite language. In the following post I will describe code generation with T4 (Text Templates) and DSL (Domain Specific Language) that will be the input data.
 
 ### Demo Problem
 
-For demonstration purposes I will use the real problem form my ongoing work. We are working on very componentized system. Each component has its own deployment requirements. To make deployments as flexible as possible we use .NET Configuration. The only problem with .NET Configuration is fact that 80% of the custom `ConfigurationSection` code is useless. Looks like a lie? Well, to prove please view [here][1].  This is regular section. Most of the stuff is dublicated. Anyway, let us return to problem.
+For demonstration purposes I will use the real problem form my ongoing work. We are working on much componentized system. Each component has its own deployment requirements. To make deployments as flexible as possible we use .NET Configuration. The only problem with .NET Configuration is fact that 80% of the custom `ConfigurationSection` code is useless. Looks like a lie? Well, to prove please view [here][1].  This is regular section. Most of the stuff is duplicated. Anyway, let us return to problem.
 
 So we need generate configuration section. The only data required as input is:
 
@@ -97,7 +97,7 @@ So we have DSL, and we have data. Time to do actual code generation.
 	
 This is just markup code and includes of the control code. We have access to the variable `section` that holds our data, so we can do virtually anything.
 
-Right now we have complete template. It generates .NET Configuration Section. You even can download whole file from [here][3]. But wait. We can make this stuff more useful.
+Right now we have complete template. It generates .NET Configuration Section. You even can download the whole file from [here][3]. But wait a minute. We can make this stuff more useful.
 
 ### Making stuff usable
 
@@ -129,7 +129,7 @@ File #1, `ConfigurationSection.ttinclude`
 	}
 	#>
 	
-And file #n, `DataConnection.tt`
+And file #N, `DataConnection.tt`
 
 	<# var section = 
 		new Section
@@ -139,7 +139,9 @@ And file #n, `DataConnection.tt`
 	#>
 	<#@ include file="..\ConfigLanguage\ConfigurationSection.ttinclude" #>
 
-F-e-e-e-w. That is all for now. As always (second time) you can find result template and usage example on [GitHub][4].
+F-e-e-e-w. That is all for now. 
+
+**As always (second time) you can find result template and usage example on [GitHub][4].**
 
 Let me know if this stuff was usefull.
 
