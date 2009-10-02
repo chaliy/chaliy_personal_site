@@ -22,6 +22,7 @@ module Sitemap
     def builder
       
       @xml = Builder::XmlMarkup.new
+      @xml.instruct!
       
       @xml.urlset(:xmlns => "http://www.sitemaps.org/schemas/sitemap/0.9") {
       

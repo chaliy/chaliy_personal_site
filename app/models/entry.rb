@@ -12,8 +12,8 @@ module EntryStore
       maruku(self.content_markup) 
     end
     
-    def description
-      maruku(self.description_markup) 
+    def description      
+      maruku(self.description_markup).gsub("<p>", "").gsub("</p>", "") 
     end
     
     def keywords_as_text      

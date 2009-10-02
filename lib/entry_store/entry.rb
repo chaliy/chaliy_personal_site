@@ -40,8 +40,9 @@ module EntryStore
         @description_markup = header["description"]
         @categories = header["categories"] || []
         @keywords = header["keywords"] || []
-        @image_url = header["image"]
-        @last_updated_on = header["last_updated_on"] || @published_on
+        @image_url = header["image"]        
+        @last_updated_on = DateTime.parse(header["last_updated_on"]) if header["last_updated_on"] != nil
+        @last_updated_on = @last_updated_on || @published_on
       end
      
     end
