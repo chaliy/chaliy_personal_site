@@ -1,13 +1,25 @@
 ---
-title: Thougths on non-blocking sequentual number generation
-published_on: 2009-09-23T12:01
-published: false
-categories: [Distributed]
-description: 
+title: Thoughts on non-blocking sequential number generation
+published_on: 2009-10-05T00:01
+published: true
+categories: [Distributed, Thoughts]
+description: Failed take to design non-blocking sequential number generation.
 ---
-Right now we are facing a requirment to generatate readable sequentual numbers. Yeh... some Order Numbers, some Customer Numbers, that kind of stuff. Nothing new. The problem is that we cannot leverage on the standart patterns that use central authority. Having cenral authority always means huge destributed locks and this goes even worth in load balanced farms.
+Right now we are facing a requirement to generate readable sequential numbers. Yeh... some Order Numbers, some Customer Numbers, that kind of stuff. Nothing new. The problem is that we cannot leverage on the standard patterns that use central authority. Having central authority always means huge distributed locks and this goes even worth in load balanced farms.
 
-Fortunatelly, [Igor][1] has a briliant idea. Simply setup constraint for this field.
+Fortunately, [Igor][1] has a brilliant idea. Simply setup constraint for the number column. Looks crazy? You should know some details before judge. First of all, in our system concurrent order creation is rare. We are processing system. So often we have batch of orders to create. Second our orders is numbered per context (tenant if you wish), and nodes in our farm is balanced per context. Less crazy?
+
+The probability of the duplicate number is very low. But for sure "low", does not guarantee that we want in our application. So at this stage we have physical constraint in the database. Whole unit-of-work will be discarded if something goes wrong.
+
+In worth case process looks like cyclic retry. 
+
+	1. Assign "probably good number";
+	2. Push it to database;
+	3. If fail, try to assign another "probably good number";
+	4. If success, commit;
+	
+At this point matrix is ended. And reality is starting. I failed to implement this in reasonable time frame... May be next time.
+
+Sorry, nothing to enjoy. So just have a good day!
 
 [1]: http://igor.quatrocode.com/
-
