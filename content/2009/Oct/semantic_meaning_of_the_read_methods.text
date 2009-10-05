@@ -1,0 +1,32 @@
+---
+title: Semantic meaning of the read methods
+published_on: 2009-10-06T00:12
+published: true
+categories: [Maintainability, Thoughts, "API Design", "Naming Conventions"]
+keywords: ["NULL Issue", "Design-by-Contract"]
+description: What is the difference between `GetOrder(id)` and `FindOrder(id)`?
+---
+Personally for me, this is hard to understand what is the difference between `GetOrder(id)`, `ReadOrder(id)`, `FindOrder(id)` or `RetrieveOrder(id)`. I am not native speaker and for me they look exactly the same. 
+
+All this methods just retrieve Order information by identifier of the Order. What information is missing is behavior in situations when Order was not found. For example method can raise exception or return something magical like `null` or "empty" Order.
+
+So we have an API. It has methods like `GetOrder(id)`. What will you do to make your code maintainable? You will check each result to ensure it does not null? You will insert `Debug.Assert()` after every call? You will leverage on `NullReferenceException`? You will write anti-corruption layer? You will use [design-by-contract][1]? Doesn't this look a bit overcomplicated?
+
+Well, I know simple and what is more important probably the most reliable solution. **Never return `null` from your methods**. That's it.
+
+The story is good, but, unfortunately, sometimes you have to. In this case, I would recommend simple **naming conventions**. For example:
+
+The `GetOrder` is something strong. *So it should throw exception if Order was not found.*
+
+The `FindOrder` is less strong, you can find but also can fail to find. *So this kind of methods can return `null`.*
+
+You can argue that naming conventions actually does not resolve the problem. Yes and no. Theoretically - yes, it does not resolve the problem because everybody can break this. In practice - why one will even try to break this? Doesn't he want to write maintainable code? Just make everybody aware about these conventions. It actually works.
+
+BTW, for long read operations I user `RetrieveOrder`, for ad-hoc - `QueryOrders`, for paged results `PageOrders`, for UI lists - `ListOrders`.
+
+Hope this stuff, does not conflict with real English :). Happy coding folks!
+
+[1]: http://www.bing.com/search?q=design-by-contract&form=IE8SRC&src=IE-SearchBox
+
+*[API]: Application programming interface
+*[UI]: User Interface
