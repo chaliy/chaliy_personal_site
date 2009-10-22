@@ -1,7 +1,7 @@
 ---
 title: Simple WCF Client by contract and without svcutil
 published_on: 2009-10-22T12:01
-published: false
+published: true
 categories: [Tips, WCF]
 keywords: [ChannelFactory]
 description:  You can share contracts of the WCF service? Here you can find much more robust way to instantiate client.
@@ -17,7 +17,7 @@ Sometimes your WCF based Sever and Client, both have access to the contract asse
 
 As per name [`ChannelFactory`][1] is a factory. And it will create fully functional client. And yes, it works :).
 
-In our application, we use WCF web-services for communication between components.  This stuff made WSDL and auto-generated proxies redundant. And we dropped many code. I think this is good.
+In our application, we use WCF web-services for communication between components.  This stuff made WSDL and auto-generated proxies redundant. And we dropped many code. I think this is good thing.
 
 Enjoy!
 
