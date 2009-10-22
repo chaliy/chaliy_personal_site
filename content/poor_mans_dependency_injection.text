@@ -1,10 +1,16 @@
 ---
-title: Poor Man's Dependency Injection, the pragmatic way.
+title: Poor Man's Dependency Injection Pattern, the pragmatic way.
 published_on: 2009-08-29T12:10
 ---
-Well, you probably know that Poor Man's Dependency Injection is big no-no? No? Then please read Jimmy Bogard [here][1] and [here][2], read **TBD** and.  When done - return back. And I will try to show other side of the coin.
+Well, you probably know that Poor Man's Dependency Injection(PM DI for short) is big no-no? No? Then please read Jimmy Bogard [here][1] and [here][2], read **TBD** and **TBD**.  When done - return back. And I will try to show other side of the coin.
 
-So for now we know for sure that Poor Man's Dependency Injection is something terrible, unacceptable and unprofessional.  Not to say that this has some background. 
+So for now we know for sure that Poor Man's Dependency Injection is something terrible, unacceptable and unprofessional.  This statments has some background. I will **TBD** 
+
+Main reason for DI movement is to replace direct dependencies with indirrect. So instead of depending on implementation, you depend on the contract and then only in runtime on the implementation. This is good stuff, since you can change implementation for example for puposes of tesiting or something else. 
+
+
+
+Pure DI leverage on the third-party to make sure that all dependencies are available.
 
 
 [1]: http://www.lostechies.com/blogs/jimmy_bogard/archive/2009/07/03/how-not-to-do-dependency-injection-in-nerddinner.aspx

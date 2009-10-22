@@ -1,0 +1,14 @@
+*.user
+.suo
+obj
+bin
+Thumbs.db
+Desktop.ini
+_ReSharper.*
+*.resharper.user
+*.resharper
+~$*
+.loadpath
+.project
+db/test.sqlite3
+log/*.log

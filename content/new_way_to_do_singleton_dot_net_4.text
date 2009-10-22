@@ -1,0 +1,39 @@
+---
+title: The new way to implement lazy singleton with .NET 4.0
+published_on: 2009-10-13T17:12
+published: false
+categories: [".NET 4.0"]
+keywords: [Singleton]
+description: Do you still have singletons? One of the new futures of the .NET 4.0 can help you. Take a look on the LazyInitislizer.
+---
+Among other new stuff in upcoming .NET 4.0, I found LazyInitislizer. The idea is simple. Method that accepts reference to the object, and if it null, creates new one. So now your lazy singletons could look like the following:
+
+	public class Stuff
+	{
+		private static Stuff _instanceStorage; 
+		public static Stuff Instance
+		{
+			get
+			{
+				LazyInit.Init(ref _instanceStorage, TBD);
+				return _instanceStorage;	
+			}
+		}
+	}
+
+
+Another cool feature of the LazyInitislizer is ability to use thread local, just another parameter and you have per thread singleton.
+
+	LazyInit.Init(ref _instanceStorage, TBD.ThreadLocal);
+
+And last feature is optional closure for custom creation.
+
+	Code exmple goes here...
+
+### What about .NET 3.5?
+
+This stuff (with small changes) also awailable for .NET 3.5. They are part of the Parallel Extensions for .NET 3.5. The same example will look like the following:
+	
+	Code example goes here...
+
+Enjoy!

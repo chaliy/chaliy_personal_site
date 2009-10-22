@@ -1,0 +1,5 @@
+---
+titile:
+---
+Last time I described how to remove requirment `ActionResult` from the controller actions by automatically wrapping results of the action into the `JsonResult`. 
+

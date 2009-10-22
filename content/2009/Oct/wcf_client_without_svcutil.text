@@ -1,0 +1,26 @@
+---
+title: Simple WCF Client by contract and without svcutil
+published_on: 2009-10-22T12:01
+published: false
+categories: [Tips, WCF]
+keywords: [ChannelFactory]
+description:  You can share contracts of the WCF service? Here you can find much more robust way to instantiate client.
+---
+Sometimes your WCF based Sever and Client, both have access to the contract assembly (common approach in .NET  Remoting, btw). There is good chance to reduce your code. Well, at least client code. Look at the following code:
+
+	public MyCoolService Create()
+	{
+		var factory = new ChannelFactory<MyCoolService>(new WSHttpBinding());
+		return factory.CreateChannel(new EndpointAddress("http://localhost/ MyCoolService.svc"));
+	}
+
+As per name [`ChannelFactory`][1] is a factory. And it will create fully functional client. And yes, it works :).
+
+In our application, we use WCF web-services for communication between components.  This stuff made WSDL and auto-generated proxies redundant. And we dropped many code. I think this is good.
+
+Enjoy!
+
+[1]: http://msdn.microsoft.com/en-us/library/ms576132.aspx
+
+*[WCF]: Windows Communication Foundation
+*[WSDL]: Web Service Definition Language
