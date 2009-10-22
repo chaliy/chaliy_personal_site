@@ -1,5 +1,7 @@
 ---
-titile:
+titile: "ASP.NET MVC Web Services - Exception Handling (Part #1)"
+published: false
+published_on: 2009-10-15T00:24
 ---
 Last time I described how to remove requirment `ActionResult` from the controller actions by automatically wrapping results of the action into the `JsonResult`. 
 
