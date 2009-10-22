@@ -11,7 +11,8 @@ Sometimes your WCF based Sever and Client, both have access to the contract asse
 	public MyCoolService Create()
 	{
 		var factory = new ChannelFactory<MyCoolService>(new WSHttpBinding());
-		return factory.CreateChannel(new EndpointAddress("http://localhost/ MyCoolService.svc"));
+		var address = new EndpointAddress("http://localhost/ MyCoolService.svc");
+		return factory.CreateChannel(address);
 	}
 
 As per name [`ChannelFactory`][1] is a factory. And it will create fully functional client. And yes, it works :).
