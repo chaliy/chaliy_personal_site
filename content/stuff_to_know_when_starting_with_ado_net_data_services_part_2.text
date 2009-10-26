@@ -9,3 +9,9 @@ description: Next short of my journey with ADO.NET Data Services.
 ### The server encountered an error processing the request. The exception message is 'Unable to load the specified metadata resource.'. See server logs for more details.
 
 http://stackoverflow.com/questions/689355/metadataexception-unable-to-load-the-specified-metadata-resource
+
+### On data context type 'XXXX', there is a top IQueryable property 'XXXX' whose element type is not an entity type. Make sure that the IQueryable property is of entity type or specify the IgnoreProperties attribute on the data context type to ignore this property.
+
+This message means ADO.NET Data Services cannot find primmary key. There are at least two solutions 
+1. Decorate entity with `DataServiceKeyAttribute`
+2. or name it as "ID" or "XxxxID" (yes, Xxxx is name of your enity)
