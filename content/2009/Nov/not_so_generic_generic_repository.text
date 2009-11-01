@@ -1,7 +1,7 @@
 ---
 title: Not so generic Generic Repository
 published_on: 2009-11-01T00:01
-published: false
+published: true
 categories: [DDD]
 keywords: [Repository]
 description: Nice (at least I hope) solution that will end war between people who use generic repository and who do not.
@@ -10,7 +10,7 @@ I know two kinds of people, who use [generic repository][1] and who do not. Pers
 
 At the same time I am lazy and do not like to write each repository. Fortunately, I found nice solution that keeps repository custom, but do not need too much code. 
 
-I have abstract repository, with most of the stuff I can predict.
+I have abstract base repository, with most of the stuff I can predict.
 
 	public abstract class AbstractRepository<T>{
 		public T GetById(Guid id);
@@ -18,7 +18,7 @@ I have abstract repository, with most of the stuff I can predict.
 		....
 	}
 	
-Then I have very custom repository contract. For example in product repository I have custom method 'GetByNumber'.
+Then I have very custom repository contract. For example in product repository I have custom method `GetByNumber`.
 
 	public interface IProductRepository{
 		Product GetByNumber(string number);
