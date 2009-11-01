@@ -1,0 +1,55 @@
+---
+title: Not so generic Generic Repository
+published_on: 2009-11-01T00:01
+published: false
+categories: [DDD]
+keywords: [Repository]
+description: Nice (at least I hope) solution that will end war between people who use generic repository and who do not.
+---
+I know two kinds of people, who use [generic repository][1] and who do not. Personally I do not like generic repositories. I feel that "one size feet all" is not a case here.
+
+At the same time I am lazy and do not like to write each repository. Fortunately, I found nice solution that keeps repository custom, but do not need too much code. 
+
+I have abstract repository, with most of the stuff I can predict.
+
+	public abstract class AbstractRepository<T>{
+		public T GetById(Guid id);
+		public Add(T entity);
+		....
+	}
+	
+Then I have very custom repository contract. For example in product repository I have custom method 'GetByNumber'.
+
+	public interface IProductRepository{
+		Product GetByNumber(string number);
+		void Add(Product product);
+	}
+	
+And I have implementation of the `IProductRepository`. Because of base class `AbstractRepository`, I have to implement only custom methods.
+
+	class ProductRepository : 
+		AbstractRepository<Product>,
+		IProductRepository
+	{
+		
+	} 
+	
+Now, let's look to the client code. Because client code knows only about `IProductRepository`, everything generic like `GetById` are not visible.
+
+	public class Client
+	{
+		private final IProductRepository _productRepository;
+		public Client(IProductRepository productRepository)
+		{
+			_productRepository = productRepository;
+		}
+		
+		public void DoSomethingSpecial(Guid id)
+		{
+			_productRepository.GetById(id); // Will not compile
+		}
+	}
+
+Enjoy!
+
+[1]: http://codebetter.com/blogs/gregyoung/archive/2009/01/16/ddd-the-generic-repository.aspx
