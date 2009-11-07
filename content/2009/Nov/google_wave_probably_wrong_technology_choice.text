@@ -1,7 +1,7 @@
 ---
 title: Google Wave - GWT is probably wrong technology choise
 published_on: 2009-11-07T21:01
-published: false
+published: true
 categories: [GWT, RIA]
 keywords: ["Google Wave", Silverlight, RIA]
 description: Inspired by Google Wave invitation, thougths about suitability of the GWT for RIA.
@@ -32,7 +32,7 @@ Despite of all this WOWs, I am trying to think about technology. You probably kn
 
 This stuff, makes me think if GET is suitable for RIA at all. I cannot understand why Google does not invest in Silverlight :) or something like this. Why they are building yet another abstraction on already leaked abstraction? I cannot even guess.
 
-I am wondering what my employer will say if he will read this :).
+I am wondering what my employer will say if he read this :).
 
 [1]: http://www.extjs.com/products/gxt/
 
