@@ -16,13 +16,14 @@ Despite of all this WOWs, I am trying to think about technology. You probably kn
 
 ![GWT](http://code.google.com/intl/uk-UA/webtoolkit/images/gwt-logo.png)
 
-Now lets imagine Google uses Silverlight or Flash or Java:
+#### Now lets imagine Google uses Silverlight or Flash or Java:
 
 1. Browser compatibility. With everything Google do for GWT, it still does not 100% compatible with all browsers. For me `Google Wave` crashes in IE (in Google Chrome it also crashes, but in IE it does not even start). With our own application, we still have latches on some browsers. Compare this to guaranties that gives us Silverlight or Flash or Java.
 2. Features like access to user's hard drive, bitmap edit, network and so on. HTML does not have such futures at all or they are restricted, and probably so will be in future. For example we use Flash object to give user ability to select multiple files.
 3. Layout. HTML and DOM is not designed for serious Desktop like User Interfaces. This is why Google Wave is all about absolute positioned, calculated blocks. Every resize, every move makes more or less all blocks to be recalculated. Well, this is about client. But what about development? Right now I can compare GWT, Ext GWT and Silverlight layout managers. And I'm begging you ask about what is best, answer is Silverlight. This just because it was DESIGNED for such stuff. Everything that could GWT or Ext GWT offer is actually OVERCOMES of the leaked HTML layouts.
 4. Development experience. Compilation of our application take about two minutes. Debugging is hard. Hosted mode has differences with compiled mode. Many of the `Java` stuff does not work. I think Google has the same experience. Looks pretty bad? Can you guess why? Because GWT try to OVERCOME leaked execution engine. Yes I am about `JavaScript`. BTW, IntelliJ IDEA is way better than Visual Studio, but even this does not help.
 
+---
 Lets think what can GWT give:
 
 1. Broader usage, as we do not have to have any plugin installed. This is true. But only for simple stuff. RIA always have to have advanced features so you still have to use plugins (such as, GitHub uses Flash to put stuff in your clipboard). And do not forget about layout performances. Just wonder how our application (way heavier as Google Wave) behave on netbooks.
