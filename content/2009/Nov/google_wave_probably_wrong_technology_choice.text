@@ -6,28 +6,29 @@ categories: [GWT, RIA]
 keywords: ["Google Wave", Silverlight, RIA]
 description: Inspired by Google Wave invitation, thougths about suitability of the GWT for RIA.
 ---
-Few months ago I have watched IO presentation about `Google Wave`, I was really impressed. Also application I am working on uses GWT for client side (server-side is .NET). Eventually, I got invitation to the `Google Wave`.
+Few months ago I have watched IO presentation about **Google Wave**, I was really impressed. Also application I am working on uses GWT for client side (server-side is .NET). Eventually, I got invitation to the Google Wave.
 
 What I can say. Looks cool. Very cool. And idea behind is great. This is modern replace for email. This is something that have had to appear some day. So yes, it is cool.
 
 ![Google Wave](http://wave.google.com/help/wave/images/logo2.gif)
 
-Despite of all this WOWs, I am trying to think about technology. You probably know that the `Google Wave` is all about HTML5 and other buzz stuff. The less known is fact that it GWT based. In short this is special `Java` compiler that produce regular `JavaScript`. Google have spent abnormal efforts to make results of the GWT compiler as browser capable as they can. And this really works. Most of the time...
+Despite of all this WOWs, I am trying to think about technology. You probably know that the Google Wave is all about HTML5 and other buzz stuff. The less known is fact that it GWT based. In short this is special Java compiler that produce regular JavaScript. Google have spent abnormal efforts to make results of the GWT compiler as browser capable as they can. And this really works. Most of the time...
 
 ![GWT](http://code.google.com/intl/uk-UA/webtoolkit/images/gwt-logo.png)
 
 #### Now lets imagine Google uses Silverlight or Flash or Java:
 
-1. Browser compatibility. With everything Google do for GWT, it still does not 100% compatible with all browsers. For me `Google Wave` crashes in IE (in Google Chrome it also crashes, but in IE it does not even start). With our own application, we still have latches on some browsers. Compare this to guaranties that gives us Silverlight or Flash or Java.
+1. Browser compatibility. With everything Google do for GWT, it still does not 100% compatible with all browsers. For me Google Wave crashes in IE (in Google Chrome it also crashes, but in IE it does not even start). With our own application, we still have latches on some browsers. Compare this to guaranties that gives us Silverlight or Flash or Java.
 2. Features like access to user's hard drive, bitmap edit, network and so on. HTML does not have such futures at all or they are restricted, and probably so will be in future. For example we use Flash object to give user ability to select multiple files.
 3. Layout. HTML and DOM is not designed for serious Desktop like User Interfaces. This is why Google Wave is all about absolute positioned, calculated blocks. Every resize, every move makes more or less all blocks to be recalculated. Well, this is about client. But what about development? Right now I can compare GWT, Ext GWT and Silverlight layout managers. And I'm begging you ask about what is best, answer is Silverlight. This just because it was DESIGNED for such stuff. Everything that could GWT or Ext GWT offer is actually OVERCOMES of the leaked HTML layouts.
-4. Development experience. Compilation of our application take about two minutes. Debugging is hard. Hosted mode has differences with compiled mode. Many of the `Java` stuff does not work. I think Google has the same experience. Looks pretty bad? Can you guess why? Because GWT try to OVERCOME leaked execution engine. Yes I am about `JavaScript`. BTW, IntelliJ IDEA is way better than Visual Studio, but even this does not help.
+4. Development experience. Compilation of our application take about two minutes. Debugging is hard. Hosted mode has differences with compiled mode. Many of the `Java` stuff does not work. I think Google has the same experience. Looks pretty bad? Can you guess why? Because GWT try to OVERCOME leaked execution engine. Yes I am about JavaScript. BTW, IntelliJ IDEA is way better than Visual Studio, but even this does not help.
 
----
-Lets think what can GWT give:
+#### Lets think what can GWT give:
 
 1. Broader usage, as we do not have to have any plugin installed. This is true. But only for simple stuff. RIA always have to have advanced features so you still have to use plugins (such as, GitHub uses Flash to put stuff in your clipboard). And do not forget about layout performances. Just wonder how our application (way heavier as Google Wave) behave on netbooks.
-2. Browser as a platform. For example, one can expect that she have ability to select HTML table and paste it to the `Excel` as she do often. Unfortunately, this is not a case neither for `Google Wave` nor for `Ext GWT Grid`. Just because they cannot leverage on the restricted HTML table. Another example is back button. This is good that Google Wave has support for the back button. But to do this, they use hidden IFRAME. And for me this looks like another OVERCOME of the leaked platform. And yes, Silverlight is also support back button.
+2. Browser as a platform. For example, one can expect that she have ability to select HTML table and paste it to the Excel as she do often. Unfortunately, this is not a case neither for Google Wave nor for Ext GWT Grid. Just because they cannot leverage on the restricted HTML table. Another example is back button. This is good that Google Wave has support for the back button. But to do this, they use hidden IFRAME. And for me this looks like another OVERCOME of the leaked platform. And yes, Silverlight is also support back button.
+
+#### So what?
 
 This stuff, makes me think if GET is suitable for RIA at all. I cannot understand why Google does not invest in Silverlight :) or something like this. Why they are building yet another abstraction on already leaked abstraction? I cannot even guess.
 
