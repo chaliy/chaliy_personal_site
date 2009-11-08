@@ -44,13 +44,18 @@ a.linkedin{
 label {
 	display:block;	
 }
+p {
+	margin-top:15px;
+}
 ol{
+	margin-top:15px;
 	padding-left: 30px;
 }
 ul{
+	margin-top:15px;
 	padding-left: 30px;
 }
-dt{
+dt{	
 	padding-top:10px;
 }
 dd{
@@ -77,6 +82,9 @@ h3{
 	padding: 4px;
 	font-size: 1.2em;
 	font-weight:bold;	
+}
+h4 {
+	margin-top:15px;
 }
 img.left{
 	float: left;
