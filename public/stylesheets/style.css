@@ -98,6 +98,7 @@ img.right{
 }
 #menu ul
 {
+	margin-top: 0px;
 	list-style-type: none;
 	padding-top: 15px;
 }
@@ -120,6 +121,7 @@ img.right{
 
 #header p
 {
+	margin-top: 0px;
 	height: 55px;
 	line-height: 60px;
 	color: #fff;
