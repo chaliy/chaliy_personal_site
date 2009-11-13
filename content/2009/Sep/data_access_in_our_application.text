@@ -38,7 +38,7 @@ BTW, the `ProductListItem` is real `POCO`. Without attributes, without virtual p
 
 ### Entity Framework
 
-Building User Interface, I started feeling that we are doing to many coding. Customer need list for this, customer need list for that, and so on and so on. From coder perspective every list needs DTO, parsing arguments, doing some filtering. Of course we need way to automate this. One of the solution is to employ [ADO.NET Data Services][5]. So now we have [Entity Framework][4] Model, and then publish it to the ADO.NET Data Services. Works as a charm.
+While building User Interface, I started feeling that we are doing too many coding. Customer need list for this, customer need list for that, and so on and so forth. From coder perspective every list needs DTO, parsing arguments, doing some filtering. Of course, we need way to automate this. One of the solutions is to use [ADO.NET Data Services][5]. So now we have [Entity Framework][4] Model, and then publish it with ADO.NET Data Services. Works as a charm.
 
 ### That is it!
 
