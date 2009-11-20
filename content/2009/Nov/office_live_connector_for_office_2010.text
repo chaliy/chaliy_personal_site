@@ -1,0 +1,39 @@
+---
+title: Microsoft Office Outlook 2010: how to connect mail hosted on Windows Live Custom Domains?
+published_on: 2009-11-20T16:01
+published: false
+categories: [Office]
+keywords: [Office, "Office 2010", "Outlook", "Outlook 2010", "Live Mail", "Hotmail", "Live Custom Domains"]
+description: Funny, but Microsoft Office Outlook 2010 does not support mail hosted on Windows Live Custom Domains. I found not less funny solution :).
+---
+You may know about [Microsoft Office 2010 Beta][1]. One of the revolution (sic!) improvements is ribbon interface in Outlook. Despite of sarcasm, it looks polished. So if you have time it worth a look :). But return back to the earth and let's try to connect live.com account.
+
+![Microsoft Office Outlook 2010 UI](http://chaliy.name/files/office_live_connector_for_office_2010/outlook_ui.png)
+
+You may remember Outlook Connector for Office 2007. But check out this post [Connecting to Hotmail accounts in Outlook 2010][2] in Office Outlook Team Blog. They made dramatic improvement.
+
+> **Let Outlook 2010 determine if you need OLC 14 and install it for you**
+>
+> We are working hard to make sure that the experience of moving to Outlook 2010 is as smooth as possible when it comes to accessing your Hotmail accounts. Outlook 2010 is able to determine when OLC 14 is needed and points you to the correct download location for the OLC 14 package.
+
+Can you guess how they made this?
+
+> **Adding a @hotmail.com, @live.com or @msn.com accounts through the Add New Account dialog**
+>
+> Should you choose to add a new account that uses the @hotmail.com, @live.com or the @msn.com domain and OLC 14 is not installed, Outlook 2010 will prompt you to download and install it!
+
+Stop. "@hotmail.com, @live.com or the @msn.com" - are you kidding? What about mail hosted on [Windows Live Custom Domains][3]? Well. Nothing here. Outlook 2010 just fail to detect that this is Hotmail account (to be honest Outlook 2007 also fail). The solution is obvious, just download Office Live Connector 14 and you are done. But this is not so easy. Actually you cannot. At least I was not able to find it.
+
+My first take was to create fake Hotmail account, connect it, and then to reconnect with my account. But the result solution is much more genius!
+
+In Add New Account dialog, when prompted for e-mail address. Just type something fake in `hotmail.com` domain. Hit Next. And agree to install Office Live Connector 14 :).
+
+![Office Live Connector - Install Now](http://chaliy.name/files/office_live_connector_for_office_2010/outlook_connector_install_now.png)
+
+Have a fun day!
+
+[1]: http://www.microsoft.com/office/2010/en/default.aspx
+[2]: http://blogs.msdn.com/outlook/archive/2009/07/23/connecting-to-hotmail-accounts-in-outlook-2010.aspx
+[3]: http://domains.live.com/
+
+*[OLC]: Office Live Connector
