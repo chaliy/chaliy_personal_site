@@ -1,9 +1,9 @@
 ---
-title: "Microsoft Office Outlook 2010: how to connect mail hosted on Windows Live Custom Domains?"
-published_on: 2009-11-20T16:01
-published: false
+title: "Microsoft Office Outlook 2010: How to connect mail hosted on Windows Live Custom Domains?"
+published_on: 2009-11-20T17:15
+published: true
 categories: [Office]
-keywords: [Office, "Office 2010", "Outlook", "Outlook 2010", "Live Mail", "Hotmail", "Live Custom Domains"]
+keywords: [Office, "Office 2010", "Outlook", "Outlook 2010", "Live Mail", "Hotmail", "Live Custom Domains", "Email"]
 description: Funny, but Microsoft Office Outlook 2010 does not support mail hosted on Windows Live Custom Domains. I found not less funny solution :).
 ---
 You may know about [Microsoft Office 2010 Beta][1]. One of the revolution (sic!) improvements is ribbon interface in Outlook. Despite of sarcasm, it looks polished. So if you have time it worth a look :). But return back to the earth and let's try to connect live.com account.
@@ -26,7 +26,7 @@ Stop. "@hotmail.com, @live.com or the @msn.com" - are you kidding? What about ma
 
 My first take was to create fake Hotmail account, connect it, and then to reconnect with my account. But the result solution is much more genius!
 
-In Add New Account dialog, when prompted for e-mail address. Just type something fake in `hotmail.com` domain. Hit Next. And agree to install Office Live Connector 14 :).
+In the **Add New Account** dialog, when prompted for e-mail address, just type something fake with `hotmail.com` domain. Hit Next. And agree to install Office Live Connector 14 :).
 
 ![Office Live Connector - Install Now](http://chaliy.name/files/office_live_connector_for_office_2010/outlook_connector_install_now.png)
 
