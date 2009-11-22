@@ -6,11 +6,11 @@ categories: [Conference]
 keywords: [PDC, PDC09, SharePoint, xRM, CRM, Dynamics, "C#", "Visual Studio", "Visual Studio 2010", Azure, M, OData]
 description: Small reviews of the PDC09 videos/sessions.
 ---
-There is no answer to the subject. Of course, this depends. Below are my opinions about some of the videos. They are very subjective. So be careful.
+There is no answer to the subject. Of course, it depends. Below are my opinions about some of the videos. They are very subjective. So be careful.
 
 ### Build a .NET Business Application in 60 Minutes with xRM and SharePoint
 
-[http://microsoftpdc.com/Sessions/PR33][http://microsoftpdc.com/Sessions/PR33]
+[http://microsoftpdc.com/Sessions/PR33] (http://microsoftpdc.com/Sessions/PR33)
 
 Want to see how team of MS stuff failed to achieve requirements in time? You are welcome. This video is for you. With this example you will find out how not to write spaghetti code. 
 
@@ -18,7 +18,7 @@ Anyways, many interesting high-level stuff about SharePoint, xRM (Microsoft Dyna
 
 ### Future Directions for C# and Visual Basic
 
-[http://microsoftpdc.com/Sessions/FT11][ http://microsoftpdc.com/Sessions/FT11]
+[http://microsoftpdc.com/Sessions/FT11](http://microsoftpdc.com/Sessions/FT11)
 
 First half is bla-bla-bla about stuff we will get in C# 4.0. This could be safely skipped. 
 
@@ -40,23 +40,23 @@ And we will not see extension properties in near future.
 
 ### How Microsoft Visual Studio 2010 Was Built with Windows Presentation Foundation 4
 
-[http://microsoftpdc.com/Sessions/CL09][ http://microsoftpdc.com/Sessions/CL09]
+[http://microsoftpdc.com/Sessions/CL09](http://microsoftpdc.com/Sessions/CL09)
 
 Nothing notable in this session. Just normal process of the adaptation. 
 
-Great to know that Microsoft have doing at least something with WPF. Actually this presentation clearly show this. During this port they “discovered” that really text is bit blurred… Looks funny.
+Great to know that Microsoft have doing at least something with WPF. Actually this presentation clearly show this. During this port they "discovered" that really text is bit blurred... Looks funny.
 
 ### Lap Around the Windows Azure Platform
 
-[http://microsoftpdc.com/Sessions/P09-03][http://microsoftpdc.com/Sessions/P09-03]
+[http://microsoftpdc.com/Sessions/P09-03](http://microsoftpdc.com/Sessions/P09-03)
 
 Marketing bla-bla-blas about Azure. Could be safely skipped. 
 
 ### Data Programming and Modeling for the Microsoft .NET Developer
 
-[http://microsoftpdc.com/Sessions/P09-04][http://microsoftpdc.com/Sessions/P09-04]
+[http://microsoftpdc.com/Sessions/P09-04](http://microsoftpdc.com/Sessions/P09-04)
 
-First part is about… OK, I do not know about what it. It starts from `SqlConnection` ("SqlConnection is the assembly" - 4:05), then continue with well know Entity Framework awesomeness. And ends with some “Qudarant”.  Could be safely skipped.
+First part is about... OK, I do not know about what it. It starts from `SqlConnection` ("SqlConnection is the assembly" - 4:05), then continue with well know Entity Framework awesomeness. And ends with some "Qudarant".  Could be safely skipped.
 
 Second part is about [OData]. It starts from 33:18. 
 
@@ -66,11 +66,11 @@ I will fail to describe this session if will not mention what Don Box disclosed 
 
 ### Microsoft Project Code Name M The Data and Modeling Language
 
-[http://microsoftpdc.com/Sessions/FT34][ http://microsoftpdc.com/Sessions/FT34]
+[http://microsoftpdc.com/Sessions/FT34](http://microsoftpdc.com/Sessions/FT34)
 
 If you are interesting in "The M" you can watch this video. You will know how Don Box is chewing :). Anyway this is good introduction. 
 
-Funny fact, when Don presented "M" integration to the ASP.NET project by writing some ASPX code. He said: “I feel like ScotGu”. Ha-ha :).
+Funny fact, when Don presented "M" integration to the ASP.NET project by writing some ASPX code. He said: "I feel like ScotGu". Ha-ha :).
 
 --
 
