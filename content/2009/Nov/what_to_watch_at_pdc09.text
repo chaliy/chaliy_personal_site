@@ -1,0 +1,82 @@
+---
+title: "What to watch at PDC09?"
+published_on: 2009-11-22T19:40
+published: false
+categories: [Conference]
+keywords: [PDC, PDC09, SharePoint, xRM, CRM, Dynamics, "C#", "Visual Studio", "Visual Studio 2010", Azure, M, OData]
+description: Small reviews of the PDC09 videos/sessions.
+---
+There is no answer to the subject. Of course, this depends. Below are my opinions about some of the videos. They are very subjective. So be careful.
+
+### Build a .NET Business Application in 60 Minutes with xRM and SharePoint
+
+[http://microsoftpdc.com/Sessions/PR33][http://microsoftpdc.com/Sessions/PR33]
+
+Want to see how team of MS stuff failed to achieve requirements in time? You are welcome. This video is for you. With this example you will find out how not to write spaghetti code. 
+
+Anyways, many interesting high-level stuff about SharePoint, xRM (Microsoft Dynamics CRM), integration between them if you never seen them before.
+
+### Future Directions for C# and Visual Basic
+
+[http://microsoftpdc.com/Sessions/FT11][ http://microsoftpdc.com/Sessions/FT11]
+
+First half is bla-bla-bla about stuff we will get in C# 4.0. This could be safely skipped. 
+
+What is interesting is second part. It starts at 33:20. It is about features that will be *after* C# 4.0 and Visual Studio 2010. 
+
+Fist one is about compiler. The C# compiler will be rewritten in C#. The same with VB.Net. Compiler for VB.Net will be in VB.Net. Additionally, Microsoft will open compiler. So you will have access to expression trees, you will be able modify compilation and so on.
+
+Second feature is new keyword `yield`. Not actually new, rather with new meaning. So the code:
+
+    var response = yield request.AsyncGetResponse ();
+    
+This line of code means that you start getting response, release thread, when done, system will up your thread and put result to the variable response. 
+
+As for me this is awesome. I cannot even imagine all stuff I am written with callbacks will get such nice syntax.
+
+You can find full example of this magic at 50:13 of the video.
+
+And we will not see extension properties in near future.
+
+### How Microsoft Visual Studio 2010 Was Built with Windows Presentation Foundation 4
+
+[http://microsoftpdc.com/Sessions/CL09][ http://microsoftpdc.com/Sessions/CL09]
+
+Nothing notable in this session. Just normal process of the adaptation. 
+
+Great to know that Microsoft have doing at least something with WPF. Actually this presentation clearly show this. During this port they “discovered” that really text is bit blurred… Looks funny.
+
+### Lap Around the Windows Azure Platform
+
+[http://microsoftpdc.com/Sessions/P09-03][http://microsoftpdc.com/Sessions/P09-03]
+
+Marketing bla-bla-blas about Azure. Could be safely skipped. 
+
+### Data Programming and Modeling for the Microsoft .NET Developer
+
+[http://microsoftpdc.com/Sessions/P09-04][http://microsoftpdc.com/Sessions/P09-04]
+
+First part is about… OK, I do not know about what it. It starts from `SqlConnection` ("SqlConnection is the assembly" - 4:05), then continue with well know Entity Framework awesomeness. And ends with some “Qudarant”.  Could be safely skipped.
+
+Second part is about [OData]. It starts from 33:18. 
+
+This is another story. OData is Microsoft take to standardize data exchange. Presentation looks great. Don Box show how to connect data *from* various sources like some NASA, some SharePoint data, some ad-hoc data. And then work with it in `C#`, in Excel. This protocol is built on top of AtomPub. And technically implemented as ADO.Net Data Services. It worth watching. as this could influence your architectures. By the way, funny quote from 50:45 - "OData is our new ODBC" :).
+
+I will fail to describe this session if will not mention what Don Box disclosed at the end. At 54:00 he says that XML based EDM files of the Entity Framework will be in future replaced by M language. Full example of language that will describe Entity Framework model could be found at 55:27. Pretty good job!
+
+### Microsoft Project Code Name M The Data and Modeling Language
+
+[http://microsoftpdc.com/Sessions/FT34][ http://microsoftpdc.com/Sessions/FT34]
+
+If you are interesting in "The M" you can watch this video. You will know how Don Box is chewing :). Anyway this is good introduction. 
+
+Funny fact, when Don presented "M" integration to the ASP.NET project by writing some ASPX code. He said: “I feel like ScotGu”. Ha-ha :).
+
+--
+
+I will post new reviews later. Stay tuned.
+
+[OData]: http://www.odata.org/
+
+*[OData]: Open Data Protocol
+*[AtomPub]: Atom Publishing Protocol
