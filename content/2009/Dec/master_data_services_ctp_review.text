@@ -8,6 +8,8 @@ description: First attempt to view on the Microsoft Master Data Services Novembe
 ---
 So, what [Master Data Services (MDS)][MDS] is? This is [Master Data Management][MDM] solution from Microsoft. So what Master Data Management is? Tool that help to store master data in the enterprise. What Master Data is? This is key data, like your customers, products, etc. Interesting?
 
+![SQL 2008](http://chaliy.name/files/logo-sql08.gif)
+
 ### Abstract Intention
 
 What you can expect from MDM solution? First of all central data storage. Some sort of the schema designer. Some sort of support for schema versions. API to access data. API to put data. Simple business rules. Validation. Built-in user interface to data.
