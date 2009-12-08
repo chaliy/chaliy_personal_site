@@ -1,20 +1,20 @@
 ---
 title: "Early review Master Data Services November CTP"
 published_on: 2009-12-08T09:40
-published: false
+published: true
 categories: [Enterprise]
 keywords: ["Master Data", MDS, MDM, "SQL 2008 R2", "SQL Server", "SQL 2008"]
 description: First attempt to view on the Microsoft Master Data Services November 2009 CTP.
 ---
-So, what Master Data Services (MDS) is? This is [Master Data Management][MDM] solution from Microsoft. So what Master Data Management is? Tool that help to store master data in the enterprise. What Master Data is? This is key data, like your customers, products, etc. Interesting?
+So, what [Master Data Services (MDS)][MDS] is? This is [Master Data Management][MDM] solution from Microsoft. So what Master Data Management is? Tool that help to store master data in the enterprise. What Master Data is? This is key data, like your customers, products, etc. Interesting?
 
-### Intention
+### Abstract Intention
 
 What you can expect from MDM solution? First of all central data storage. Some sort of the schema designer. Some sort of support for schema versions. API to access data. API to put data. Simple business rules. Validation. Built-in user interface to data.
 
 And yes MDS has all this stuff. The problem that MDS implements most of them in totally unusable manner. But let go closer. To get proofs you have to install this guy. If you are OK to trust me, just skip installation section.
 
-### Installation
+### Installation of the Master Data Services November 2009 CTP
 
 Master Data Services is part of the SQL Server 2008 R2 64-bit, so you have to [download one][SQL2008R2]. You may notice 64-bit. This is important. MDS is bounded only with 64-bit version.
 
@@ -24,7 +24,7 @@ I am not sure why, but MDS works only with SQL Server 2008 R2 databases. So you 
 
 And now final step. Search for `masterdataservices.msi` within setup folder. Execute it. Click few Nexts and you are done!
 
-### Usage
+### Usage, Administrator perspective
 
 You have to start from configuration. Almost everything is intuitive, so I will not step here.
 
@@ -38,22 +38,22 @@ Fehhh. Deploy. No magic here. This is unexpected, but it works.
 
 Now, you can start explore/add/update your data. Seems this also works. But even SharePoint has more usable UI.
 
-### Data API
+### Data API, Developer perspective
 
 I do not even know how to start. It is unbelievable. Retrieve data API is **direct access to the SQL Views in a database**! But this not the end! Can you guess what is the name of the view for the entity Customer in Invoicing model? Yes! It is "viw_SYSTEM_2_6_CHILDATTRIBUTES", where 2 is Invoicing and 6 is Customer. The Matrix. BTW, the same magic with import operations. And this API is targeted as primary integration API!
 
-### Management API
+### Management API, Developer perspective
 
 Management API is implemented with WCF. Looks pretty developer unfriendly. For example for some reasons localization stuff are arguments of every call, why not headers? Many `out` parameters.
 
-### Future
+### Probably future of this stuff
 
 This is kind of unproven information. 
 
 1. MS will implement integration with other products. SharePoint, Dynamics and BizTalk among them;
 2. MDS will provide secondary Data API. MDS will implement [OData], so we will have normal REST based API;
 
-### My conclusion
+### And my conclusion
 
 I think that we need such tool. But MS should not reject what they already have.
 
@@ -62,6 +62,7 @@ For example, SQL Modeling Services has a way better ability to manage schema, ed
 Well, at least for now, this product is unusable and could be safely skipped. Looking forward for total rewrite in v2.
 
 [OData]: http://www.odata.org
+[MDS]: http://www.microsoft.com/sqlserver/2008/en/us/MDS.aspx
 [MDM]: http://en.wikipedia.org/wiki/Master_Data_Management
 [SQL2008R2]: http://www.microsoft.com/sqlserver/2008/en/us/R2Downloads.aspx
 
