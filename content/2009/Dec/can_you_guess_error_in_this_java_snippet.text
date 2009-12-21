@@ -2,9 +2,9 @@
 title: Can you guess error in this Java code snippet?
 published_on: 2009-12-21T18:25
 published: false
-categories: [“Guess Error”, Java]
+categories: ["Guess Error", Java]
 keywords: [GWT, GXT, Java]
-description:  I love “guess error” kind of posts. This is first of mine. Snippet is all about GWT Java code.
+description:  I love "guess error" kind of posts. This is first of mine. Snippet is all about GWT Java code.
 ---
 Our application has been upgraded from GXT 2.0.1 to GXT 2.1.0. And this snippet causes all our data forms ignore data... 
 
@@ -19,7 +19,7 @@ So, can you guess where error is?
 	
 Usage:
 
-    TextField<String>  f = textField(“Test”, “Test”);
+    TextField<String>  f = textField("Test", "Test");
     assert f.getName() != null // Fail
 	
 Let me know if you need more information :)
