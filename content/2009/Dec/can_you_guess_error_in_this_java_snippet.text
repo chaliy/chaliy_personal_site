@@ -1,9 +1,9 @@
 ---
 title: Can you guess error in this Java code snippet?
 published_on: 2009-12-21T18:25
-published: false
+published: true
 categories: ["Guess Error", Java]
-keywords: [GWT, GXT, Java]
+keywords: [GWT, GXT]
 description:  I love "guess error" kind of posts. This is first of mine. Snippet is all about GWT Java code.
 ---
 Our application has been upgraded from GXT 2.0.1 to GXT 2.1.0. And this snippet causes all our data forms ignore data... 
