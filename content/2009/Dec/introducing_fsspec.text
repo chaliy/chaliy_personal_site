@@ -8,7 +8,7 @@ description: Yet another Unit Testing/BDD framework for F#. Inspired by RSpec sy
 ---
 Despite of a fact that we already have [number][1] [of][2] [frameworks][3] for unit testing for F#, let me introduce another one.
 
-*Source code of the **FsSpec** is [hosted on GitHub][5], you can [donwload zip][6]* 
+*Source code of the __FsSpec__ is [hosted on GitHub][5], you can [donwload zip][6]* 
 
 ### Syntax
 
@@ -16,10 +16,9 @@ Syntax is inspired by [RSpec][4], so specification looks like:
 
     do describe "Calculator" [        
 
-		it "should add two integers" (fun unit -> 
+        it "should add two integers" (fun unit -> 
 
             let res = Calc.Add 2 2
-
             res.should_be_equal_to 4
         );
 
@@ -27,17 +26,16 @@ Syntax is inspired by [RSpec][4], so specification looks like:
         it "should devide two integers" (fun unit -> 
 
             let res = Calc.Div 2 2
-
             res.should_be_equal_to 1
         );
-               
+
     ]
 
 Looks pretty well, isn't it? Unfortunately, I have number of problems that I have to solve to make this stuff usable. First of all is shared initialization of the specifications. Now you can do this just before specification (describe statement) but this looks bit ugly. Second are assertions. Now they are implemented as extension methods and look less readable than RSpec's assertions.
 
 ### Implementation
 
-Well, it about 46 lines of code… Not too much to discuss. [Repository][5] is located on GitHub.
+Well, it about 46 lines of code... Not too much to discuss. Better to visit [repository][5] on GitHub.
 
 [1]: http://code.google.com/p/fsunit/
 [2]: http://www.codeplex.com/FsTest
