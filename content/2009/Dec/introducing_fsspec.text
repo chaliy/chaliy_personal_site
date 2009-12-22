@@ -1,0 +1,47 @@
+---
+title: "FsSpec: Introducing yet another Unit Testing/BDD framework for F#"
+published_on: 2009-12-22T22:25
+published: false
+categories: ["F#", BDD, Sources]
+keywords: [RSpec, "Unit Tests", FsSpec, FsUnit]
+description:  
+---
+Despite of a fact that we already have [number][1] [of][2] [frameworks][3] for unit testing for F#, let me introduce another one.
+
+*Source code of the **FsSpec** is [hosted on GitHub][5], you can [donwload zip][6]* 
+
+### Syntax
+
+Syntax is inspired by [RSpec][4], so specification looks like:
+
+    do describe "Calculator" [        
+
+		it "should add two integers" (fun unit -> 
+
+            let res = Calc.Add 2 2
+
+            res.should_be_equal_to 4
+        );
+
+
+        it "should devide two integers" (fun unit -> 
+
+            let res = Calc.Div 2 2
+
+            res.should_be_equal_to 1
+        );
+               
+    ]
+
+Looks pretty well, isn’t it? Unfortunately, I have number of problems that I have to solve to make this stuff usable. First of all is shared initialization of the specifications. Now you can do this just before specification (describe statement) but this looks bit ugly. Second are assertions. Now they are implemented as extension methods and look less readable than RSpec’s assertions.
+
+### Implementation
+
+Well, it about 46 lines of code… Not too much to discuss. [Repository][5] is located on GitHub.
+
+[1]: http://code.google.com/p/fsunit/
+[2]: http://www.codeplex.com/FsTest
+[3]: http://www.codeplex.com/fscheck/
+[4]: http://rspec.info/ 
+[5]: http://github.com/chaliy/fsspec
+[6]: http://github.com/chaliy/fsspec/zipball/master
