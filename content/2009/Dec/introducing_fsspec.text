@@ -1,9 +1,9 @@
 ---
 title: "FsSpec: Introducing yet another Unit Testing/BDD framework for F#"
 published_on: 2009-12-22T22:25
-published: false
+published: true
 categories: ["F#", BDD, Sources]
-keywords: [RSpec, "Unit Tests", FsSpec, FsUnit]
+keywords: [RSpec, "Unit Tests", FsSpec, FsUnit, TDD, FsCheck]
 description: Yet another Unit Testing/BDD framework for F#. Inspired by RSpec syntax.
 ---
 Despite of a fact that we already have [number][1] [of][2] [frameworks][3] for unit testing for F#, let me introduce another one.
