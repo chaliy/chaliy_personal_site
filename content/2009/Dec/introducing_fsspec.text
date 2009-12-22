@@ -4,7 +4,7 @@ published_on: 2009-12-22T22:25
 published: false
 categories: ["F#", BDD, Sources]
 keywords: [RSpec, "Unit Tests", FsSpec, FsUnit]
-description:  
+description: Yet another Unit Testing/BDD framework for F#. Inspired by RSpec syntax.
 ---
 Despite of a fact that we already have [number][1] [of][2] [frameworks][3] for unit testing for F#, let me introduce another one.
 
@@ -33,7 +33,7 @@ Syntax is inspired by [RSpec][4], so specification looks like:
                
     ]
 
-Looks pretty well, isn’t it? Unfortunately, I have number of problems that I have to solve to make this stuff usable. First of all is shared initialization of the specifications. Now you can do this just before specification (describe statement) but this looks bit ugly. Second are assertions. Now they are implemented as extension methods and look less readable than RSpec’s assertions.
+Looks pretty well, isn't it? Unfortunately, I have number of problems that I have to solve to make this stuff usable. First of all is shared initialization of the specifications. Now you can do this just before specification (describe statement) but this looks bit ugly. Second are assertions. Now they are implemented as extension methods and look less readable than RSpec's assertions.
 
 ### Implementation
 
