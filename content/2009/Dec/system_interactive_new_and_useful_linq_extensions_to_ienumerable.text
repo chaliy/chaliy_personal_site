@@ -10,7 +10,7 @@ Few months ago I made [post][1] with comparison of Ruby, Java and C# code to rea
 
 Other languages already have such construct. For example `iter` in functional languages like F# or ForEach for `List<T>` in C# or `each` in ruby. IMHO this construct is really usable.
 
-Anyways, today is good day. Doing fast review of the [Reactive Extensions API][3] I found library **System.Interactive.dll**. The only public class is `EnumerableEx`. And yes, it holds bunch of extension methods for the `IEnumerable`.
+Anyways, today is good day. Doing fast review of the [Reactive Extensions API][3] (abbreviated form is Rx) I found library **System.Interactive.dll**. The only public class is `EnumerableEx`. And yes, it holds bunch of extension methods for the `IEnumerable`.
 
 First extensions that got my attention is **Do** and **Run**. Both invoke `Action<T>` for every single element. `Do` is lazy, while `Run` is not. Code form previous post could be rewritten:
 
@@ -32,9 +32,12 @@ Moving forward. If you need to defer creation of the enumerable, use **Defer**. 
 
 Go ahead, [download][3]  **Reactive Extensions API** and explore this stuff yourself, it really usable! It available for both .NET 3.5 SP1 and .NET 4.0.
 
+BTW, I do not know why this stuff is part of the Rx, it should be Core.
+
 Have a good day!
 
 [1]: http://chaliy.name/blog/2009/9/read_line_in_java_ruby_and_csharp
 [2]: http://ayende.com/Blog/archive/2009/12/24/uberprof-performance-improvements-beware-of-linq-query-evaluation.aspx
 [3]: http://msdn.microsoft.com/en-us/devlabs/ee794896.aspx
 
+*[Rx]: Reactive Extensions
