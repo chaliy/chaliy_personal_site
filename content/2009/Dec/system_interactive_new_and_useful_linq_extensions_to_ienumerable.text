@@ -3,18 +3,21 @@ title: "NET 4.0: New and useful LINQ extensions to the IEnumerable"
 published_on: 2009-12-24T23:55
 published: false
 categories: [".NET"]
-keywords: [“.NET 4.0”, "System.Interactive", “Rx”, “Reactive Framework”]
+keywords: [“.NET 4.0”, "System.Interactive", “Rx”, “Reactive Framework”, LINQ]
 description:  Cool stuff that comes with Reactive Framework API. Hope it really will be part of the .NET 4.0 
 ---
-Few months ago I made [post][1] with comparison of Ruby, Java and C# code to read all lines from text file. That time I have to code `ForEach` extension method for `IEnumerable`.  It allows executing arbitrary code against each element of the sequence. I believe most people already have this method. Other languages already have such construct. For example `iter` in functional languages like `F#` or `ForEach` for `List<T>` in `C#` or `each` in `ruby`.  Really usable stuff.
+Few months ago I made [post][1] with comparison of Ruby, Java and C# code to read all lines from text file. That time I have to code **ForEach** extension method for `IEnumerable<T>`. It allows executing arbitrary code against each element of the sequence. I believe most people already have this method.
 
-Today is good day. Doing fast review of the **[Reactive Extensions API][3]** I found library `System.Interactive.dll`. The only public class is ` EnumerableEx`. And yes, it holds bunch of extension methods for the `IEnumerable`.
+Other languages already have such construct. For example `iter` in functional languages like F# or ForEach for `List<T>` in C# or `each` in ruby. IMHO this construct is really usable.
 
-First extensions that got my attention is **Do** and **Run**. Both invoke Action<T> for each element. `Do` is lazy, `Run` is not. Code form previous post could be rewritten:
+Anyways, today is good day. Doing fast review of the [Reactive Extensions API][3] I found library **System.Interactive.dll**. The only public class is `EnumerableEx`. And yes, it holds bunch of extension methods for the `IEnumerable`.
+
+First extensions that got my attention is **Do** and **Run**. Both invoke `Action<T>` for every single element. `Do` is lazy, while `Run` is not. Code form previous post could be rewritten:
 
     File.ReadLines(inp).Run(Console.WriteLine);
 	
-Another one is ** MemoizeAll**... This is funny because today Oren Eini (Ayende Rahien) found [performance problem with UberProf][2]. His solution to the problem is `ToList()`. `ToList()` converts lazy `IEnumerable<T>` to `List<T>`  effectively break laziness. ** MemoizeAll** is another and probably better solution for the problem.  It caches results of previous execution but works in lazy way. So his code will look like this:
+
+Another one is **MemoizeAll**. This is funny because today, Oren Eini (Ayende Rahien) found [performance problem with UberProf][2]. His solution to the problem is `ToList()`. `ToList()` converts lazy `IEnumerable<T>` to `List<T>`  effectively break laziness. **MemoizeAll** is another and probably better solution for the problem.  It caches results of previous execution but works in lazy way. So his code will look like this:
 
     var statements = session.Statements.Where(x => filter(x)). MemoizeAll ();
     return new SessionStatistics
@@ -23,11 +26,13 @@ Another one is ** MemoizeAll**... This is funny because today Oren Eini (Ayende 
         NumberOfCashedStatments = statements.Count(….);
     }
 	
-This will execute `Where` exactly once, but in contrast to original code it will do this in lazy way (in this case in constructor of the ‘SessionStatistics’).
+This will execute `Where` statment exactly once. In contrast to original code it will do this in lazy way (in this case in constructor of the `SessionStatistics`).
 
-Moving forward. If you need to defer creation of the enumerable, use **Defer**.  If you need execute some stuff at the end of the sequence, use **Finally**.  If you need repeat your sequence, use the obvious **Repeat**. What about prepending elements to the sequence? Use **StartsWith**. And this is not the complete list.
+Moving forward. If you need to defer creation of the enumerable, use **Defer**.  If you need execute some stuff at the end of the sequence, use **Finally**.  If you need repeat your sequence, use the obvious **Repeat**. What about prepending elements to the sequence? Use **StartsWith**. And this is not the complete list. It has about two dozens of extensions.
 
 Go ahead, [download][3]  **Reactive Extensions API** and explore this stuff yourself, it really usable! It available for both .NET 3.5 SP1 and .NET 4.0.
+
+Have a good day!
 
 [1]: http://chaliy.name/blog/2009/9/read_line_in_java_ruby_and_csharp
 [2]: http://ayende.com/Blog/archive/2009/12/24/uberprof-performance-improvements-beware-of-linq-query-evaluation.aspx
