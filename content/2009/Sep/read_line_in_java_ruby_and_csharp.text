@@ -4,7 +4,10 @@ published_on: 2009-09-07T00:11
 published: true
 categories: [C#, Ruby, Java, Funny]
 description: Compare how to read all lines of the text file with Ruby, Java and C#.
+last_updated_on: 2009-12-24T22:46
 ---
+**UPDATE:** As of Dec 2009 C# provides analog of the ForEach method out of the box, you can read more [here][3]. 
+
 [Yehuda Katz][2], in his post "[My 10 Favorite Things About the Ruby Language][1]", provides example of the reading all lines of the file, with `Java` and `Ruby`.
 
 Java is a bit wordy:
@@ -64,9 +67,16 @@ And then rewrite results:
   
 BTW, in contrast to first C# example, second one will read lines one by one.
 
+UPDATE: As of Dec 2009 C# provides analog of the ForEach method out of the box, you can read more [here][3]. So code could be rewritten in this way:
+
+	static void Run(string inp){
+		File.ReadLines(inp).Run(Console.WriteLine);
+	}
+
 Have a nice day!
 
 P.S. I am not quite sure, that provided is the best solutions in Java and Ruby. The purpose of this post is to illustrate C# abilities, not to find disabilities of others.
 
 [1]: http://yehudakatz.com/2009/08/24/my-10-favorite-things-about-the-ruby-language/
 [2]: http://yehudakatz.com/
+[3]: http://chaliy.name/blog/2009/12/system_interactive_new_and_useful_linq_extensions_to_ienumerable
