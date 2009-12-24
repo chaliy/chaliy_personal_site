@@ -28,7 +28,7 @@ Another one is **MemoizeAll**. This is funny because today, Oren Eini (Ayende Ra
 	
 This will execute `Where` statment exactly once. In contrast to original code it will do this in lazy way (in this case in constructor of the `SessionStatistics`).
 
-Moving forward. If you need to defer creation of the enumerable, use **Defer**.  If you need execute some stuff at the end of the sequence, use **Finally**.  If you need repeat your sequence, use the obvious **Repeat**. What about prepending elements to the sequence? Use **StartsWith**. And this is not the complete list. It has about two dozens of extensions.
+Moving forward. If you need to defer creation of the enumerable, use **Defer**.  If you need execute some stuff at the end of the sequence, use **Finally**.  If you need repeat your sequence, use the obvious **Repeat**. What about prepending elements to the sequence? Use **StartsWith**. And this is not the complete list. It has about two dozens of extensions. You can visit [unofficial wiki][4] with list of this methods.
 
 Go ahead, [download][3]  **Reactive Extensions API** and explore this stuff yourself, it really usable! It available for both .NET 3.5 SP1 and .NET 4.0.
 
@@ -39,5 +39,6 @@ Have a good day!
 [1]: http://chaliy.name/blog/2009/9/read_line_in_java_ruby_and_csharp
 [2]: http://ayende.com/Blog/archive/2009/12/24/uberprof-performance-improvements-beware-of-linq-query-evaluation.aspx
 [3]: http://msdn.microsoft.com/en-us/devlabs/ee794896.aspx
+[4]: http://rxwiki.wikidot.com/enumerable-operators
 
 *[Rx]: Reactive Extensions
