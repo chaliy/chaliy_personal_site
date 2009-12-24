@@ -1,7 +1,7 @@
 ---
 title: "NET 4.0: New and useful LINQ extensions to the IEnumerable"
 published_on: 2009-12-24T23:55
-published: false
+published: true
 categories: [".NET"]
 keywords: [“.NET 4.0”, "System.Interactive", “Rx”, “Reactive Framework”, LINQ]
 description:  Cool stuff that comes with Reactive Framework API. Hope it really will be part of the .NET 4.0 
