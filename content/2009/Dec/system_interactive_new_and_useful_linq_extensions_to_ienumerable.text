@@ -17,9 +17,9 @@ First extensions that got my attention is **Do** and **Run**. Both invoke `Actio
     File.ReadLines(inp).Run(Console.WriteLine);
 	
 
-Another one is **MemoizeAll**. This is funny because today, Oren Eini (Ayende Rahien) found [performance problem with UberProf][2]. His solution to the problem is `ToList()`. `ToList()` converts lazy `IEnumerable<T>` to `List<T>`  effectively break laziness. **MemoizeAll** is another and probably better solution for the problem.  It caches results of previous execution but works in lazy way. So his code will look like this:
+Another one is **MemorizeAll**. This is funny because today, Oren Eini (Ayende Rahien) found [performance problem with UberProf][2]. His solution to the problem is `ToList()`. `ToList()` converts lazy `IEnumerable<T>` to `List<T>`  effectively break laziness. **MemorizeAll** is another and probably better solution for the problem.  It caches results of previous execution but works in lazy way. So his code will look like this:
 
-    var statements = session.Statements.Where(x => filter(x)).MemoizeAll();
+    var statements = session.Statements.Where(x => filter(x)).MemorizeAll();
     return new SessionStatistics
     {
         NumberOfStatments = statements.Count(....);
