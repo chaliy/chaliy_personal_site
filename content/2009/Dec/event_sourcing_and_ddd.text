@@ -3,20 +3,20 @@ title: Does Event Sourcing works with DDD? And if not what is the solution?
 published_on: 2009-12-27T21:15
 published: false
 categories: [DDD]
-keywords: [CQRS, "Rich Model"]
+keywords: [CQRS, "Rich Model", "Event Sourcing"]
 description: Kind of yet another technic to organize business logic.
 ---
-This post is inspired by [CQRS a la Greg Young][2]. I do not think that this is answer to Mark’s post. Rather this is kind of thoughts on the topic. To be kind, I have no technical prove for anything I write below. So your comments are welcome.
+This post is inspired by [CQRS a la Greg Young][2]. I do not think that this is answer to Mark's post. Rather this is kind of thoughts on the topic. To be kind, I have no technical prove for anything I write below. So your comments are welcome.
 
 ### Problem
 
 The reason I love DDD is because it _natural_. Yes, you make class Person and add behavior to it. And this works. You know this. During one of the E-VAN, Mark did a great presentation of the CQRS. What was even more interesting is integration of the Event Sourcing pattern to the whole picture. BTW I am not even sure that CQRS was the central pattern of this talk. The whole design of his domain model is driven by Event Sourcing pattern. This is actually what I want to discuss.
 
-What brought my attention are too many lines of plumbing code. In contrast to classical DDD, Mark’s Root Aggregate overloaded with infrastructure concerns. No one can read this code easily. Now you cannot read behavior of the entity as plain text. Aggregate Root is not modeling concept any longer. It just a container with state required for logic and some logic… And really I do not like this.
+What brought my attention are too many lines of plumbing code. In contrast to classical DDD, Mark's Root Aggregate overloaded with infrastructure concerns. No one can read this code easily. Now you cannot read behavior of the entity as plain text. Aggregate Root is not modeling concept any longer. It just a container with state required for logic and some logic... And really I do not like this.
 
 One of the legal opinions is:
 
->> ... I think it only illustrates a boundaries of selected platform/language …  [says legigor][1].
+> ... I think it only illustrates a boundaries of selected platform/language ...  [says legigor][1].
 
 Igor thinks that in future we will have kind of technical solution that will reduce verbosity.  I cannot agree more, but even with this in mind I am not sure that Event Sourcing is compatible with Rich Models.
 
@@ -24,7 +24,7 @@ What is the key feature of the DDD? I think it all about mixing state and behavi
 
 ### Solution?
 
-Let’s think about responsibilities of the Mark’s Root Aggregate. First of all it should keep state of the aggregate. Second is, of course, business logic. And third is handling Events (leaked infrastructure concern, btw). For me this is violation of the SRP. What about separate all this stuff? 
+Let's think about responsibilities of the Mark's Root Aggregate. First of all it should keep state of the aggregate. Second is, of course, business logic. And third is handling Events (leaked infrastructure concern, btw). For me this is violation of the SRP. What about separate all this stuff? 
 
 First of all let me extract Withdrawl method from ActiveAccount to another class WithdrawalCashBehaviour. 
 
