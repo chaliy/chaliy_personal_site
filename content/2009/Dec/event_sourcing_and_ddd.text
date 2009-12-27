@@ -37,7 +37,8 @@ First of all let me extract Withdrawl method from ActiveAccount to another class
         {                
             // Guard
             if (Account.IsClosed) throw new ApplicationException("Account is closed...");
-            if (Account.Balance.WithdrawlWillResultInNegativeBalance(AmountToWithdrawal)) throw new ApplicationException("Not enuogh money...");
+            if (Account.Balance.WithdrawlWillResultInNegativeBalance(AmountToWithdrawal))
+				throw new ApplicationException("Not enuogh money...");
 			
             var newBalance = Account.Balance.Withdrawl(AmountToWithdrawal);
 
