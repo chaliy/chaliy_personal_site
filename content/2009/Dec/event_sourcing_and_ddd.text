@@ -1,7 +1,7 @@
 ---
 title: Does Event Sourcing works with DDD?
 published_on: 2009-12-27T21:15
-published: false
+published: true
 categories: [DDD]
 keywords: [CQRS, "Rich Model", "Event Sourcing"]
 description: Kind of yet another technic to organize business logic.
