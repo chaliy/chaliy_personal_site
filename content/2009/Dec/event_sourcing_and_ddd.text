@@ -1,0 +1,62 @@
+---
+title: Does Event Sourcing works with DDD? And if not what is the solution?
+published_on: 2009-12-27T21:15
+published: false
+categories: [DDD]
+keywords: [CQRS, "Rich Model"]
+description: Kind of yet another technic to organize business logic.
+---
+This post is inspired by [CQRS a la Greg Young][2]. I do not think that this is answer to Mark’s post. Rather this is kind of thoughts on the topic. To be kind, I have no technical prove for anything I write below. So your comments are welcome.
+
+### Problem
+
+The reason I love DDD is because it _natural_. Yes, you make class Person and add behavior to it. And this works. You know this. During one of the E-VAN, Mark did a great presentation of the CQRS. What was even more interesting is integration of the Event Sourcing pattern to the whole picture. BTW I am not even sure that CQRS was the central pattern of this talk. The whole design of his domain model is driven by Event Sourcing pattern. This is actually what I want to discuss.
+
+What brought my attention are too many lines of plumbing code. In contrast to classical DDD, Mark’s Root Aggregate overloaded with infrastructure concerns. No one can read this code easily. Now you cannot read behavior of the entity as plain text. Aggregate Root is not modeling concept any longer. It just a container with state required for logic and some logic… And really I do not like this.
+
+One of the legal opinions is:
+
+>> ... I think it only illustrates a boundaries of selected platform/language …  [says legigor][1].
+
+Igor thinks that in future we will have kind of technical solution that will reduce verbosity.  I cannot agree more, but even with this in mind I am not sure that Event Sourcing is compatible with Rich Models.
+
+What is the key feature of the DDD? I think it all about mixing state and behavior in one object. What about Event Sourcing? Event Sourcing in contrast is about splitting state changes, state and as result behavior. So why put all of them to the single class? Because DDD says so? I am fail see another point.
+
+### Solution?
+
+Let’s think about responsibilities of the Mark’s Root Aggregate. First of all it should keep state of the aggregate. Second is, of course, business logic. And third is handling Events (leaked infrastructure concern, btw). For me this is violation of the SRP. What about separate all this stuff? 
+
+First of all let me extract Withdrawl method from ActiveAccount to another class WithdrawalCashBehaviour. 
+
+	public class WithdrawalCashBehaviour
+    {
+        public Amount AmountToWithdrawal { get; set; }
+        public ActiveAccountSnapshot Account { get; set; }        
+
+        public IEnumerable<IEvent> Execute()
+        {                
+            // Guard
+            if (Account.IsClosed) throw new ApplicationException("Account is closed...");
+            if (Account.Balance.WithdrawlWillResultInNegativeBalance(AmountToWithdrawal)) throw new ApplicationException("Not enuogh money...");
+			
+            var newBalance = Account.Balance.Withdrawl(AmountToWithdrawal);
+
+            yield return new CashWithdrawnEvent(newBalance, AmountToWithdrawal);
+        }
+    }
+	
+Of course, logic requires state. So we move it all together. Interesting outcome. We do not need mutable state any longer. So it was replaced with ActiveAccountSnapshot. Another change is that Execute() returns Events, instead of raising them.... I do not like this non-business concern in code, but even more I dislike raising global events...
+
+Now ActiveAccount (Root Aggregate) does not have state. So we will drop all related code. The rest is bunch of methods that will create Behaviours and execute them. So the responsibility of the ActiveAccount is to be proxy between command handlers and behaviors... Looks quite stupid. I am ready to drop ActiveAccount.
+
+So now my domain model looks like... a bunch of the behaviors and read-only representation of this model. Represenatation model, for example, could be generated from View Database.
+
+Well, I am not quite sure that this is best solution, but it looks less cluttered compared to Mark's, and I hope that did not lost functionality from original solution.
+
+Enjoy!
+
+[1]: http://twitter.com/legigor/status/5838478386
+[2]: http://blog.fohjin.com/blog/2009/11/12/CQRS_a_la_Greg_Young
+*[DDD]: Domain-Driven Design
+*[CQRS]: Command and Query Responsibility Segregation
+*[SRP]: Single Responsibility Principle
