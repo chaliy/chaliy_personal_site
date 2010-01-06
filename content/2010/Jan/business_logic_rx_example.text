@@ -6,11 +6,11 @@ categories: [DDD, Rx]
 keywords: ["Reactive Extensions API", "Domain Events", Example]
 description: Example Domain Events implementation with Reactive Extensions. Probably first example of the server side business logic with Rx :).
 ---
-About two weeks ago, I started exploring Reactive Extensions API. Should say, it looks very promising. I [found][1] [dozens][2] [of][3] [examples][4]. All this examples gives understanding what Rx is and how to use it. This is really cool. But this does not answer the question - what problems Rx is intended to solve. This post is one of the possible answers.
+About two weeks ago, I started exploring [Reactive Extensions API][8]. Should say, it looks very promising. I [found][1] [dozens][2] [of][3] [examples][4]. All this examples gives understanding what Rx is and how to use it. This is really cool. But this does not answer the question - what problems Rx is intended to solve. This post is one of the possible answers.
 
 ### Example Bank Account Model
 
-First that comes in mind is Event Driven Business Logic. In DDD word this approach sometimes referred as Domain Events. Good explanation could be found in ["How to create fully encapsulated Domain Models"][5] and implementation in ["Domain Events – Take 2"][6]. 
+First that comes in mind is Event Driven Business Logic. In DDD word this approach sometimes referred as Domain Events. Good explanation could be found in ["How to create fully encapsulated Domain Models"][5] and implementation in ["Domain Events - Take 2"][6]. 
 
 To illustrate this stuff, I will use Bank Account model with SendManeyTo workflow. Look at the code bellow. It should look familiar.
 
@@ -96,7 +96,7 @@ Next peace of code we need is to handle money trnasfer. Let me write MoneyTransf
 		// This is primmary place for the logic
         public void OnNext(TransferMoney value)
         {
-			// Let’s get target account
+			// Let's get target account
             var target = _repository.GetAccount(value.TargetAccountNumber);
 			
 			// and make it aware about transfer from source account
@@ -116,7 +116,7 @@ And register it:
 
 	Account.TransferMoney.Subscribe(new TransferMoneyObserver(repository));
 	
-That’s it. What is more interesting is that this stuff opens endless abilities. For example, we can log every transfer to the console.
+That's it. What is more interesting is that this stuff opens endless abilities. For example, we can log every transfer to the console.
 
 	Account.TransferMoney
 		 .Subscribe(t => Console.WriteLine("Log transfer of {0:c} bucks.", t.Amount));
@@ -144,6 +144,8 @@ Enjoy.
 [6]: http://www.udidahan.com/2008/08/25/domain-events-take-2/
 
 [7]: http://github.com/chaliy/rx_domain_events
+
+[8]: http://msdn.microsoft.com/en-us/devlabs/ee794896.aspx
 
 *[Rx]: Reactive Extensions
 *[DDD]: Domain-Driven Design
