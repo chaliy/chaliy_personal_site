@@ -1,7 +1,7 @@
 ---
 title: "Reactive Extensions API: Domain Events Example"
 published_on: 2010-01-06T17:15
-published: false
+published: true
 categories: [DDD, Rx]
 keywords: ["Reactive Extensions API", "Domain Events", Example]
 description: Example Domain Events implementation with Reactive Extensions. Probably first example of the server side business logic with Rx :).
