@@ -1,0 +1,9 @@
+---
+title: Live without mocks
+published_on: 2010-01-01T00:01
+published: false
+categories: ["Entity Framework", LINQ]
+keywords: []
+description: How to mock IQueriable<T>? How to mock LINQ to SQL? How to mock Entity Framework Context? How to mock WCF Service? How to mock this thing? And eventually how to mock that thing? The answer. 
+---
+How to mock IQueriable<T>? How to mock LINQ to SQL? How to mock Entity Framework Context? How to mock WCF Service? How to mock this thing? And eventually how to mock that thing? 

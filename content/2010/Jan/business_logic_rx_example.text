@@ -1,0 +1,149 @@
+---
+title: "Reactive Extensions API: Domain Events Example"
+published_on: 2010-01-06T17:15
+published: false
+categories: [DDD, Rx]
+keywords: ["Reactive Extensions API", "Domain Events", Example]
+description: Example Domain Events implementation with Reactive Extensions. Probably first example of the server side business logic with Rx :).
+---
+About two weeks ago, I started exploring Reactive Extensions API. Should say, it looks very promising. I [found][1] [dozens][2] [of][3] [examples][4]. All this examples gives understanding what Rx is and how to use it. This is really cool. But this does not answer the question - what problems Rx is intended to solve. This post is one of the possible answers.
+
+### Example Bank Account Model
+
+First that comes in mind is Event Driven Business Logic. In DDD word this approach sometimes referred as Domain Events. Good explanation could be found in ["How to create fully encapsulated Domain Models"][5] and implementation in ["Domain Events – Take 2"][6]. 
+
+To illustrate this stuff, I will use Bank Account model with SendManeyTo workflow. Look at the code bellow. It should look familiar.
+
+	public class  Account{
+	  
+		public string Number { get; internal set;  }   
+		public decimal CurrentBalance { get; internal set; }			
+		
+		public void SendTransferTo(string targetAccountNumber, decimal amount) {                
+			//  Withdrawal from this account balance
+			CurrentBalance -= amount;
+			
+			// And deposit target account
+			DepositeTargetAccount();
+		}
+	}
+
+	// Usage
+	var account = new Account("Test");
+    account.SendTransferTo(targetAccountNumber, 25.0m);
+	
+Most interesting stuff here is DepositeTargetAccount method. It should make target Account aware about money transfer. How we will do this in real life? Just send a message. So let implement this.
+
+### Making Account Observable
+
+First of all I need TransferMoney Observable, later target account will be observe it. Moreover, I need message TransferMoney to hold required information. And at the end DepositeTargetAccount should send TransferMoney message. Easy.
+
+	// Message to transfer money
+	public class TransferMoney
+	{
+		public decimal Amount { get; set; }
+		public string TargetAccountNumber { get; set; }
+		public string SourceAccountNumber { get; set; }
+	}
+
+	public class  Account{
+		
+		// Observables
+		
+		// Back-end field, it will store instance 
+		// of the observale implementation.
+		internal static readonly Subject<TransferMoney> TransferMoneySubj
+            = new Subject<TransferMoney>();
+			
+		// Public visible Observable, so anybody can subscribe
+        public static IObservable<TransferMoney> TransferMoney
+        {
+            get { return TransferMoneySubj.Hide(); }
+        }
+	  
+		public string Number { get; internal set;  }   
+		public decimal CurrentBalance { get; internal set; }
+		
+		public void SendTransferTo(string targetAccountNumber, decimal amount) {                
+			//  Withdrawal from this account balance
+			CurrentBalance -= amount;
+			
+			// Send money transfer message
+			TransferMoneySubj.OnNext(new TransferMoney
+			{
+				Amount = amount,
+				SourceAccountNumber = _number,
+				TargetAccountNumber = targetAccountNumber
+			});
+		}
+	}
+
+You may notice that TransferMoney is static. This reflects fact that I need to handle transfers from/to all Accounts. 
+
+### Observing TransferMoney
+
+Next peace of code we need is to handle money trnasfer. Let me write MoneyTransferObserver.
+
+	public class TransferMoneyObserver : IObserver<TransferMoney>
+    {
+        private readonly AccountRepository _repository;
+
+        public TransferMoneyObserver(AccountRepository repository)
+        {
+            _repository = repository;
+        }
+		
+		// This is primmary place for the logic
+        public void OnNext(TransferMoney value)
+        {
+			// Let’s get target account
+            var target = _repository.GetAccount(value.TargetAccountNumber);
+			
+			// and make it aware about transfer from source account
+            target.ReceiveTransferFrom(value.SourceAccountNumber, value.Amount);
+        }
+
+        public void OnError(Exception error)
+        {            
+        }
+
+        public void OnCompleted()
+        {
+        }
+    }
+
+And register it:
+
+	Account.TransferMoney.Subscribe(new TransferMoneyObserver(repository));
+	
+That’s it. What is more interesting is that this stuff opens endless abilities. For example, we can log every transfer to the console.
+
+	Account.TransferMoney
+		 .Subscribe(t => Console.WriteLine("Log transfer of {0:c} bucks.", t.Amount));
+
+Or notify manager about all noticeable transfers.
+	
+	Account.TransferMoney
+		.Where(_ => _.Amount > 100.0m)
+		.Subscribe(_ => SendMessageToManager());
+		
+It is easy implement compensation logic. For example, target account can prohibit transfer. What it need is just send appropriate message. Source account will handle it, and undo withdrawal. We can filter events; aggregate them; everything we can do with data, now possible with events.
+
+### At the end
+
+I hate stuff that I cannot try. So most of my posts are illustrated with compliable examples. This post is not an exception. GitGub home page - [here][7].
+
+Enjoy.
+
+[1]: http://rxwiki.wikidot.com/
+[2]: http://channel9.msdn.com/tags/Reactive+Extensions/
+[3]: http://blogs.msdn.com/somasegar/archive/2009/11/18/reactive-extensions-for-net-rx.aspx
+[4]: http://codebetter.com/blogs/matthew.podwysocki/archive/2009/11/25/going-interactive-with-the-reactive-extensions.aspx
+
+[5]: http://www.udidahan.com/2008/02/29/how-to-create-fully-encapsulated-domain-models/
+[6]: http://www.udidahan.com/2008/08/25/domain-events-take-2/
+
+[7]: http://github.com/chaliy/rx_domain_events
+
+*[Rx]: Reactive Extensions
+*[DDD]: Domain-Driven Design
