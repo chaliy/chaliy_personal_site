@@ -15,7 +15,7 @@ Project Name | Description   | Availability
 -------------|---------------|----------
 XML Updatable Data Source| As per name this is implementation of the ASP.NET [IDataSource][7] similar to [XmlDataSource][6], but with editing compatibles. | Source code
 SQL Hierarchical DataSource | Custom implementation of the ASP.NET [IHierarchicalDataSource][8] for any ADO.NET Provider (SQL, Oracle, OleDb, ODBC) | Source code
-Rebar ToolStrip Renderer | Custom renderer for standard .NET [Toolbar(ToolStrip)][9]. Renders toolbar similar to IE6. Uses themes API. | Source Code
+Rebar ToolStrip Renderer | Custom renderer for standard .NET [Toolbar(ToolStrip)][9]. Renders toolbar similar to IE6. Uses themes API. | [GitHub][10]
 VS2005 ToolStrip Renderer  | Custom renderer for standard .NET [Toolbar(ToolStrip)][9]. Renders toolbar similar to Visual Studio 2005. | Source Code
 Google Sitemap | The HttpHandler to render standard [sitemap][5], based on data from ASP.NET Sitemap. | Source Code
 XML Membership Provider | Read-only Roles/Membership provider for XML data. | Source Code
@@ -34,3 +34,4 @@ Syndication Extensions | Implementation of the [Media RSS Module][3]. | [Codeple
 [7]: http://msdn.microsoft.com/en-us/library/system.web.ui.idatasource.aspx
 [8]: http://msdn.microsoft.com/en-us/library/system.web.ui.ihierarchicaldatasource.aspx
 [9]: http://msdn.microsoft.com/en-us/library/system.windows.forms.toolstrip.aspx
+[10]: http://github.com/chaliy/rebar_renderer
