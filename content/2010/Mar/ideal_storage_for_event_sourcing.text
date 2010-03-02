@@ -6,9 +6,9 @@ categories: ["Event Sourcing"]
 keywords: ["Document oriented database", "Database", "Storage", "MapReduce", "MongoDB", "CouchDB"]
 description: "Some subjective thoughts about potential storage dedicated for Event Sourcing."
 ---
-We are investigating [Event Sourcing][3]. Idea is pretty straightforward, I will not even bother to describe it.
+We are investigating [Event Sourcing][3]. Idea is pretty straightforward, I will not even bother to describe it. What is more interesting is storage for this kind of architecture. Below is my vision on ideal Storage for Event Sourcing.
 
-What is more interesting is storage for this kind of architecture. Below is my vision on ideal Storage for Event Sourcing.
+![Do not warry if this break does not look like an Event Sourcing](http://chaliy.name/files/ideal_storage_for_event_sourcing/lego_brick.jpg)
 
 ### Storage for Events
 
