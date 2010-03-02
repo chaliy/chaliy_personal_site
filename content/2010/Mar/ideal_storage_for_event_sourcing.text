@@ -1,0 +1,88 @@
+---
+title: Ideal Storage for Event Sourcing
+published_on: 2010-03-02T21:15
+published: false
+categories: ["Event Sourcing"]
+keywords: ["Document oriented database", "Database", "Storage", "MapReduce", "MongoDB", "CouchDB"]
+description: "Some subjective thoughts about potential storage dedicated for Event Sourcing."
+---
+We are investigating [Event Sourcing][3]. Idea is pretty straightforward, I will not even bother to describe it.
+
+What is more interesting is storage for this kind of architecture. Below is my vision on ideal Storage for Event Sourcing.
+
+### Storage for Events
+
+First of all we need storage for events.  I am thinking about some kind of document or object oriented database. It should satisfy few requirements. Let’s discuss them:
+
+**It should to be schema less**. Because events will be of different types and will keep different kind of data. For example:
+
+	// OrderPosted with order details
+	type OrderPosted = {
+        Details : OrderDetails
+    }
+
+	// OrderPaid with paid amount
+    type OrderPaid = {
+        Order : OrderRef
+        PaidDate : Date
+        Amount : Amount
+    }
+
+	// InventoryMoved with quantity moved
+    type InventoryMoved = {
+        Inventory : InventoryRef
+        Qty : Quantity
+    }
+  
+**It should not have size restriction**. Because this storage must keep all events, I am concerned about running out of the space too fast.
+
+**No query abilities required**. This can look strange for first time, but this is true. Storage does not need one. Main reason is fact that this is probably not so good idea to query millions of the events to get total of the order. Later I will describe this more.
+
+**No long running transactions**. Nature of the events is just *fire-and-forget*, the boundary of typical Event Sourcing transaction is actually *fire-save-return*.
+
+### Querying
+
+Suppose we have bunch of events. How to query exactly what we need? Of course, you can query them as is. However, I can guess this will not be so funny to query 2 millions of events to get monthly report. 
+
+Well, solution here is de-normalization of the events. An idea is simple. Application fires event, storage saves it and *then something takes data from it and insert (de-normalize) to one or more tables (after here views)* and at the end you have raw data ready for query.
+
+With this design, you will end with Event Storage and views with data prepared for querying. This is good for example for modern CQRS move, where you can have view dedicated for a single screen.
+
+So first is requirements are about processing events:
+
+**It should automate building views**. I am thinking about single method that will take raw events and change some data in views. This functionality is very similar to map/reduce capabilities of the document-oriented databases like [MongoDB][1] or [CouchDB][2]. Unfortunately, in most cases map/reduce requires complete set of data and I am not sure how this will play with few millions of events. So at the end, simple method is enough:
+
+    let monthlyPaidReport2 = function                         
+          // if order paid push total
+          | :? OrderPaid as x -> push (month x.PaidDate, x.Total)
+          // if revoked push negative total
+          | :? OrderRevoked as x -> push (month x.PaidDate, -x.Total)
+          | _ -> ()
+		  
+**It should be reliable**. There are many problems that could prevent reliable event processing. Unplugged powercord is among them :). De-normalization means changes to the state and thus it lacks idempotency. In most cases, storage will need to reprocess all events to get right state. I believe storage should keep this in mind.
+
+**It should be fast**. In most cases users expect to see results exactly after command issued. Of course, sometimes it technically impossible but at least I do not want my storage to be root cause of this lags.
+
+**It should be typed**. This item is bit arguable, but when de-normalization is one of the key stuff in application, I would like to protect myself as much as I can. And typed event handlers are good candidate.
+
+**It should be extensible** This will be nightmare to implement audit with map reduce. Just imagine every handler need to store audit data. Terrible. One the other hand if storage will allow injection of the post/pre handlers it changes picture completely.
+
+**It should automatically update related data** For example, let's take Order List with Customer Name among other columns. There are at least two solutions. First is traditional JOIN. But this means that storage should support them. Another is to also handle events that change customer's name. But probably better if storage will support this natively, because this operation really frequent.
+
+After events have been processed, views should be stored somewhere. Few requirements here:
+
+**Should publish views**, data is ready to be published. I think storage can take this responsibility. At the mean time CouchDB already publish its collections with REST interface. In most cases, this is enough. Another good example is WCF Data Services especially with custom metadata provider.
+
+**Should support reach querying**. Users will filter, sort, and search though all the data. There bunch of options here. For example SQL or map/reduce or even custom constraints language. Of course, this should be fast.
+
+Ok, for it's enough requirements. Let's move forward.
+
+### Answer?
+
+Well, I do not have answer for the moment. We still investigate. On this week, I will try to prototype infrastructure for event handlers. Anyway looks interesting, isn't it? Stay tuned.
+
+[1]: http://www.mongodb.org/display/DOCS/MapReduce
+[2]: http://wiki.apache.org/couchdb/Introduction_to_CouchDB_views
+[3]: http://www.udidahan.com/2009/12/09/clarified-cqrs/
+
+*[REST]: Representational State Transfer

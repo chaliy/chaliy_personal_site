@@ -1,0 +1,6 @@
+---
+title: ASP.NET does not cache CSS on the client
+published: false
+published_on: 2010-02-26T12:10
+---
+Yes this is true. To fix, modify web.config.
