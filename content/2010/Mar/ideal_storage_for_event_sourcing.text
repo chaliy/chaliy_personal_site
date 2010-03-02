@@ -1,9 +1,9 @@
 ---
 title: Ideal Storage for Event Sourcing
 published_on: 2010-03-02T21:15
-published: false
-categories: ["Event Sourcing"]
-keywords: ["Document oriented database", "Database", "Storage", "MapReduce", "MongoDB", "CouchDB"]
+published: true
+categories: ["Event Sourcing", "Database"]
+keywords: ["Document oriented database", "Database", "Storage", "MapReduce", "MongoDB", "CouchDB", NOSQL]
 description: "Some subjective thoughts about potential storage dedicated for Event Sourcing."
 ---
 We are investigating [Event Sourcing][3]. Idea is pretty straightforward, I will not even bother to describe it. What is more interesting is storage for this kind of architecture. Below is my vision on ideal Storage for Event Sourcing.
