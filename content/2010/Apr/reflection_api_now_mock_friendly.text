@@ -9,7 +9,7 @@ description: Overview of the mocking in System.Reflection API. Some good changes
 
 ![Do not worry if this break does not look like an Reflection API](http://chaliy.name/files/reflection_api_now_mock_friendly/reflection_api_block.jpg)
 
-While testing my [db_move_forward][1] I realized that now you can completely mock [`Assembly`][2] class. Starting from .NET 4.0 most of the stuff is protected and virtual! For example, code below will create assembly representation with types supplied in argument `tt`.
+While testing my [db_move_forward][1] I realized that now you can completely mock [`Assembly`][2] class. Starting from .NET 4.0 most of the stuff is protected and virtual! For example, code below will create assembly representation with types supplied in argument `tt`. But as you may expect you can override virtually everything else. For example, assembly level attributes, resources, referenced assemblies. You name them :).
 
 	let createAssembly (tt : Type seq) =
         { new Assembly() with
@@ -24,7 +24,7 @@ And C# version is:
 		}
 	}
 
-As you may expect you can override virtually everything else. For example, assembly level attributes, resources, referenced assemblies. You name them :). Nice feature if you have to test stuff that needs some specific assembly configuration. Isn't it? Of course, `Assembly` is not the only member of Reflection API. Next candidate to be mocked is [`Type`][3] class. Well, nothing new here. But do not worry. Actually, `Type` class was extensible before .NET 4.0. I found `TypeDelegator` class to be the best for mocking. It implements all stuff by default. Code bellow is example of custom 'Type' implementation that overrides Name property.
+Nice feature if you have to test stuff that needs some specific assembly configuration. Isn't it? Of course, `Assembly` is not the only member of Reflection API. Next candidate to be mocked is [`Type`][3] class. Well, nothing new here. But do not worry. Actually, `Type` class was extensible before .NET 4.0. I found `TypeDelegator` class to be the best for mocking. It implements all stuff by default. Code bellow is example of custom 'Type' implementation that overrides Name property.
 
 	let createType name =
 		{ new TypeDelegator(typeof<string>) with
@@ -55,6 +55,8 @@ Next candidate is [`MemberInfo`][4] and Co. Actually, situation is the same as w
 As for me it less usable... bull well, this is better than nothing :).
 
 Enjoy.
+
+P.S. What do you think about F# examples? Actual code has been written with F#, but I am concerned about readability or even more understability. Let me know.
 
 [1]: http://github.com/chaliy/db_move_forward
 [2]: http://msdn.microsoft.com/en-us/library/system.reflection.assembly.aspx
