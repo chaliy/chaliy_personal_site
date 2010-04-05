@@ -7,9 +7,9 @@ keywords: ["F#", System.Reflcetion, ".NET 4.0", Assembly, Type, ProeprtyInfo]
 description: Overview of the mocking in System.Reflection API. Some good changes in .NET 4.0
 ---
 
-![Do not worry if this break does not look like an Reflection API](http://chaliy.name/files/reflection_api_now_mock_friendly/reflection_api_block.png)
+![Do not worry if this break does not look like an Reflection API](http://chaliy.name/files/reflection_api_now_mock_friendly/reflection_api_block.jpg)
 
-While testing my [db_move_forward][1] I realized that now you can completely mock [`Assembly`][2] class. Starting from .NET 4.0 most of the stuff is protected and virtual! For example, code below will create assembly with types supplied in argument `tt`.
+While testing my [db_move_forward][1] I realized that now you can completely mock [`Assembly`][2] class. Starting from .NET 4.0 most of the stuff is protected and virtual! For example, code below will create assembly representation with types supplied in argument `tt`.
 
 	let createAssembly (tt : Type seq) =
         { new Assembly() with
