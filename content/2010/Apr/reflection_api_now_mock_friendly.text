@@ -1,7 +1,7 @@
 ---
 title: "Mock friendly System.Reflection API, positive changes in .NET 4.0"
-published_on: 2010-04-05T17:15
-published: false
+published_on: 2010-04-05T19:01
+published: true
 categories: [".NET"]
 keywords: ["F#", System.Reflcetion, ".NET 4.0", Assembly, Type, ProeprtyInfo]
 description: Overview of the mocking in System.Reflection API. Some good changes in .NET 4.0
