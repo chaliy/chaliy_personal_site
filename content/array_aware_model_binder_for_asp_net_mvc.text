@@ -1,0 +1,42 @@
+---
+title: Array aware model binder for ASP.NET MVC
+published_on: 2010-03-02T21:15
+published: false
+categories: []
+keywords: []
+description: ""
+---
+What do expect from this ASP.NET MVC action method, especially from argument `ids`:
+
+    public ActionResult Print(Guid[] ids){		
+	    this.View(ids);
+	}
+	
+I expect array of identifiers. Do you expect that ids can be `null` then? But it can! For some reasons default model binder desides to send null instead of empty array! For me this behaviour was quite surpriseing.
+
+### Solution
+
+Solution is simple. Custom model binder should resolve all problems. Unfortunatelly not this time. Custom model binders are registerd per type. So the only solution I found to the time is inherit DefaultModelBinder and override `object BindModel(...)` for all arryas and fallback to base for everything else. Something like this:
+
+	public override object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
+	{
+		var model = bindingContext.Model;
+		var modelType = bindingContext.ModelType;
+		if ((model == null) && modelType.IsArray)
+		{			
+			// ... materialize array from request ...
+			return justCreatedArray;
+		} 
+		else
+		{
+			return base.BindModel(controllerContext, bindingContext);	
+		}
+	}
+
+Most of the code has been taken from ASP.NET MVC sources and therefore should work exactly the same.
+
+Full copy of the class is [here][1].
+
+Enjoy!
+
+[1]: 

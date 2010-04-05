@@ -12,7 +12,7 @@ We are investigating [Event Sourcing][3]. Idea is pretty straightforward, I will
 
 ### Storage for Events
 
-First of all we need storage for events.  I am thinking about some kind of document or object oriented database. It should satisfy few requirements. Let’s discuss them:
+First of all we need storage for events.  I am thinking about some kind of document or object oriented database. It should satisfy few requirements. Let's discuss them:
 
 **It should to be schema less**. Because events will be of different types and will keep different kind of data. For example:
 

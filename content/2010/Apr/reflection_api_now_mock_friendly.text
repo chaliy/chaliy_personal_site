@@ -1,0 +1,62 @@
+---
+title: "Mock friendly System.Reflection API, positive changes in .NET 4.0"
+published_on: 2010-04-05T17:15
+published: false
+categories: [".NET"]
+keywords: ["F#", System.Reflcetion, ".NET 4.0", Assembly, Type, ProeprtyInfo]
+description: Overview of the mocking in System.Reflection API. Some good changes in .NET 4.0
+---
+
+![Do not worry if this break does not look like an Reflection API](http://chaliy.name/files/reflection_api_now_mock_friendly/reflection_api_block.png)
+
+While testing my [db_move_forward][1] I realized that now you can completely mock [`Assembly`][2] class. Starting from .NET 4.0 most of the stuff is protected and virtual! For example, code below will create assembly with types supplied in argument `tt`.
+
+	let createAssembly (tt : Type seq) =
+        { new Assembly() with
+              override x.GetTypes() = tt |> Seq.toArray }
+			  
+And C# version is:
+
+	public class SuperAssembly {
+		private readonly Type[] _types;
+		public override Type[] GetTypes(){
+			return _types;
+		}
+	}
+
+As you may expect you can override virtually everything else. For example, assembly level attributes, resources, referenced assemblies. You name them :). Nice feature if you have to test stuff that needs some specific assembly configuration. Isn't it? Of course, `Assembly` is not the only member of Reflection API. Next candidate to be mocked is [`Type`][3] class. Well, nothing new here. But do not worry. Actually, `Type` class was extensible before .NET 4.0. I found `TypeDelegator` class to be the best for mocking. It implements all stuff by default. Code bellow is example of custom 'Type' implementation that overrides Name property.
+
+	let createType name =
+		{ new TypeDelegator(typeof<string>) with
+            override x.Name = name } :> Type
+
+Next candidate is [`MemberInfo`][4] and Co. Actually, situation is the same as with `Type`. Code bellow mocks `PropertyInfo` class:
+
+
+	let createProperty n v =
+		{ new PropertyInfo() with
+				override x.Name = n
+				member x.GetAccessors(b) = [||]
+				member x.GetGetMethod(b) = failwith "Not implemented"
+				member x.GetIndexParameters() = [||]
+				member x.GetSetMethod(b) = failwith "Not implemented"
+				member x.GetValue(o, f, b, i, c) = v
+				member x.SetValue(o, v, f, b, i, c) = ()
+				member x.Attributes = PropertyAttributes.None
+				member x.CanRead = true
+				member x.CanWrite = false
+				member x.PropertyType = v.GetType()
+				member x.DeclaringType = typeof<string>
+				member x.ReflectedType = typeof<string>
+				member x.GetCustomAttributes(b) = [||]
+				member x.GetCustomAttributes(t, b) = [||]
+				member x.IsDefined(t, b) = false }
+
+As for me it less usable... bull well, this is better than nothing :).
+
+Enjoy.
+
+[1]: http://github.com/chaliy/db_move_forward
+[2]: http://msdn.microsoft.com/en-us/library/system.reflection.assembly.aspx
+[3]: http://msdn.microsoft.com/en-us/library/system.type.aspx
+[4]: http://msdn.microsoft.com/en-us/library/system.reflection.memberinfo.aspx
