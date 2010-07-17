@@ -41,6 +41,13 @@ a.rss{
 	background-image: url('../images/services/rss.png');
 	background-repeat: no-repeat;
 }
+a.ics{
+	padding-left: 22px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	background-image: url('../images/services/ics.png');
+	background-repeat: no-repeat;
+}
 a.linkedin{
 	padding-left: 22px;
 	padding-top: 2px;
