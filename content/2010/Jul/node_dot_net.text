@@ -1,0 +1,60 @@
+---
+title: "Node.NET: Modern non-blocking IO API in .NET"
+published_on: 2010-07-27T17:15
+published: false
+categories: [".NET"]
+keywords: ["node.js", "async", "non-blocking", ".net"]
+description: Introducing innovative stuff in .NET.
+---
+![Hotlined node.js logo](http://nodejs.org/logo.png)
+
+I am sure you know about [node.js][1], probably most visible and innovative framework of the last days. In few words, I can describe it as non-blocking or async I/O API for building server side services. Why bother? Well, when your app waiting for data from SQL Server, it still holds thread. Means that app can do exactly nothing in this time. Of course, you can create another thread. But threads are expensive. And what’s more they have limit on any system. So the solution is to use [asynchronous I/O][6] provided by OS. So when you need some data from SQL Server, you ask OS to handle this for you, and after data has been received OS will callback you with data. Problem solved. Your application utilizes thread as much efficient as it can.
+
+Let's see example, for example to read file from disk you need this:
+
+	var fs = require('fs');
+	fs.readFile('/etc/passwd', function (err, data) {
+	  if (err) throw err;
+	  console.log(data);
+	});
+	
+You execute `readFile` and it passes results to callback function supplied as second argument. Nice? Readable? Innovative? I think yes.
+
+Well, at this point let me introduce Node.NET. Code similar code in C# will looks like:
+
+	var file = new FileStream("Program.cs", FileMode.Open,
+		FileAccess.Read, FileShare.None, BUFFER_SIZE, true);
+
+	var buffer = new byte[BUFFER_SIZE];
+
+	file.BeginRead(buffer, 0, BUFFER_SIZE,
+		r =>
+		{
+			var read = file.EndRead(r);
+
+			var stuff = Encoding.Default.GetString(buffer, 0, read);
+			Console.WriteLine(stuff);
+		}, null);
+		
+Not really as much nice as node.js? You are right. And probably the reason that this API was available in .NET 1.0. Yes modern, non-blocking API was available about decade ago. Of course, 10 years ago there was nothing about closures. But hey! Some languages (can you guess) lack them even now. Would you like to see code that uses callbacks from callbacks? [Here you are][3]. Code read file and then also request some stuff from Google. Nice? Readable? Innovative? Well, now I do not really think so. Really this callbacks looks stupid. Nobody can read this code as you expect to read code. You have to jump, from callback to callback. Let me show another example.
+
+	let file = File.OpenRead("Program.fs")    
+    let! stuff = file.AsyncRead(250)        
+
+    printfn "%A" (Encoding.Default.GetString(stuff))
+
+    let req = WebRequest.Create("http://www.google.com/search?q=node.js")
+    let! resp = req.AsyncGetResponse()
+        
+    printfn "%i headers recieved." resp.Headers.Count
+
+It do the same as previous one. It do everything in async non-blocking way. Nice? Readable? Innovative? Well, now I really think so. This is F# [async workflows][4]. Full code? [Here you are][5].
+
+Sorry if I disappointed you. I think for C# there are some improvements needed. Async methods should more respect new stuff like generics and lambdas. This could be easy achieved by extension methods and may be some day we will see something :). Good luck!
+	
+[1]: http://nodejs.org/
+[2]: http://code.google.com/p/v8/
+[3]: http://gist.github.com/492333
+[4]: http://msdn.microsoft.com/en-us/library/dd233250.aspx
+[5]: http://gist.github.com/492365
+[6]: http://en.wikipedia.org/wiki/Asynchronous_I/O
