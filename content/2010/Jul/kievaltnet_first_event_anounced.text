@@ -6,7 +6,7 @@ categories: ["ALT.NET Kiev"]
 keywords: [DDD, CQRS, "ALT.NET", "Kyiv"]
 description: Yep! We are moving on. Welcome our first event.
 ---
-![Our logo, actually film photo camera Kyiv](http://chaliy.name/files/kievaltnet_first_event_anounced/kyiv-logo-low.png)
+![Our logo, actually Kyiv 4AM, 35 mm camera](http://chaliy.name/files/kievaltnet_first_event_anounced/kyiv-logo-low.png)
 
 Yay, Kyiv is now in [ALT.NET][3] move :). Well.. At least we can try. And our first try is actually comes on this Friday.
 
@@ -15,9 +15,12 @@ So please welcome very first [Kiev ALT.NET][2] event specially dedicated to DDD 
 BTW, you can subscribe for further announces by <a href="http://feeds.feedburner.com/kievaltnet" rel="alternate" type="application/rss+xml" class="rss" >RSS</a>, 
 	   <a href="http://twitter.com/kievaltnet" rel="alternate" class="twitter" >Twitter</a> or <a href="webcal://cid-a42322b3a55b106b.calendar.live.com/calendar/ALT.NET+Kiev/calendar.ics" rel="alternate" class="ics" >ICS</a>.
 	   
+On photo, actually [Kyiv 4AM][4], 35 mm camera.
+	   
 [1]: http://blog.kievalt.net/post/823574167/ddd-and-cqrs-event
 [2]: http://kievalt.net/
 [3]: http://altdotnet.org/
+[4]: http://en.wikipedia.org/wiki/Kiev_(brand)
 
 *[DDD]: Domain-Driven Design
 *[CQRS]: Command-Query Responsibility Segregation
