@@ -1,14 +1,14 @@
 ---
 title: "Node.NET: Modern non-blocking IO API in .NET"
-published_on: 2010-07-27T17:15
-published: false
+published_on: 2010-07-27T18:34
+published: true
 categories: [".NET"]
 keywords: ["node.js", "async", "non-blocking", ".net"]
 description: Introducing innovative stuff in .NET.
 ---
 ![Hotlined node.js logo](http://nodejs.org/logo.png)
 
-I am sure you know about [node.js][1], probably most visible and innovative framework of the last days. In few words, I can describe it as non-blocking or async I/O API for building server side services. Why bother? Well, when your app waiting for data from SQL Server, it still holds thread. Means that app can do exactly nothing in this time. Of course, you can create another thread. But threads are expensive. And what’s more they have limit on any system. So the solution is to use [asynchronous I/O][6] provided by OS. So when you need some data from SQL Server, you ask OS to handle this for you, and after data has been received OS will callback you with data. Problem solved. Your application utilizes thread as much efficient as it can.
+I am sure you know about [node.js][1], probably most visible and innovative framework of the last days. In few words, I can describe it as non-blocking or async I/O API for building server side services. Why bother? Well, when your app waiting for data from SQL Server, it still holds thread. Means that app can do exactly nothing in this time. Of course, you can create another thread. But threads are expensive. And what's more they have limit on any system. So the solution is to use [asynchronous I/O][6] provided by OS. So when you need some data from SQL Server, you ask OS to handle this for you, and after data has been received OS will callback you with data. Problem solved. Your application utilizes thread as much efficient as it can.
 
 Let's see example, for example to read file from disk you need this:
 
@@ -36,7 +36,7 @@ Well, at this point let me introduce Node.NET. Code similar code in C# will look
 			Console.WriteLine(stuff);
 		}, null);
 		
-Not really as much nice as node.js? You are right. And probably the reason that this API was available in .NET 1.0. Yes modern, non-blocking API was available about decade ago. Of course, 10 years ago there was nothing about closures. But hey! Some languages (can you guess) lack them even now. Would you like to see code that uses callbacks from callbacks? [Here you are][3]. Code read file and then also request some stuff from Google. Nice? Readable? Innovative? Well, now I do not really think so. Really this callbacks looks stupid. Nobody can read this code as you expect to read code. You have to jump, from callback to callback. Let me show another example.
+Not really as much nice as node.js? You are right. And probably the reason that this API was available in .NET 1.0. Yes modern, non-blocking API was available about decade ago. Of course, 10 years ago there was nothing about closures. But hey! Some languages (can you guess) lack them even now. Would you like to see code that uses callbacks from callbacks? [Here you are][3]. Code reads file and then requests some stuff from Google. Nice? Readable? Innovative? Well, now I do not really think so. This callbacks looks stupid. Nobody can read this code as you expect to read code. You have to jump from callback to callback. Let me show another example.
 
 	let file = File.OpenRead("Program.fs")    
     let! stuff = file.AsyncRead(250)        
