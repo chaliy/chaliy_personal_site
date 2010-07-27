@@ -1,0 +1,32 @@
+---
+title: "Kiev ALT.NET: Some geek details"
+published_on: 2010-07-27T13:15
+published: false
+categories: ["ALT.NET Kiev"]
+keywords: [DDD, CQRS, "ALT.NET", "Kyiv"]
+description: And yes, we are humans by the way...
+---
+![Our logo, Kyiv 4AM, 35 mm camera](http://chaliy.name/files/kievaltnet_first_event_anounced/kyiv-logo-low.png)
+
+1. Our logo is actually [Kyiv 4AM][4], 35 mm camera.
+2. Sources of all our stuff is hosted [on github][5].
+3. Blog is hosted on [tumblr][6]. Main problem is tumblr does not support Live Writer.
+4. Main site is hosted... well this is bit modified parking page. Hope someday we will have normal hosting. And hope it will be Mono based.
+5. Our event registration is pretty. You just have to drop e-mail message to support@kievalt.net or write something in [twitter][7].
+6. We do not have Google Groups mail list, LinkedIn Group yet. Ping me if you need one.
+7. Inception is probably best movie I seen this year.
+8. Inspired by [SPB ALT.NET][8]
+
+Hope to see you this [Friday][1] :).
+	   
+[1]: http://blog.kievalt.net/post/823574167/ddd-and-cqrs-event
+[2]: http://kievalt.net/
+[3]: http://altdotnet.org/
+[4]: http://en.wikipedia.org/wiki/Kiev_(brand)
+[5]: http://github.com/chaliy/kievaltnet
+[6]: http://www.tumblr.com/
+[7]: http://twitter.com/kievaltnet
+[8]: http://spbalt.net
+
+*[DDD]: Domain-Driven Design
+*[CQRS]: Command-Query Responsibility Segregation
