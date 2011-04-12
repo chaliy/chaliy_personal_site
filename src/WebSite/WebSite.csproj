@@ -58,11 +58,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="files\code_generation_dsl_with_t4_text_templates\Step1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Step1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -119,10 +114,7 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="files\code_generation_dsl_with_t4_text_templates\Step1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Step1.cs</LastGenOutput>
-    </None>
+    <None Include="files\code_generation_dsl_with_t4_text_templates\Step1.tt" />
     <None Include="files\texttemplate\v1_0\TextTemplate.vsi" />
   </ItemGroup>
   <ItemGroup>
