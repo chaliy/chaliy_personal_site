@@ -15,9 +15,15 @@ namespace WebSite
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "Archive", // Route name
+                "archive/{*path}", // URL with parameters
+                new { controller = "Archive", action = "Get" } // Parameter defaults
+            );
+
+            routes.MapRoute(
                 "Default", // Route name
-                "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+                "{controller}/{action}/", // URL with parameters
+                new { controller = "Home", action = "Index" } // Parameter defaults
             );
 
         }

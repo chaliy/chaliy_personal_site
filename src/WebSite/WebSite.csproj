@@ -14,6 +14,7 @@
     <AssemblyName>WebSite</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -57,6 +58,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ArchiveController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -114,8 +116,45 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="content\2009\10\code_generation_dsl_with_t4_text_templates" />
+    <None Include="content\2009\10\semantic_meaning_of_the_read_methods" />
+    <None Include="content\2009\10\thoughts_on_non_blocking_sequential_number_generation" />
+    <None Include="content\2009\10\wcf_client_without_svcutil" />
+    <None Include="content\2009\11\google_wave_probably_wrong_technology_choice" />
+    <None Include="content\2009\11\not_so_generic_generic_repository" />
+    <None Include="content\2009\11\office_live_connector_for_office_2010" />
+    <None Include="content\2009\11\what_to_watch_at_pdc09" />
+    <None Include="content\2009\12\can_you_guess_error_in_this_java_snippet" />
+    <None Include="content\2009\12\event_sourcing_and_ddd" />
+    <None Include="content\2009\12\introducing_fsspec" />
+    <None Include="content\2009\12\master_data_services_ctp_review" />
+    <None Include="content\2009\12\system_interactive_new_and_useful_linq_extensions_to_ienumerable" />
+    <None Include="content\2009\7\welcome" />
+    <None Include="content\2009\8\ddd_not_in_love_with_the_domain_services" />
+    <None Include="content\2009\8\dependency_injection_versus_dependency_inversion" />
+    <None Include="content\2009\8\templates_for_templates_t4_text_template_for_visual_studio_2008" />
+    <None Include="content\2009\8\todays_information_magic_stolen_in_5_minutes" />
+    <None Include="content\2009\8\virtual_by_default_is_that_good_or_not" />
+    <None Include="content\2009\9\always_dispose_idisposable_sure_no" />
+    <None Include="content\2009\9\application_services_to_be_or_not_to_be" />
+    <None Include="content\2009\9\asp_net_mvc_services_part_1" />
+    <None Include="content\2009\9\data_access_in_our_application" />
+    <None Include="content\2009\9\history_of_the_one_linq_query_to_entity_framework" />
+    <None Include="content\2009\9\my_old_old_projects" />
+    <None Include="content\2009\9\read_line_in_java_ruby_and_csharp" />
+    <None Include="content\2009\9\stuff_to_know_when_starting_with_ado_net_data_services" />
+    <None Include="content\2009\9\t4_text_templates_the_beginning" />
+    <None Include="content\2009\9\the_right_way_to_do_inner_join_in_linq_to_entities" />
+    <None Include="content\2009\9\useful_stuff_when_generating_data_with_dbpro" />
+    <None Include="content\2010\1\business_logic_rx_example" />
+    <None Include="content\2010\3\ideal_storage_for_event_sourcing" />
+    <None Include="content\2010\4\reflection_api_now_mock_friendly" />
+    <None Include="content\2010\4\uneta_talk_about_fsharp" />
+    <None Include="content\2010\7\kievaltnet_first_event_anounced" />
+    <None Include="content\2010\7\node_dot_net" />
     <None Include="files\code_generation_dsl_with_t4_text_templates\Step1.tt" />
     <None Include="files\texttemplate\v1_0\TextTemplate.vsi" />
+    <Content Include="Views\Home\Contacts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -135,12 +174,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>17034</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>
-          </IISUrl>
+          <IISUrl>http://localhost:17034/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
