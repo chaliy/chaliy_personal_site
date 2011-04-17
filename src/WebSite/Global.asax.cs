@@ -21,6 +21,12 @@ namespace WebSite
             );
 
             routes.MapRoute(
+                "RedirectToArchive", // Route name
+                "blog/{*path}", // URL with parameters
+                new { controller = "Archive", action = "RedirectToArchive" } // Parameter defaults
+            );
+
+            routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/", // URL with parameters
                 new { controller = "Home", action = "Index" } // Parameter defaults

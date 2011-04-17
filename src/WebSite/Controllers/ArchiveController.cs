@@ -10,5 +10,10 @@ namespace WebSite.Controllers
             var content = System.IO.File.ReadAllText(realPath);
             return Content(content);
         }
+
+        public ActionResult RedirectToArchive(string path)
+        {
+            return RedirectPermanent("/archive/" + path);            
+        }
     }
 }
