@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>  
+	<title>Mike Chaliy: Does Event Sourcing work with DDD?</title>
+	<meta name="description" content="Kind of yet another technic to organize business logic." />
+	<meta name="keywords" content="CQRS, Rich Model, Event Sourcing, DDD" />
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta name="Geography" content="Kyiv, Ukraine">
+	<meta name="City" content="Kyiv">
+	<meta name="Country" content="Ukraine">
+	<meta name="Language" content="English">
+	<meta name="Author" content="Mike Chaliy" />
+	<link href="/stylesheets/style.css?1279376199" media="all" rel="stylesheet" type="text/css" />
+	<link href="/stylesheets/print.css?1254176669" media="print" rel="stylesheet" type="text/css" />	
+	<link rel="alternate" type="application/atom+xml" title="Mike Chaliy, Blog" href="http://feeds.feedburner.com/chaliy" />
+</head>
+<body>
+        
+	        <div id="menu">
+            <ul>
+            	<li><a href="/">Home</a></li>
+                <li><a href="http://blog.chaliy.name">Blog</a></li>
+				
+				<li><a href="/home/contacts">Contacts</a></li>
+            </ul>
+        </div>
+		
+        <div id="header">
+        	<p>Mike Chaliy's Personal Site</p>
+			<a class="rss" type="application/atom+xml" title="Mike Chaliy, Blog" href="http://feeds.feedburner.com/chaliy" >My RSS Feed.</a>	
+		</div>
+	       	    	       
+	
+		
+	<div id="main">
+                
+		<h1>Does Event Sourcing work with DDD?</h1>
+<div class="entry">	
+	<p>This post is inspired by <a href='http://blog.fohjin.com/blog/2009/11/12/CQRS_a_la_Greg_Young'><abbr title='Command and Query Responsibility Segregation'>CQRS</abbr> a la Greg Young</a>. I do not think that this is answer to Mark&#8217;s post. Rather this is kind of thoughts on the topic. To be kind, I have no technical prove for anything I write below. So your comments are welcome.</p>
+
+<h3 id='problem'>Problem</h3>
+
+<p>The reason I love <abbr title='Domain-Driven Design'>DDD</abbr> is because it <em>natural</em>. Yes, you make class Person and add behavior to it. And this works. You know this. During one of the E-VAN, Mark did a great presentation of the <abbr title='Command and Query Responsibility Segregation'>CQRS</abbr>. What was even more interesting is integration of the Event Sourcing pattern to the whole picture. BTW I am not even sure that CQRS was the central pattern of this talk. The whole design of his domain model is driven by Event Sourcing pattern. This is actually what I want to discuss.</p>
+
+<p>What brought my attention are too many lines of plumbing code. In contrast to classical <abbr title='Domain-Driven Design'>DDD</abbr>, Mark&#8217;s Root Aggregate overloaded with infrastructure concerns. No one can read this code easily. Now you cannot read behavior of the entity as plain text. Aggregate Root is not modeling concept any longer. It just a container with state required for logic and some logic&#8230; And really I do not like this.</p>
+
+<p>One of the legal opinions is:</p>
+
+<blockquote>
+<p>&#8230; I think it only illustrates a boundaries of selected platform/language &#8230; <a href='http://twitter.com/legigor/status/5838478386'>says legigor</a>.</p>
+</blockquote>
+
+<p>Igor thinks that in future we will have kind of technical solution that will reduce verbosity. I cannot agree more, but even with this in mind I am not sure that Event Sourcing is compatible with Rich Models.</p>
+
+<p>What is the key feature of the <abbr title='Domain-Driven Design'>DDD</abbr>? I think it all about mixing state and behavior in one object. What about Event Sourcing? Event Sourcing in contrast is about splitting state changes, state and as result behavior. So why put all of them to the single class? Because DDD says so? I am fail see another point.</p>
+
+<h3 id='solution'>Solution?</h3>
+
+<p>Let&#8217;s think about responsibilities of the Mark&#8217;s Root Aggregate. First of all it should keep state of the aggregate. Second is, of course, business logic. And third is handling Events (leaked infrastructure concern, btw). For me this is violation of the <abbr title='Single Responsibility Principle'>SRP</abbr>. What about separate all this stuff?</p>
+
+<p>First of all let me extract Withdrawl method from ActiveAccount to another class WithdrawalCashBehaviour.</p>
+
+<pre><code>public class WithdrawalCashBehaviour
+{
+    public Amount AmountToWithdrawal { get; set; }
+    public ActiveAccountSnapshot Account { get; set; }        
+
+    public IEnumerable&lt;IEvent&gt; Execute()
+    {                
+        // Guard
+        if (Account.IsClosed) throw new ApplicationException(&quot;Account is closed...&quot;);
+        if (Account.Balance.WithdrawlWillResultInNegativeBalance(AmountToWithdrawal))
+			throw new ApplicationException(&quot;Not enuogh money...&quot;);
+		
+        var newBalance = Account.Balance.Withdrawl(AmountToWithdrawal);
+
+        yield return new CashWithdrawnEvent(newBalance, AmountToWithdrawal);
+    }
+}</code></pre>
+
+<p>Of course, logic requires state. So we move it all together. Interesting outcome. We do not need mutable state any longer. So it was replaced with ActiveAccountSnapshot. Another change is that Execute() returns Events, instead of raising them&#8230;. I do not like this non-business concern in code, but even more I dislike raising global events&#8230;</p>
+
+<p>Now ActiveAccount (Root Aggregate) does not have state. So we will drop all related code. The rest is bunch of methods that will create Behaviours and execute them. So the responsibility of the ActiveAccount is to be proxy between command handlers and behaviors&#8230; Looks quite stupid. I am ready to drop ActiveAccount.</p>
+
+<p>So now my domain model looks like&#8230; a bunch of the behaviors and read-only representation of this model. Represenatation model, for example, could be generated from View Database.</p>
+
+<p>Well, I am not quite sure that this is best solution, but it looks less cluttered compared to Mark&#8217;s, and I hope that did not lost functionality from original solution.</p>
+
+<p>Enjoy!</p>
+	<p class="entry-info">This entry was posted on 2009-12-27T21:15:00+00:00. <a href="http://chaliy.name/blog/2009/12/event_sourcing_and_ddd">Permalink</a></p>
+</div>
+<div id="disqus_thread"></div>
+<script type="text/javascript" src="http://disqus.com/forums/mikechaliy/embed.js"></script>
+<noscript><a href="http://mikechaliy.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+		
+	</div>
+		
+    	<div id="footer">        
+       	Mike Chaliy &copy; Copyright 2009 
+		&nbsp;|&nbsp;
+		<a href="http://www.developers.org.ua" >
+			<img width="80" height="15" border="0" alt="Ó÷àñòíèê ïëàíåòû Developers.org.ua" src="http://www.developers.org.ua/static/images/planet/80x15_green.gif" />
+		</a>
+		&nbsp;|&nbsp;			
+		<a rel="license" href="http://creativecommons.org/licenses/by/3.0/">
+			<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><br />
+			This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://chaliy.name" property="cc:attributionName" rel="cc:attributionURL">Mike Chaliy</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+    </div>
+	<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-265957-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

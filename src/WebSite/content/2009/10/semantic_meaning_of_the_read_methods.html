@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>  
+	<title>Mike Chaliy: Semantic meaning of the read methods</title>
+	<meta name="description" content="What is the difference between &lt;code&gt;GetOrder(id)&lt;/code&gt; and &lt;code&gt;FindOrder(id)&lt;/code&gt;?" />
+	<meta name="keywords" content="NULL Issue, Design-by-Contract, Maintainability, Thoughts, API Design, Naming Conventions" />
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta name="Geography" content="Kyiv, Ukraine">
+	<meta name="City" content="Kyiv">
+	<meta name="Country" content="Ukraine">
+	<meta name="Language" content="English">
+	<meta name="Author" content="Mike Chaliy" />
+	<link href="/stylesheets/style.css?1279376199" media="all" rel="stylesheet" type="text/css" />
+	<link href="/stylesheets/print.css?1254176669" media="print" rel="stylesheet" type="text/css" />	
+	<link rel="alternate" type="application/atom+xml" title="Mike Chaliy, Blog" href="http://feeds.feedburner.com/chaliy" />
+</head>
+<body>
+        
+	        <div id="menu">
+            <ul>
+            	<li><a href="/">Home</a></li>
+                <li><a href="http://blog.chaliy.name">Blog</a></li>
+				
+				<li><a href="/home/contacts">Contacts</a></li>
+            </ul>
+        </div>
+		
+        <div id="header">
+        	<p>Mike Chaliy's Personal Site</p>
+			<a class="rss" type="application/atom+xml" title="Mike Chaliy, Blog" href="http://feeds.feedburner.com/chaliy" >My RSS Feed.</a>	
+		</div>
+	       	    	       
+	
+		
+	<div id="main">
+                
+		<h1>Semantic meaning of the read methods</h1>
+<div class="entry">	
+	<p>Personally for me, this is hard to understand what is the difference between <code>GetOrder(id)</code>, <code>ReadOrder(id)</code>, <code>FindOrder(id)</code> or <code>RetrieveOrder(id)</code>. I am not native speaker and for me they look exactly the same.</p>
+
+<p>All this methods just retrieve Order information by identifier of the Order. What information is missing is behavior in situations when Order was not found. For example method can raise exception or return something magical like <code>null</code> or &#8220;empty&#8221; Order.</p>
+
+<p>So we have an <abbr title='Application programming interface'>API</abbr>. It has methods like <code>GetOrder(id)</code>. What will you do to make your code maintainable? You will check each result to ensure it does not null? You will insert <code>Debug.Assert()</code> after every call? You will leverage on <code>NullReferenceException</code>? You will write anti-corruption layer? You will use <a href='http://www.bing.com/search?q=design-by-contract&amp;form=IE8SRC&amp;src=IE-SearchBox'>design-by-contract</a>? Doesn&#8217;t this look a bit overcomplicated?</p>
+
+<p>Well, I know simple and what is more important probably the most reliable solution. <strong>Never return <code>null</code> from your methods</strong>. That&#8217;s it.</p>
+
+<p>The story is good, but, unfortunately, sometimes you have to. In this case, I would recommend simple <strong>naming conventions</strong>. For example:</p>
+
+<p>The <code>GetOrder</code> is something strong. <em>So it should throw exception if Order was not found.</em></p>
+
+<p>The <code>FindOrder</code> is less strong, you can find but also can fail to find. <em>So this kind of methods can return <code>null</code>.</em></p>
+
+<p>You can argue that naming conventions actually does not resolve the problem. Yes and no. Theoretically - yes, it does not resolve the problem because everybody can break this. In practice - why one will even try to break this? Doesn&#8217;t he want to write maintainable code? Just make everybody aware about these conventions. It actually works.</p>
+
+<p>BTW, for long read operations I user <code>RetrieveOrder</code>, for ad-hoc - <code>QueryOrders</code>, for paged results <code>PageOrders</code>, for <abbr title='User Interface'>UI</abbr> lists - <code>ListOrders</code>.</p>
+
+<p>Hope this stuff, does not conflict with real English :). Happy coding folks!</p>
+	<p class="entry-info">This entry was posted on 2009-10-06T00:12:00+00:00. <a href="http://chaliy.name/blog/2009/10/semantic_meaning_of_the_read_methods">Permalink</a></p>
+</div>
+<div id="disqus_thread"></div>
+<script type="text/javascript" src="http://disqus.com/forums/mikechaliy/embed.js"></script>
+<noscript><a href="http://mikechaliy.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+		
+	</div>
+		
+    	<div id="footer">        
+       	Mike Chaliy &copy; Copyright 2009 
+		&nbsp;|&nbsp;
+		<a href="http://www.developers.org.ua" >
+			<img width="80" height="15" border="0" alt="Ó÷àñòíèê ïëàíåòû Developers.org.ua" src="http://www.developers.org.ua/static/images/planet/80x15_green.gif" />
+		</a>
+		&nbsp;|&nbsp;			
+		<a rel="license" href="http://creativecommons.org/licenses/by/3.0/">
+			<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><br />
+			This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://chaliy.name" property="cc:attributionName" rel="cc:attributionURL">Mike Chaliy</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+    </div>
+	<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-265957-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

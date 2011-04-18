@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>  
+	<title>Mike Chaliy: FsSpec: Introducing yet another Unit Testing/BDD framework for F#</title>
+	<meta name="description" content="Yet another Unit Testing/BDD framework for F#. Inspired by RSpec syntax." />
+	<meta name="keywords" content="RSpec, Unit Tests, FsSpec, FsUnit, TDD, FsCheck, F#, BDD, Sources" />
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta name="Geography" content="Kyiv, Ukraine">
+	<meta name="City" content="Kyiv">
+	<meta name="Country" content="Ukraine">
+	<meta name="Language" content="English">
+	<meta name="Author" content="Mike Chaliy" />
+	<link href="/stylesheets/style.css?1279376199" media="all" rel="stylesheet" type="text/css" />
+	<link href="/stylesheets/print.css?1254176669" media="print" rel="stylesheet" type="text/css" />	
+	<link rel="alternate" type="application/atom+xml" title="Mike Chaliy, Blog" href="http://feeds.feedburner.com/chaliy" />
+</head>
+<body>
+        
+	        <div id="menu">
+            <ul>
+            	<li><a href="/">Home</a></li>
+                <li><a href="http://blog.chaliy.name">Blog</a></li>
+				
+				<li><a href="/home/contacts">Contacts</a></li>
+            </ul>
+        </div>
+		
+        <div id="header">
+        	<p>Mike Chaliy's Personal Site</p>
+			<a class="rss" type="application/atom+xml" title="Mike Chaliy, Blog" href="http://feeds.feedburner.com/chaliy" >My RSS Feed.</a>	
+		</div>
+	       	    	       
+	
+		
+	<div id="main">
+                
+		<h1>FsSpec: Introducing yet another Unit Testing/BDD framework for F#</h1>
+<div class="entry">	
+	<p>Despite of a fact that we already have <a href='http://code.google.com/p/fsunit/'>number</a> <a href='http://www.codeplex.com/FsTest'>of</a> <a href='http://www.codeplex.com/fscheck/'>frameworks</a> for unit testing for F#, let me introduce another one.</p>
+
+<p><em>Source code of the <strong>FsSpec</strong> is <a href='http://github.com/chaliy/fsspec'>hosted on GitHub</a>, you can <a href='http://github.com/chaliy/fsspec/zipball/master'>donwload zip</a></em></p>
+
+<h3 id='syntax'>Syntax</h3>
+
+<p>Syntax is inspired by <a href='http://rspec.info/'>RSpec</a>, so specification looks like:</p>
+
+<pre><code>do describe &quot;Calculator&quot; [        
+
+    it &quot;should add two integers&quot; (fun unit -&gt; 
+
+        let res = Calc.Add 2 2
+        res.should_be_equal_to 4
+    );
+
+
+    it &quot;should devide two integers&quot; (fun unit -&gt; 
+
+        let res = Calc.Div 2 2
+        res.should_be_equal_to 1
+    );
+
+]</code></pre>
+
+<p>Looks pretty well, isn&#8217;t it? Unfortunately, I have number of problems that I have to solve to make this stuff usable. First of all is shared initialization of the specifications. Now you can do this just before specification (describe statement) but this looks bit ugly. Second are assertions. Now they are implemented as extension methods and look less readable than RSpec&#8217;s assertions.</p>
+
+<h3 id='implementation'>Implementation</h3>
+
+<p>Well, it about 46 lines of code&#8230; Not too much to discuss. Better to visit <a href='http://github.com/chaliy/fsspec'>repository</a> on GitHub.</p>
+	<p class="entry-info">This entry was posted on 2009-12-22T22:25:00+00:00. <a href="http://chaliy.name/blog/2009/12/introducing_fsspec">Permalink</a></p>
+</div>
+<div id="disqus_thread"></div>
+<script type="text/javascript" src="http://disqus.com/forums/mikechaliy/embed.js"></script>
+<noscript><a href="http://mikechaliy.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+		
+	</div>
+		
+    	<div id="footer">        
+       	Mike Chaliy &copy; Copyright 2009 
+		&nbsp;|&nbsp;
+		<a href="http://www.developers.org.ua" >
+			<img width="80" height="15" border="0" alt="Ó÷àñòíèê ïëàíåòû Developers.org.ua" src="http://www.developers.org.ua/static/images/planet/80x15_green.gif" />
+		</a>
+		&nbsp;|&nbsp;			
+		<a rel="license" href="http://creativecommons.org/licenses/by/3.0/">
+			<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><br />
+			This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://chaliy.name" property="cc:attributionName" rel="cc:attributionURL">Mike Chaliy</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+    </div>
+	<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-265957-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

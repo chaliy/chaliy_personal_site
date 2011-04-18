@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>  
+	<title>Mike Chaliy: Google Wave - GWT is probably a wrong technology choice</title>
+	<meta name="description" content="Inspired by Google Wave invitation, thougths about suitability of the GWT for RIA." />
+	<meta name="keywords" content="Google Wave, Silverlight, RIA, GWT, RIA" />
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta name="Geography" content="Kyiv, Ukraine">
+	<meta name="City" content="Kyiv">
+	<meta name="Country" content="Ukraine">
+	<meta name="Language" content="English">
+	<meta name="Author" content="Mike Chaliy" />
+	<link href="/stylesheets/style.css?1279376199" media="all" rel="stylesheet" type="text/css" />
+	<link href="/stylesheets/print.css?1254176669" media="print" rel="stylesheet" type="text/css" />	
+	<link rel="alternate" type="application/atom+xml" title="Mike Chaliy, Blog" href="http://feeds.feedburner.com/chaliy" />
+</head>
+<body>
+        
+	        <div id="menu">
+            <ul>
+            	<li><a href="/">Home</a></li>
+                <li><a href="http://blog.chaliy.name">Blog</a></li>
+				
+				<li><a href="/home/contacts">Contacts</a></li>
+            </ul>
+        </div>
+		
+        <div id="header">
+        	<p>Mike Chaliy's Personal Site</p>
+			<a class="rss" type="application/atom+xml" title="Mike Chaliy, Blog" href="http://feeds.feedburner.com/chaliy" >My RSS Feed.</a>	
+		</div>
+	       	    	       
+	
+		
+	<div id="main">
+                
+		<h1>Google Wave - GWT is probably a wrong technology choice</h1>
+<div class="entry">	
+	<p>Few months ago I have watched IO presentation about <strong>Google Wave</strong>, I was really impressed. Also application I am working on uses <abbr title='Google Web Toolikt'>GWT</abbr> for client side (server-side is <abbr title='Microsoft .NET Framewrok'>.NET</abbr>). Eventually, I got invitation to the Google Wave.</p>
+
+<p>What I can say. Looks cool. Very cool. And idea behind is great. This is modern replace for email. This is something that have had to appear some day. So yes, it is cool.</p>
+
+<p><img src='http://wave.google.com/help/wave/images/logo2.gif' alt='Google Wave' /></p>
+
+<p>Despite of all this WOWs, I am trying to think about technology. You probably know that the Google Wave is all about HTML5 and other buzz stuff. The less known is fact that it <abbr title='Google Web Toolikt'>GWT</abbr> based. In short this is special Java compiler that produce regular JavaScript. Google have spent abnormal efforts to make results of the GWT compiler as browser capable as they can. And this really works. Most of the time&#8230;</p>
+
+<p><img src='http://code.google.com/intl/uk-UA/webtoolkit/images/gwt-logo.png' alt='GWT' /></p>
+
+<h4 id='now_lets_imagine_google_uses_silverlight_or_flash_or_java'>Now lets imagine Google uses Silverlight or Flash or Java:</h4>
+
+<ol>
+<li>Browser compatibility. With everything Google do for <abbr title='Google Web Toolikt'>GWT</abbr>, it still does not 100% compatible with all browsers. For me Google Wave crashes in <abbr title='Microsoft Internet Explorer'>IE</abbr> (in Google Chrome it also crashes, but in IE it does not even start). With our own application, we still have latches on some browsers. Compare this to guaranties that gives us Silverlight or Flash or Java.</li>
+
+<li>Features like access to user&#8217;s hard drive, bitmap edit, network and so on. HTML does not have such futures at all or they are restricted, and probably so will be in future. For example we use Flash object to give user ability to select multiple files.</li>
+
+<li>Layout. HTML and DOM is not designed for serious Desktop like User Interfaces. This is why Google Wave is all about absolute positioned, calculated blocks. Every resize, every move makes more or less all blocks to be recalculated. Well, this is about client. But what about development? Right now I can compare <abbr title='Google Web Toolikt'>GWT</abbr>, Ext GWT and Silverlight layout managers. And I&#8217;m begging you ask about what is best, answer is Silverlight. This just because it was DESIGNED for such stuff. Everything that could <abbr title='Google Web Toolikt'>GWT</abbr> or Ext GWT offer is actually OVERCOMES of the leaked HTML layouts.</li>
+
+<li>Development experience. Compilation of our application take about two minutes. Debugging is hard. Hosted mode has differences with compiled mode. Many of the <code>Java</code> stuff does not work. I think Google has the same experience. Looks pretty bad? Can you guess why? Because <abbr title='Google Web Toolikt'>GWT</abbr> try to OVERCOME leaked execution engine. Yes I am about JavaScript. BTW, IntelliJ IDEA is way better than Visual Studio, but even this does not help.</li>
+</ol>
+
+<h4 id='lets_think_what_can_gwt_give'>Lets think what can <abbr title='Google Web Toolikt'>GWT</abbr> give:</h4>
+
+<ol>
+<li>Broader usage, as we do not have to have any plugin installed. This is true. But only for simple stuff. <abbr title='Rich Internet Application'>RIA</abbr> always have to have advanced features so you still have to use plugins (such as, GitHub uses Flash to put stuff in your clipboard). And do not forget about layout performances. Just wonder how our application (way heavier as Google Wave) behave on netbooks.</li>
+
+<li>Browser as a platform. For example, one can expect that she have ability to select HTML table and paste it to the Excel as she do often. Unfortunately, this is not a case neither for Google Wave nor for Ext <abbr title='Google Web Toolikt'>GWT</abbr> Grid. Just because they cannot leverage on the restricted HTML table. Another example is back button. This is good that Google Wave has support for the back button. But to do this, they use hidden IFRAME. And for me this looks like another OVERCOME of the leaked platform. And yes, Silverlight is also support back button.</li>
+</ol>
+
+<h4 id='so_what'>So what?</h4>
+
+<p>This stuff, makes me think if GET is suitable for <abbr title='Rich Internet Application'>RIA</abbr> at all. I cannot understand why Google does not invest in Silverlight :) or something like this. Why they are building yet another abstraction on already leaked abstraction? I cannot even guess.</p>
+
+<p>I am wondering what my employer will say if he read this :).</p>
+	<p class="entry-info">This entry was posted on 2009-11-07T21:01:00+00:00. <a href="http://chaliy.name/blog/2009/11/google_wave_probably_wrong_technology_choice">Permalink</a></p>
+</div>
+<div id="disqus_thread"></div>
+<script type="text/javascript" src="http://disqus.com/forums/mikechaliy/embed.js"></script>
+<noscript><a href="http://mikechaliy.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+		
+	</div>
+		
+    	<div id="footer">        
+       	Mike Chaliy &copy; Copyright 2009 
+		&nbsp;|&nbsp;
+		<a href="http://www.developers.org.ua" >
+			<img width="80" height="15" border="0" alt="Ó÷àñòíèê ïëàíåòû Developers.org.ua" src="http://www.developers.org.ua/static/images/planet/80x15_green.gif" />
+		</a>
+		&nbsp;|&nbsp;			
+		<a rel="license" href="http://creativecommons.org/licenses/by/3.0/">
+			<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><br />
+			This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://chaliy.name" property="cc:attributionName" rel="cc:attributionURL">Mike Chaliy</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+    </div>
+	<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-265957-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

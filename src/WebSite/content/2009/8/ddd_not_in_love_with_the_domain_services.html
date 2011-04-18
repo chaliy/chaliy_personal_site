@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>  
+	<title>Mike Chaliy: DDD: Not in love with the Domain Services! Hope I am not along!</title>
+	<meta name="description" content="I do not love &lt;a href='http://dddsample.sourceforge.net/characterization.html#Services'&gt;Domain Services&lt;/a&gt;. And this post describes why!" />
+	<meta name="keywords" content="DDD" />
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta name="Geography" content="Kyiv, Ukraine">
+	<meta name="City" content="Kyiv">
+	<meta name="Country" content="Ukraine">
+	<meta name="Language" content="English">
+	<meta name="Author" content="Mike Chaliy" />
+	<link href="/stylesheets/style.css?1279376199" media="all" rel="stylesheet" type="text/css" />
+	<link href="/stylesheets/print.css?1254176669" media="print" rel="stylesheet" type="text/css" />	
+	<link rel="alternate" type="application/atom+xml" title="Mike Chaliy, Blog" href="http://feeds.feedburner.com/chaliy" />
+</head>
+<body>
+        
+	        <div id="menu">
+            <ul>
+            	<li><a href="/">Home</a></li>
+                <li><a href="http://blog.chaliy.name">Blog</a></li>
+				
+				<li><a href="/home/contacts">Contacts</a></li>
+            </ul>
+        </div>
+		
+        <div id="header">
+        	<p>Mike Chaliy's Personal Site</p>
+			<a class="rss" type="application/atom+xml" title="Mike Chaliy, Blog" href="http://feeds.feedburner.com/chaliy" >My RSS Feed.</a>	
+		</div>
+	       	    	       
+	
+		
+	<div id="main">
+                
+		<h1>DDD: Not in love with the Domain Services! Hope I am not along!</h1>
+<div class="entry">	
+	<p><em>Not so kind to be angry for the first post&#8230; 100 excuses!</em></p>
+
+<p>When approaching the DDD some of the model code goes to the <a href='http://dddsample.sourceforge.net/characterization.html#Services'>Domain Services</a>. IMHO, this is some sort of &#8220;allowed&#8221; or &#8220;acceptable&#8221; solution when you cannot do something in pure model. Examples are access to the external services and operations on the multiple entities. You know.</p>
+
+<p>The following article describes what is wrong with Domain Services.</p>
+
+<h3 id='no_single_place_to_start_or_to_learn'>No single place to start (or to learn)</h3>
+
+<p>Imagine you have the <code>Order.Approve()</code> and the <code>ApprovalService.Approve()</code>.The <code>ApprovalService</code> do some stuff and then delegate actual approve to the <code>Order</code>. You never can be sure whatever you use right method! If you are not author of the both, you can easily miss the <code>ApprovalService</code> and just directly call the <code>Order</code>. Any solution that comes to the mind does not guarantee results or introduces much more problems than actually solves!</p>
+
+<h3 id='dependencyreference_hog'>Dependency/Reference Hog</h3>
+
+<p>The main goal of the Domain Services is to &#8220;orchestrate&#8221; business operation. Often that means huge amount of external services, references out of the boundaries, access to the different partitions of your model. You can review the uses section of your services. Sometimes it looks terrible. Do you see a problem now?</p>
+
+<p>Well, the solution is obvious. To make tools like <a href='http://www.ndepend.com/Screenshots.aspx'>NDepend</a> happy, just use composition. This will likely make your uses section slightly smaller. However, problem is still here. The service is still complex and you cannot do something with it.</p>
+
+<h3 id='testability'>Testability</h3>
+
+<p>Yes, sure you use the <a href='http://en.wikipedia.org/wiki/Dependency_injection'>DI</a> so you can test all your code. But, please compare your Domain Service tests with Model tests. What I look here: Model tests are just instantiation of the entity, doing something and checking results. Everything like introduction tests in books on TDD. Tests for the Domain Services are slightly different. They require <a href='http://xunitpatterns.com/Mock%20Object.html'>the mocks</a> for the dependencies. They require assertions of <a href='http://xunitpatterns.com/indirect%20output.html'>the indirect output</a>. For sure, I like model tests much more!</p>
+
+<h3 id='what_to_do_then'>What to do then?</h3>
+
+<p>In most cases, this depends what you want to overcome (I you want of course).</p>
+
+<p>For example to overcome problem with the API spread across the model, you can introduce <a href='http://martinfowler.com/eaaCatalog/serviceLayer.html'>Service Layer Pattern</a>. Another way is to mark everything you are not expect be public as internal or implement them as explicit interfaces.</p>
+
+<p>For dependencies and testability, I can suggest making Domain Services as stupid as you can. For example, move some code to the next layer (<a href='http://martinfowler.com/eaaCatalog/serviceLayer.html'>Service Layer Pattern</a>).</p>
+
+<p>Not to mention <a href='http://www.udidahan.com/2008/08/25/domain-events-take-2/'>Domain Events (Udi Dahan&#8217;s version)</a>. This is very promising Domain Services killer. For now, it is my default approach. I will write more on this in near feature.</p>
+	<p class="entry-info">This entry was posted on 2009-08-19T13:28:00+00:00. <a href="http://chaliy.name/blog/2009/8/ddd_not_in_love_with_the_domain_services">Permalink</a></p>
+</div>
+<div id="disqus_thread"></div>
+<script type="text/javascript" src="http://disqus.com/forums/mikechaliy/embed.js"></script>
+<noscript><a href="http://mikechaliy.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+		
+	</div>
+		
+    	<div id="footer">        
+       	Mike Chaliy &copy; Copyright 2009 
+		&nbsp;|&nbsp;
+		<a href="http://www.developers.org.ua" >
+			<img width="80" height="15" border="0" alt="Ó÷àñòíèê ïëàíåòû Developers.org.ua" src="http://www.developers.org.ua/static/images/planet/80x15_green.gif" />
+		</a>
+		&nbsp;|&nbsp;			
+		<a rel="license" href="http://creativecommons.org/licenses/by/3.0/">
+			<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><br />
+			This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://chaliy.name" property="cc:attributionName" rel="cc:attributionURL">Mike Chaliy</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+    </div>
+	<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-265957-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

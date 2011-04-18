@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>  
+	<title>Mike Chaliy: Read all lines of the file with Java, Ruby and C#</title>
+	<meta name="description" content="Compare how to read all lines of the text file with Ruby, Java and C#." />
+	<meta name="keywords" content="C#, Ruby, Java, Funny" />
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta name="Geography" content="Kyiv, Ukraine">
+	<meta name="City" content="Kyiv">
+	<meta name="Country" content="Ukraine">
+	<meta name="Language" content="English">
+	<meta name="Author" content="Mike Chaliy" />
+	<link href="/stylesheets/style.css?1279376199" media="all" rel="stylesheet" type="text/css" />
+	<link href="/stylesheets/print.css?1254176669" media="print" rel="stylesheet" type="text/css" />	
+	<link rel="alternate" type="application/atom+xml" title="Mike Chaliy, Blog" href="http://feeds.feedburner.com/chaliy" />
+</head>
+<body>
+        
+	        <div id="menu">
+            <ul>
+            	<li><a href="/">Home</a></li>
+                <li><a href="http://blog.chaliy.name">Blog</a></li>
+				
+				<li><a href="/home/contacts">Contacts</a></li>
+            </ul>
+        </div>
+		
+        <div id="header">
+        	<p>Mike Chaliy's Personal Site</p>
+			<a class="rss" type="application/atom+xml" title="Mike Chaliy, Blog" href="http://feeds.feedburner.com/chaliy" >My RSS Feed.</a>	
+		</div>
+	       	    	       
+	
+		
+	<div id="main">
+                
+		<h1>Read all lines of the file with Java, Ruby and C#</h1>
+<div class="entry">	
+	<p><strong>UPDATE:</strong> As of Dec 2009 C# provides analog of the ForEach method out of the box, you can read more <a href='http://chaliy.name/blog/2009/12/system_interactive_new_and_useful_linq_extensions_to_ienumerable'>here</a>.</p>
+
+<p><a href='http://yehudakatz.com/'>Yehuda Katz</a>, in his post &#8221;<a href='http://yehudakatz.com/2009/08/24/my-10-favorite-things-about-the-ruby-language/'>My 10 Favorite Things About the Ruby Language</a>&#8221;, provides example of the reading all lines of the file, with <code>Java</code> and <code>Ruby</code>.</p>
+
+<p>Java is a bit wordy:</p>
+
+<pre><code>static void run(String in) 
+	throws FileNotFoundException {
+		File input = new File(in);
+		String line; Scanner reader = null;
+		try {
+			reader = new Scanner(input);
+			while(reader.hasNextLine()) {
+				System.out.println(reader.nextLine());
+			}
+		} finally { reader.close(); }
+}</code></pre>
+
+<p>Ruby is much better:</p>
+
+<pre><code>def run(input)
+	File.open(input, &quot;r&quot;) do |f|
+		f.each_line {|line| puts line }
+	end
+end</code></pre>
+
+<p>But what about C#? Look.</p>
+
+<pre><code>static void Run(string inp){
+	Array.ForEach(File.ReadAllLines(inp), Console.WriteLine);
+}</code></pre>
+
+<p>The only thing I do not like with this code is a fact that I cannot read it as a plain English sentence. This is because, for some reasons, <code>Array.ForEach</code> was not defined as extension method. Fix is quite easy. Lets add small extension to <code>IEnumerable&lt;T&gt;</code>:</p>
+
+<pre><code>using System;
+using System.Diagnostics.Contracts;
+using System.Collections.Generic;
+
+public static class EnumerableExtensions
+{
+	public static void ForEach&lt;T&gt;(this IEnumerable&lt;T&gt; input, 
+						Action&lt;T&gt; action)
+	{
+		Contract.Requires(input != null);
+		Contract.Requires(action != null);
+
+		foreach (var item in input)
+		{
+			action(item);
+		}
+	}
+}</code></pre>
+
+<p>And then rewrite results:</p>
+
+<pre><code>static void Run(string inp){
+	File.ReadLines(inp).ForEach(Console.WriteLine);
+}</code></pre>
+
+<p>BTW, in contrast to first C# example, second one will read lines one by one.</p>
+
+<p>UPDATE: As of Dec 2009 C# provides analog of the ForEach method out of the box, you can read more <a href='http://chaliy.name/blog/2009/12/system_interactive_new_and_useful_linq_extensions_to_ienumerable'>here</a>. So code could be rewritten in this way:</p>
+
+<pre><code>static void Run(string inp){
+	File.ReadLines(inp).Run(Console.WriteLine);
+}</code></pre>
+
+<p>Have a nice day!</p>
+
+<p>P.S. I am not quite sure, that provided is the best solutions in Java and Ruby. The purpose of this post is to illustrate C# abilities, not to find disabilities of others.</p>
+	<p class="entry-info">This entry was posted on 2009-09-07T00:11:00+00:00. <a href="http://chaliy.name/blog/2009/9/read_line_in_java_ruby_and_csharp">Permalink</a></p>
+</div>
+<div id="disqus_thread"></div>
+<script type="text/javascript" src="http://disqus.com/forums/mikechaliy/embed.js"></script>
+<noscript><a href="http://mikechaliy.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+		
+	</div>
+		
+    	<div id="footer">        
+       	Mike Chaliy &copy; Copyright 2009 
+		&nbsp;|&nbsp;
+		<a href="http://www.developers.org.ua" >
+			<img width="80" height="15" border="0" alt="Ó÷àñòíèê ïëàíåòû Developers.org.ua" src="http://www.developers.org.ua/static/images/planet/80x15_green.gif" />
+		</a>
+		&nbsp;|&nbsp;			
+		<a rel="license" href="http://creativecommons.org/licenses/by/3.0/">
+			<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><br />
+			This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://chaliy.name" property="cc:attributionName" rel="cc:attributionURL">Mike Chaliy</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+    </div>
+	<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-265957-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

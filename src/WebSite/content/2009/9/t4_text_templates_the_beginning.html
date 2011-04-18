@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>  
+	<title>Mike Chaliy: T4 (Text Templates) - The Beginning</title>
+	<meta name="description" content="Introduction to the T4 (Text Templates), nothing interesting if you already have used T4" />
+	<meta name="keywords" content="T4, Newbie" />
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta name="Geography" content="Kyiv, Ukraine">
+	<meta name="City" content="Kyiv">
+	<meta name="Country" content="Ukraine">
+	<meta name="Language" content="English">
+	<meta name="Author" content="Mike Chaliy" />
+	<link href="/stylesheets/style.css?1279376199" media="all" rel="stylesheet" type="text/css" />
+	<link href="/stylesheets/print.css?1254176669" media="print" rel="stylesheet" type="text/css" />	
+	<link rel="alternate" type="application/atom+xml" title="Mike Chaliy, Blog" href="http://feeds.feedburner.com/chaliy" />
+</head>
+<body>
+        
+	        <div id="menu">
+            <ul>
+            	<li><a href="/">Home</a></li>
+                <li><a href="http://blog.chaliy.name">Blog</a></li>
+				
+				<li><a href="/home/contacts">Contacts</a></li>
+            </ul>
+        </div>
+		
+        <div id="header">
+        	<p>Mike Chaliy's Personal Site</p>
+			<a class="rss" type="application/atom+xml" title="Mike Chaliy, Blog" href="http://feeds.feedburner.com/chaliy" >My RSS Feed.</a>	
+		</div>
+	       	    	       
+	
+		
+	<div id="main">
+                
+		<h1>T4 (Text Templates) - The Beginning</h1>
+<div class="entry">	
+	<p>This is the first post in my ongoing series about <a href='http://msdn.microsoft.com/en-us/library/bb126445(VS.80).aspx'>T4 (Text Templates)</a>. I will describe basics to ensure that we are talking on the same language. If you know what T4 is, just skip this stuff.</p>
+
+<h3 id='what_is_that'>What is that?</h3>
+
+<p>The <strong>Text Templates</strong> or simply <strong>T4</strong> is general purpose text templates that comes out of the box with Visual Studio (starting from Visual Studio 2008). <code>Text Templates</code> look and behave very similar to the <code>ASPX</code>, <code>ASP</code> or even <code>PHP</code> files. Both are just templates that allows code included in. Unlike <code>ASPX</code>, <code>T4</code> does not allow code behaind.</p>
+
+<h3 id='how_to_start'>How to start?</h3>
+
+<p>Easy. Create text file with extension <code>.tt</code> and content:</p>
+
+<pre><code>&lt;#@ template debug=&quot;false&quot; hostspecific=&quot;false&quot; language=&quot;C#&quot; #&gt;
+&lt;#@ assembly Name=&quot;System.Core.dll&quot; #&gt;
+&lt;#@ output extension=&quot;.cs&quot; #&gt;
+class Test
+{
+	public void DoSomething()
+	{
+		System.Console.WriteLine(&quot;Generated at {0}&quot;, 
+			&quot;&lt;#= DateTime.Now.ToString() #&gt;&quot;);
+	}
+}</code></pre>
+
+<p>Press Ctrl+S and now you can see generated code.</p>
+
+<p><img src='http://chaliy.name/files/t4_text_templates_the_beginning/generated-results.png' alt='Generated results' /></p>
+
+<p>Thats it, you have done with your first <code>Text Template</code>.</p>
+
+<p>BTW, the <code>Visual Studio 2010</code> already comes with templates for <code>Text Templates</code> (funny, yeh?) out of the box. For the <code>Visual Studio 2008</code> you can use <a href='http://chaliy.name/blog/2009/8/templates_for_templates_t4_text_template_for_visual_studio_2008'>custom T4 templates</a>.</p>
+
+<h3 id='where_to_read_more'>Where to read more?</h3>
+
+<p><a href='http://msdn.microsoft.com/en-us/library/bb126445(VS.80).aspx'>Generating Artifacts By Using Text Templates</a> - Text Templates landing page on MSDN</p>
+
+<p><a href='http://www.olegsych.com/tag/t4/'>Oleg Sych, Site Archives T4</a> - awesome blog about T4, for example - <a href='http://www.olegsych.com/2009/01/pros-and-cons-of-t4-in-visual-studio-2008/'>Pros and Cons of T4 in Visual Studio 2008</a>.</p>
+
+<p><a href='http://www.pnpguidance.net/Tag/T4.aspx'>T4 on Patterns and Practices Guidance</a> - Many examples</p>
+
+<h3 id='what_next'>What next?</h3>
+
+<p>I already have drafts about building DSL with T4. Also I have some tips to share. So let hope to see something interesting.</p>
+<hr />
+<p>This post in Ukrainian - <a href='http://dev.net.ua/blogs/mikechaliy/archive/2009/02/04/7654.aspx'>T4 (Visual Studio Text Templates) - The Beginning</a></p>
+	<p class="entry-info">This entry was posted on 2009-09-05T00:11:00+00:00. <a href="http://chaliy.name/blog/2009/9/t4_text_templates_the_beginning">Permalink</a></p>
+</div>
+<div id="disqus_thread"></div>
+<script type="text/javascript" src="http://disqus.com/forums/mikechaliy/embed.js"></script>
+<noscript><a href="http://mikechaliy.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+		
+	</div>
+		
+    	<div id="footer">        
+       	Mike Chaliy &copy; Copyright 2009 
+		&nbsp;|&nbsp;
+		<a href="http://www.developers.org.ua" >
+			<img width="80" height="15" border="0" alt="Ó÷àñòíèê ïëàíåòû Developers.org.ua" src="http://www.developers.org.ua/static/images/planet/80x15_green.gif" />
+		</a>
+		&nbsp;|&nbsp;			
+		<a rel="license" href="http://creativecommons.org/licenses/by/3.0/">
+			<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><br />
+			This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://chaliy.name" property="cc:attributionName" rel="cc:attributionURL">Mike Chaliy</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+    </div>
+	<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-265957-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

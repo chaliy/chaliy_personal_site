@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>  
+	<title>Mike Chaliy: Always call IDisposable.Dispose! Sure? No!</title>
+	<meta name="description" content="Personally, guidance to dispose everything looks bit overwhelmed. I show &lt;code&gt;BinaryWriter&lt;/code&gt; as one of the examples of the &amp;#8220;broken&amp;#8221; &lt;code&gt;IDisposable&lt;/code&gt; implementations." />
+	<meta name="keywords" content="Guidance" />
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta name="Geography" content="Kyiv, Ukraine">
+	<meta name="City" content="Kyiv">
+	<meta name="Country" content="Ukraine">
+	<meta name="Language" content="English">
+	<meta name="Author" content="Mike Chaliy" />
+	<link href="/stylesheets/style.css?1279376199" media="all" rel="stylesheet" type="text/css" />
+	<link href="/stylesheets/print.css?1254176669" media="print" rel="stylesheet" type="text/css" />	
+	<link rel="alternate" type="application/atom+xml" title="Mike Chaliy, Blog" href="http://feeds.feedburner.com/chaliy" />
+</head>
+<body>
+        
+	        <div id="menu">
+            <ul>
+            	<li><a href="/">Home</a></li>
+                <li><a href="http://blog.chaliy.name">Blog</a></li>
+				
+				<li><a href="/home/contacts">Contacts</a></li>
+            </ul>
+        </div>
+		
+        <div id="header">
+        	<p>Mike Chaliy's Personal Site</p>
+			<a class="rss" type="application/atom+xml" title="Mike Chaliy, Blog" href="http://feeds.feedburner.com/chaliy" >My RSS Feed.</a>	
+		</div>
+	       	    	       
+	
+		
+	<div id="main">
+                
+		<h1>Always call IDisposable.Dispose! Sure? No!</h1>
+<div class="entry">	
+	<p>Sometime ago there was discussion on <a href='http://stackoverflow.com/'>StackOverflow</a> about <a href='http://stackoverflow.com/questions/1084813/why-a-binarywriter-closes-the-outer-stream-on-disposal-and-how-to-prevent-that'>BinaryWriter implementation</a>. As you may know <code>BinaryWriter</code> and all other .NET <code>Wrtiers</code> implement <a href='http://msdn.microsoft.com/en-us/library/system.idisposable.aspx'><code>IDisposable</code></a>. You also might be aware about guidance to always call <code>Dispose</code>. Boring&#8230;</p>
+
+<pre><code>using(var s = File.OpenWrite(&quot;1.txt&quot;)){
+	using(var w = new StreamWriter(s)){
+		...
+	}
+}</code></pre>
+
+<p>The question is&#8230; Why? So you have <code>Stream</code> and it has resources to dispose. Then you have <code>Writer</code>&#8230; And&#8230; It does not have resources to dispose. Why to dispose then? I do not know.</p>
+
+<p>So why they implement <code>IDisposable</code>? I think about this as a <em>marketing for newbie developers</em>. Most examples in <code>MSDN</code> looks like:</p>
+
+<pre><code>using (var sw = new StreamWriter(&quot;1.txt&quot;)) {
+	...
+}</code></pre>
+
+<p>Without <code>IDisposable</code> this code will fail to close handlers to file. For me this is just leaked design of the <code>StreamWriter</code>.</p>
+
+<p>At the end of the day, I can formulate my <code>IDisposable</code> usage.</p>
+
+<p><strong>By default, always call <code>Dispose</code>. But if you sure what are you doing - do not call!</strong></p>
+
+<p>How to ensure that call to <code>Dispose</code> is not required? Following is my checklist:</p>
+
+<ol>
+<li>Think about usage semantics. In most cases, this gives 90% of sure;</li>
+
+<li>Use .NET Reflector. It can unhide some stuff you may not aware about;</li>
+
+<li>Read documentation. This also can help to decide;</li>
+</ol>
+
+<p>Anyway, add comment to the code. This will be helpful for <a href='http://c2.com/cgi/wiki?MaintenanceProgrammer'>maintainers</a> and will reduce questions during reviews.</p>
+
+<h3 id='and_remember'>And remember:</h3>
+
+<ol>
+<li><code>Dispose</code> it contract. If one marking code with this contract, for sure he want to say something;</li>
+
+<li>Things changing. Behaviour of the <code>Dispose</code> could also change. You will have nothing to say, when your code will not work on .NET 5.0;</li>
+</ol>
+
+<h3 id='btw'>BTW</h3>
+
+<ol>
+<li><code>DataSet</code> implements <code>IDisposable</code>. This is because of usage in .NET Remoting and Design Time support. In addition <code>DataTable</code>, <code>DataView</code> and even <code>DataColumn</code> are the same. And no they do not clean data;</li>
+
+<li><code>SqlCommand</code> and everything derived from<code>DbCommand</code>. It does exactly nothing. Why it have? What resources it suppose to own?</li>
+
+<li>Something not expected at all - &#8216;SqlCommandBuilder&#8217;. What is expected <code>Dispose</code> do nothing notable here;</li>
+
+<li>Each <code>Component</code> implements <code>IDisposable</code>. Even if does not own resources. Think about WinForms <code>BindingSource</code>, &#8216;ErrorProvider&#8217;;</li>
+
+<li>Ha!, <code>IEnumerator&lt;T&gt;</code> is also here! This is dark side!</li>
+
+<li>And at the end <a href='http://blog.davidbarrett.net/archive/2007/11/22/117058.aspx'>WCF Clients has &#8220;broken&#8221; <code>IDisposable</code> implementation</a>;</li>
+
+<li>Some stuff could use, <code>IDisposable</code> as syntax sugar.</li>
+</ol>
+
+<p>Enjoy! Happy coding!</p>
+	<p class="entry-info">This entry was posted on 2009-09-19T18:39:00+00:00. <a href="http://chaliy.name/blog/2009/9/always_dispose_idisposable_sure_no">Permalink</a></p>
+</div>
+<div id="disqus_thread"></div>
+<script type="text/javascript" src="http://disqus.com/forums/mikechaliy/embed.js"></script>
+<noscript><a href="http://mikechaliy.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+		
+	</div>
+		
+    	<div id="footer">        
+       	Mike Chaliy &copy; Copyright 2009 
+		&nbsp;|&nbsp;
+		<a href="http://www.developers.org.ua" >
+			<img width="80" height="15" border="0" alt="Ó÷àñòíèê ïëàíåòû Developers.org.ua" src="http://www.developers.org.ua/static/images/planet/80x15_green.gif" />
+		</a>
+		&nbsp;|&nbsp;			
+		<a rel="license" href="http://creativecommons.org/licenses/by/3.0/">
+			<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><br />
+			This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://chaliy.name" property="cc:attributionName" rel="cc:attributionURL">Mike Chaliy</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+    </div>
+	<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-265957-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

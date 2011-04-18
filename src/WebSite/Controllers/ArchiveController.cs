@@ -6,7 +6,7 @@ namespace WebSite.Controllers
     {
         public ActionResult Get(string path)
         {
-            var realPath = Server.MapPath("~/content/" + path);
+            var realPath = Server.MapPath("~/content/" + path + ".html");
             var content = System.IO.File.ReadAllText(realPath);
             return Content(content);
         }

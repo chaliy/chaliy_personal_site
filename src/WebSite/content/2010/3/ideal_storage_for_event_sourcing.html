@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>  
+	<title>Mike Chaliy: Ideal Storage for Event Sourcing</title>
+	<meta name="description" content="Some subjective thoughts about potential storage dedicated for Event Sourcing." />
+	<meta name="keywords" content="Document oriented database, Database, Storage, MapReduce, MongoDB, CouchDB, NOSQL, Event Sourcing, Database" />
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta name="Geography" content="Kyiv, Ukraine">
+	<meta name="City" content="Kyiv">
+	<meta name="Country" content="Ukraine">
+	<meta name="Language" content="English">
+	<meta name="Author" content="Mike Chaliy" />
+	<link href="/stylesheets/style.css?1279376199" media="all" rel="stylesheet" type="text/css" />
+	<link href="/stylesheets/print.css?1254176669" media="print" rel="stylesheet" type="text/css" />	
+	<link rel="alternate" type="application/atom+xml" title="Mike Chaliy, Blog" href="http://feeds.feedburner.com/chaliy" />
+</head>
+<body>
+        
+	        <div id="menu">
+            <ul>
+            	<li><a href="/">Home</a></li>
+                <li><a href="http://blog.chaliy.name">Blog</a></li>
+				
+				<li><a href="/home/contacts">Contacts</a></li>
+            </ul>
+        </div>
+		
+        <div id="header">
+        	<p>Mike Chaliy's Personal Site</p>
+			<a class="rss" type="application/atom+xml" title="Mike Chaliy, Blog" href="http://feeds.feedburner.com/chaliy" >My RSS Feed.</a>	
+		</div>
+	       	    	       
+	
+		
+	<div id="main">
+                
+		<h1>Ideal Storage for Event Sourcing</h1>
+<div class="entry">	
+	<p>We are investigating <a href='http://www.udidahan.com/2009/12/09/clarified-cqrs/'>Event Sourcing</a>. Idea is pretty straightforward, I will not even bother to describe it. What is more interesting is storage for this kind of architecture. Below is my vision on ideal Storage for Event Sourcing.</p>
+
+<p><img src='http://chaliy.name/files/ideal_storage_for_event_sourcing/lego_brick.jpg' alt='Do not warry if this break does not look like an Event Sourcing' /></p>
+
+<h3 id='storage_for_events'>Storage for Events</h3>
+
+<p>First of all we need storage for events. I am thinking about some kind of document or object oriented database. It should satisfy few requirements. Let&#8217;s discuss them:</p>
+
+<p><strong>It should to be schema less</strong>. Because events will be of different types and will keep different kind of data. For example:</p>
+
+<pre><code>// OrderPosted with order details
+type OrderPosted = {
+    Details : OrderDetails
+}
+
+// OrderPaid with paid amount
+type OrderPaid = {
+    Order : OrderRef
+    PaidDate : Date
+    Amount : Amount
+}
+
+// InventoryMoved with quantity moved
+type InventoryMoved = {
+    Inventory : InventoryRef
+    Qty : Quantity
+}</code></pre>
+
+<p><strong>It should not have size restriction</strong>. Because this storage must keep all events, I am concerned about running out of the space too fast.</p>
+
+<p><strong>No query abilities required</strong>. This can look strange for first time, but this is true. Storage does not need one. Main reason is fact that this is probably not so good idea to query millions of the events to get total of the order. Later I will describe this more.</p>
+
+<p><strong>No long running transactions</strong>. Nature of the events is just <em>fire-and-forget</em>, the boundary of typical Event Sourcing transaction is actually <em>fire-save-return</em>.</p>
+
+<h3 id='querying'>Querying</h3>
+
+<p>Suppose we have bunch of events. How to query exactly what we need? Of course, you can query them as is. However, I can guess this will not be so funny to query 2 millions of events to get monthly report.</p>
+
+<p>Well, solution here is de-normalization of the events. An idea is simple. Application fires event, storage saves it and <em>then something takes data from it and insert (de-normalize) to one or more tables (after here views)</em> and at the end you have raw data ready for query.</p>
+
+<p>With this design, you will end with Event Storage and views with data prepared for querying. This is good for example for modern CQRS move, where you can have view dedicated for a single screen.</p>
+
+<p>So first is requirements are about processing events:</p>
+
+<p><strong>It should automate building views</strong>. I am thinking about single method that will take raw events and change some data in views. This functionality is very similar to map/reduce capabilities of the document-oriented databases like <a href='http://www.mongodb.org/display/DOCS/MapReduce'>MongoDB</a> or <a href='http://wiki.apache.org/couchdb/Introduction_to_CouchDB_views'>CouchDB</a>. Unfortunately, in most cases map/reduce requires complete set of data and I am not sure how this will play with few millions of events. So at the end, simple method is enough:</p>
+
+<pre><code>let monthlyPaidReport2 = function                         
+      // if order paid push total
+      | :? OrderPaid as x -&gt; push (month x.PaidDate, x.Total)
+      // if revoked push negative total
+      | :? OrderRevoked as x -&gt; push (month x.PaidDate, -x.Total)
+      | _ -&gt; ()</code></pre>
+
+<p><strong>It should be reliable</strong>. There are many problems that could prevent reliable event processing. Unplugged powercord is among them :). De-normalization means changes to the state and thus it lacks idempotency. In most cases, storage will need to reprocess all events to get right state. I believe storage should keep this in mind.</p>
+
+<p><strong>It should be fast</strong>. In most cases users expect to see results exactly after command issued. Of course, sometimes it technically impossible but at least I do not want my storage to be root cause of this lags.</p>
+
+<p><strong>It should be typed</strong>. This item is bit arguable, but when de-normalization is one of the key stuff in application, I would like to protect myself as much as I can. And typed event handlers are good candidate.</p>
+
+<p><strong>It should be extensible</strong> This will be nightmare to implement audit with map reduce. Just imagine every handler need to store audit data. Terrible. One the other hand if storage will allow injection of the post/pre handlers it changes picture completely.</p>
+
+<p><strong>It should automatically update related data</strong> For example, let&#8217;s take Order List with Customer Name among other columns. There are at least two solutions. First is traditional JOIN. But this means that storage should support them. Another is to also handle events that change customer&#8217;s name. But probably better if storage will support this natively, because this operation really frequent.</p>
+
+<p>After events have been processed, views should be stored somewhere. Few requirements here:</p>
+
+<p><strong>Should publish views</strong>, data is ready to be published. I think storage can take this responsibility. At the mean time CouchDB already publish its collections with <abbr title='Representational State Transfer'>REST</abbr> interface. In most cases, this is enough. Another good example is WCF Data Services especially with custom metadata provider.</p>
+
+<p><strong>Should support reach querying</strong>. Users will filter, sort, and search though all the data. There bunch of options here. For example SQL or map/reduce or even custom constraints language. Of course, this should be fast.</p>
+
+<p>Ok, for it&#8217;s enough requirements. Let&#8217;s move forward.</p>
+
+<h3 id='answer'>Answer?</h3>
+
+<p>Well, I do not have answer for the moment. We still investigate. On this week, I will try to prototype infrastructure for event handlers. Anyway looks interesting, isn&#8217;t it? Stay tuned.</p>
+	<p class="entry-info">This entry was posted on 2010-03-02T21:15:00+00:00. <a href="http://chaliy.name/blog/2010/3/ideal_storage_for_event_sourcing">Permalink</a></p>
+</div>
+<div id="disqus_thread"></div>
+<script type="text/javascript" src="http://disqus.com/forums/mikechaliy/embed.js"></script>
+<noscript><a href="http://mikechaliy.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+		
+	</div>
+		
+    	<div id="footer">        
+       	Mike Chaliy &copy; Copyright 2009 
+		&nbsp;|&nbsp;
+		<a href="http://www.developers.org.ua" >
+			<img width="80" height="15" border="0" alt="Ó÷àñòíèê ïëàíåòû Developers.org.ua" src="http://www.developers.org.ua/static/images/planet/80x15_green.gif" />
+		</a>
+		&nbsp;|&nbsp;			
+		<a rel="license" href="http://creativecommons.org/licenses/by/3.0/">
+			<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><br />
+			This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://chaliy.name" property="cc:attributionName" rel="cc:attributionURL">Mike Chaliy</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+    </div>
+	<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-265957-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>  
+	<title>Mike Chaliy: Stuff to know when starting with ADO.NET Data Services</title>
+	<meta name="description" content="My journey with ADO.NET Data Services. I think this should be interesting for anyone who starts with ADO.NET Data Services." />
+	<meta name="keywords" content="ADO.NET Data Services, Newbie" />
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta name="Geography" content="Kyiv, Ukraine">
+	<meta name="City" content="Kyiv">
+	<meta name="Country" content="Ukraine">
+	<meta name="Language" content="English">
+	<meta name="Author" content="Mike Chaliy" />
+	<link href="/stylesheets/style.css?1279376199" media="all" rel="stylesheet" type="text/css" />
+	<link href="/stylesheets/print.css?1254176669" media="print" rel="stylesheet" type="text/css" />	
+	<link rel="alternate" type="application/atom+xml" title="Mike Chaliy, Blog" href="http://feeds.feedburner.com/chaliy" />
+</head>
+<body>
+        
+	        <div id="menu">
+            <ul>
+            	<li><a href="/">Home</a></li>
+                <li><a href="http://blog.chaliy.name">Blog</a></li>
+				
+				<li><a href="/home/contacts">Contacts</a></li>
+            </ul>
+        </div>
+		
+        <div id="header">
+        	<p>Mike Chaliy's Personal Site</p>
+			<a class="rss" type="application/atom+xml" title="Mike Chaliy, Blog" href="http://feeds.feedburner.com/chaliy" >My RSS Feed.</a>	
+		</div>
+	       	    	       
+	
+		
+	<div id="main">
+                
+		<h1>Stuff to know when starting with ADO.NET Data Services</h1>
+<div class="entry">	
+	<p>This post is dedicated for those who are starting with <a href='http://msdn.microsoft.com/en-us/data/bb931106.aspx'><strong>ADO.NET Data Services</strong></a> (formerly known as Project &#8220;Astoria&#8221;). So let us start.</p>
+
+<p>You made everything how tutorial says. You checked every single line of code. But you still get:</p>
+
+<h3 id='the_server_encountered_an_error_processing_the_request_see_server_logs_for_more_details'>The server encountered an error processing the request. See server logs for more details.</h3>
+
+<p>Probably you also have checked everywhere but failed to find these logs. If not, even do not try. This is waste of time. Anyway, solution is simple. First alter <code>InitializeService</code> method:</p>
+
+<pre><code>config.UseVerboseErrors = true;</code></pre>
+
+<p>And second is ServiceBehavior attribute with <a href='http://msdn.microsoft.com/en-us/library/system.servicemodel.servicebehaviorattribute.includeexceptiondetailinfaults.aspx'>IncludeExceptionDetailInFaults</a>:</p>
+
+<pre><code>[ServiceBehavior(IncludeExceptionDetailInFaults = true)]   
+public class ServiceName : DataService&lt;ExampleContext&gt;{
+	...
+}</code></pre>
+
+<p>You need to do both of this. In fact I spent some of my weekend time to understand this.</p>
+
+<p>Go further. Next super intuitive exception message is:</p>
+
+<h3 id='the_property_xxxx_on_type_xxxxxxxxx_is_not_a_valid_property_properties_whose_types_are_collection_of_primitives_or_complex_types_are_not_supported'>The property &#8216;Xxxx&#8217; on type &#8216;Xxxx.Xxxxx&#8217; is not a valid property. Properties whose types are collection of primitives or complex types are not supported.</h3>
+
+<p>Had I mentioned that for some reasons neither of these exceptions break Visual Studio in debug mode? It is true. Anyways, reason and solution by <a href='http://blogs.msdn.com/pedram/archive/2008/07/20/ado-net-data-services-clr-based-data-models-and-navigation-links.aspx'>Pedram Rezaei</a>. The reason is <code>Data Services</code> are not so clever (or simply stupid) to understand how to map complex types. So you have to help them. You have to add another root for this complex type. Suppose your <code>Xxxx</code> was <code>Order</code>. Then you have to alter your context with:</p>
+
+<pre><code>public IQueryable&lt;Order&gt; Orders { get { return /*Somewhere*/ } }</code></pre>
+
+<p>Should work! Well, not really! Go further:</p>
+
+<h3 id='the_property_xxxxx_on_type_xxxxxxxx_is_not_a_valid_property_make_sure_that_the_type_of_the_property_is_a_public_type_and_a_supported_primitive_type_or_a_entity_type_with_a_valid_key_or_a_complex_type'>The property &#8216;Xxxxx&#8217; on type &#8216;Xxxx.Xxxx&#8217; is not a valid property. Make sure that the type of the property is a public type and a supported primitive type or a entity type with a valid key or a complex type.</h3>
+
+<p>This is about enums in your class. Drop them out! YAGNI! You aren&#8217;t gonna need enums!</p>
+
+<h3 id='the_property_entitystate_on_type_xxxxxxxx_is_not_a_valid_property_make_sure_that_the_type_of_the_property_is_a_public_type_and_a_supported_primitive_type_or_a_entity_type_with_a_valid_key_or_a_complex_type'>The property &#8216;EntityState&#8217; on type &#8216;Xxxx.Xxxx&#8217; is not a valid property. Make sure that the type of the property is a public type and a supported primitive type or a entity type with a valid key or a complex type.</h3>
+
+<p><img src='http://www.mocha.uk.com/shop/images/73571985_ecs.jpg' alt='Image stolen from Heavy Metal Nutcracker(http://www.mocha.uk.com/shop/index.cgi?command=moreinfo&amp;search=TT09)' /></p>
+
+<p>This occur when you try to use entities generated by Entity Framework in non Entity Framework context (context not derived from <a href='http://msdn.microsoft.com/en-us/library/system.data.objects.objectcontext.aspx'>ObjectContext</a>). As you may know, in Entity Framework your entities have to derive from <a href='http://msdn.microsoft.com/en-us/library/system.data.objects.dataclasses.entityobject.aspx'>EntityObject</a> and this guy has enum&#8230;.</p>
+
+<p>Under the hood, ADO.NET DataServices is hardcoded (yes, believe or not, but it really hardcoded!) to look if context derives from ObjectContext, and if true just filter out infrastructure properties. The only solution so far is to use <a href='http://msdn.microsoft.com/en-us/library/system.data.services.ignorepropertiesattribute.aspx'>IgnoreProperties</a>. Both the reason and a &#8220;solution&#8221; came from <a href='http://social.msdn.microsoft.com/Forums/en-US/adodotnetdataservices/thread/23703b68-bc4a-44e6-9aac-582a3b5f5ad9/'>MSDN Forums</a>. BTW, inheriting context from the ObjectContext does not work.</p>
+
+<p>Are you still here? Well, my journey ended on last issue. I cannot live with it. This is enough for today. Tomorrow I will start with another approach. Hope my boss will not kill me for 6 wasted hours.</p>
+	<p class="entry-info">This entry was posted on 2009-09-13T19:51:00+00:00. <a href="http://chaliy.name/blog/2009/9/stuff_to_know_when_starting_with_ado_net_data_services">Permalink</a></p>
+</div>
+<div id="disqus_thread"></div>
+<script type="text/javascript" src="http://disqus.com/forums/mikechaliy/embed.js"></script>
+<noscript><a href="http://mikechaliy.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+		
+	</div>
+		
+    	<div id="footer">        
+       	Mike Chaliy &copy; Copyright 2009 
+		&nbsp;|&nbsp;
+		<a href="http://www.developers.org.ua" >
+			<img width="80" height="15" border="0" alt="Ó÷àñòíèê ïëàíåòû Developers.org.ua" src="http://www.developers.org.ua/static/images/planet/80x15_green.gif" />
+		</a>
+		&nbsp;|&nbsp;			
+		<a rel="license" href="http://creativecommons.org/licenses/by/3.0/">
+			<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><br />
+			This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://chaliy.name" property="cc:attributionName" rel="cc:attributionURL">Mike Chaliy</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+    </div>
+	<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-265957-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>  
+	<title>Mike Chaliy: Virtual by default, is that good or not?</title>
+	<meta name="description" content="Discussion (or monologues) about Java &amp;#8220;virtual by default&amp;#8221; behavior compared to C#." />
+	<meta name="keywords" content="Code, C#, Java" />
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta name="Geography" content="Kyiv, Ukraine">
+	<meta name="City" content="Kyiv">
+	<meta name="Country" content="Ukraine">
+	<meta name="Language" content="English">
+	<meta name="Author" content="Mike Chaliy" />
+	<link href="/stylesheets/style.css?1279376199" media="all" rel="stylesheet" type="text/css" />
+	<link href="/stylesheets/print.css?1254176669" media="print" rel="stylesheet" type="text/css" />	
+	<link rel="alternate" type="application/atom+xml" title="Mike Chaliy, Blog" href="http://feeds.feedburner.com/chaliy" />
+</head>
+<body>
+        
+	        <div id="menu">
+            <ul>
+            	<li><a href="/">Home</a></li>
+                <li><a href="http://blog.chaliy.name">Blog</a></li>
+				
+				<li><a href="/home/contacts">Contacts</a></li>
+            </ul>
+        </div>
+		
+        <div id="header">
+        	<p>Mike Chaliy's Personal Site</p>
+			<a class="rss" type="application/atom+xml" title="Mike Chaliy, Blog" href="http://feeds.feedburner.com/chaliy" >My RSS Feed.</a>	
+		</div>
+	       	    	       
+	
+		
+	<div id="main">
+                
+		<h1>Virtual by default, is that good or not?</h1>
+<div class="entry">	
+	<p class='author-note'>Inspired by background of the `Jimmy Bogard`'s - <a href='http://www.lostechies.com/blogs/jimmy_bogard/archive/2009/08/28/my-favorite-nhibernate-exception.aspx'>My favorite NHibernate exception</a>. </p>
+<p>Here, at <code>Just Applications</code>, we are using <a href='http://code.google.com/intl/webtoolkit/webtoolkit/'>Google Web Toolkit (GWT)</a> as our client side framework. Personally for me that means that last few months I spent in average 30% of my work time coding with <code>Java</code>. After years of <code>C#</code> coding this is freaking awesome experience!</p>
+<p class='author-note'> BTW, I am sure that there are just two real ways to learn stuff. One is red pill and second is to use stuff in real work.</p>
+<p>Of course, been <code>C#</code> developer, I found stuff I do not like in <code>Java</code>. For example, unlike in <code>C#</code> where <code>class</code> members are sealed/final by default, in <code>Java</code> they are virtual by default.</p>
+
+<p>So let start with some myths.</p>
+
+<h3 id='myth_1_its_all_about_testability'>Myth 1. It&#8217;s all about testability</h3>
+
+<p><img src='http://upload.wikimedia.org/wikipedia/en/thumb/c/cf/Mythbusters_title_screen.jpg/250px-Mythbusters_title_screen.jpg' alt='Mythbusters' /></p>
+
+<p>I know only two places where virtual members could help. One is stubbing/mocking and second is trying to change behavior of the SUT.</p>
+
+<p>So, stubbing&#8230; In most cases, stubbing requires classes not to be sealed/final and so for members you would like to override. This is due the fact that stub is often inherited from your class. Therefore having everything virtual is direct solution! It could be true. Unless you are okay to have default constructor on your class. Unless you are agreeing that small change to our code can break half of your tests&#8230; From my experience, both of these problems kill an idea of stubbing real implementations. Solution to these problems is obvious. Just extract interface and do all stubbing around it.</p>
+
+<p>Next is changing behavior of the SUT. Sometimes when class was not designed with testing in mind you have to check indirect results or you have to do something tricky to isolate code. This is often referred as testing legacy code. Of course, in this situation making everything virtual could help. Actually even more help you can get after making everything you need public. But hey! This is anti-pattern for regular testing! This is leakage of the implementation details into the test!</p>
+
+<p>So at least for me testability is not an argument in the Great Virtual Battle!</p>
+
+<h3 id='myth_2_its_all_about_extensibility'>Myth 2. It&#8217;s all about extensibility</h3>
+
+<p>This is my favorite! This is about extensibility though inheritance!</p>
+
+<p>So, I have written some code. Why to restrict usage of the class by making it sealed? Why not to support freedom?</p>
+
+<p>Well, there are some facts:</p>
+
+<ol>
+<li>
+<p>Sealed as well as privates and internals helps you to provide useful API. They just hide stuff not required for API. When members of a class did not intend to be overridden, why not to restrict this at compilation time?</p>
+</li>
+
+<li>
+<p>When you design API, you probably should think how to make usage as obvious as you can. Inheritance is yet another usage. If your class will have everything virtual, how your user will know what is expected to be overridden?</p>
+</li>
+
+<li>
+<p>Your code should be tested. But please imagine how many invariants your will have if everything will be overridable? This is just hard to design inheritance API.</p>
+</li>
+</ol>
+
+<p>Main point of these items is that if you allow something, you should support this. I prefer not to spend time to support invariants that will not occur with 99% probability.</p>
+
+<p>Solution is not obvious, but generally well known. It is <a href='http://en.wikipedia.org/wiki/Object_composition'>Composition</a>. Let your classes to be composable in a way your user would like.</p>
+<p class='author-note'>BTW, did you ever extend DataGrid? I did. It was most terrible experience I ever had. You override something, and some stuff stop working, you override something else, and another unexpected stuff stops working...</p>
+	<p class="entry-info">This entry was posted on 2009-08-30T16:48:00+00:00. <a href="http://chaliy.name/blog/2009/8/virtual_by_default_is_that_good_or_not">Permalink</a></p>
+</div>
+<div id="disqus_thread"></div>
+<script type="text/javascript" src="http://disqus.com/forums/mikechaliy/embed.js"></script>
+<noscript><a href="http://mikechaliy.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+		
+	</div>
+		
+    	<div id="footer">        
+       	Mike Chaliy &copy; Copyright 2009 
+		&nbsp;|&nbsp;
+		<a href="http://www.developers.org.ua" >
+			<img width="80" height="15" border="0" alt="Ó÷àñòíèê ïëàíåòû Developers.org.ua" src="http://www.developers.org.ua/static/images/planet/80x15_green.gif" />
+		</a>
+		&nbsp;|&nbsp;			
+		<a rel="license" href="http://creativecommons.org/licenses/by/3.0/">
+			<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><br />
+			This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://chaliy.name" property="cc:attributionName" rel="cc:attributionURL">Mike Chaliy</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+    </div>
+	<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-265957-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

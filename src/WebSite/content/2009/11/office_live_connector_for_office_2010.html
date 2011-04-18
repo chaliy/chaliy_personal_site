@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>  
+	<title>Mike Chaliy: Microsoft Office Outlook 2010: How to connect e-mail account hosted on Windows Live Custom Domains?</title>
+	<meta name="description" content="Funny, but Microsoft Office Outlook 2010 does not support e-mail accounts hosted on Windows Live Custom Domains. I found not less funny solution :)." />
+	<meta name="keywords" content="Office, Office 2010, Outlook, Outlook 2010, Live Mail, Hotmail, Live Custom Domains, Email, Office" />
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta name="Geography" content="Kyiv, Ukraine">
+	<meta name="City" content="Kyiv">
+	<meta name="Country" content="Ukraine">
+	<meta name="Language" content="English">
+	<meta name="Author" content="Mike Chaliy" />
+	<link href="/stylesheets/style.css?1279376199" media="all" rel="stylesheet" type="text/css" />
+	<link href="/stylesheets/print.css?1254176669" media="print" rel="stylesheet" type="text/css" />	
+	<link rel="alternate" type="application/atom+xml" title="Mike Chaliy, Blog" href="http://feeds.feedburner.com/chaliy" />
+</head>
+<body>
+        
+	        <div id="menu">
+            <ul>
+            	<li><a href="/">Home</a></li>
+                <li><a href="http://blog.chaliy.name">Blog</a></li>
+				
+				<li><a href="/home/contacts">Contacts</a></li>
+            </ul>
+        </div>
+		
+        <div id="header">
+        	<p>Mike Chaliy's Personal Site</p>
+			<a class="rss" type="application/atom+xml" title="Mike Chaliy, Blog" href="http://feeds.feedburner.com/chaliy" >My RSS Feed.</a>	
+		</div>
+	       	    	       
+	
+		
+	<div id="main">
+                
+		<h1>Microsoft Office Outlook 2010: How to connect e-mail account hosted on Windows Live Custom Domains?</h1>
+<div class="entry">	
+	<p>You may know about <a href='http://www.microsoft.com/office/2010/en/default.aspx'>Microsoft Office 2010 Beta</a>. One of the revolutionary (sic!) improvements is ribbon interface in Outlook. Despite of sarcasm, it looks polished. So if you have time it worth a look :). But return back to the earth and let&#8217;s try to connect live.com account.</p>
+
+<p><img src='http://chaliy.name/files/office_live_connector_for_office_2010/outlook_ui.png' alt='Microsoft Office Outlook 2010 UI' /></p>
+
+<p>You may remember Outlook Connector for Office 2007. But check out this post <a href='http://blogs.msdn.com/outlook/archive/2009/07/23/connecting-to-hotmail-accounts-in-outlook-2010.aspx'>Connecting to Hotmail accounts in Outlook 2010</a> in Office Outlook Team Blog. They made dramatic improvement.</p>
+
+<blockquote>
+<p><strong>Let Outlook 2010 determine if you need <abbr title='Office Live Connector'>OLC</abbr> 14 and install it for you</strong></p>
+
+<p>We are working hard to make sure that the experience of moving to Outlook 2010 is as smooth as possible when it comes to accessing your Hotmail accounts. Outlook 2010 is able to determine when <abbr title='Office Live Connector'>OLC</abbr> 14 is needed and points you to the correct download location for the OLC 14 package.</p>
+</blockquote>
+
+<p>Can you guess how they made this?</p>
+
+<blockquote>
+<p><strong>Adding a @hotmail.com, @live.com or @msn.com accounts through the Add New Account dialog</strong></p>
+
+<p>Should you choose to add a new account that uses the @hotmail.com, @live.com or the @msn.com domain and <abbr title='Office Live Connector'>OLC</abbr> 14 is not installed, Outlook 2010 will prompt you to download and install it!</p>
+</blockquote>
+
+<p>Stop. &#8220;@hotmail.com, @live.com or the @msn.com&#8221; - are you kidding? What about mail hosted on <a href='http://domains.live.com/'>Windows Live Custom Domains</a>? Well. Nothing here. Outlook 2010 just fail to detect that this is Hotmail account (to be honest Outlook 2007 also fail). The solution is obvious, just download Office Live Connector 14 and you are done. But this is not so easy. Actually you cannot. At least I was not able to find it.</p>
+
+<p>My first take was to create fake Hotmail account, connect it, and then to reconnect with my account. But the result solution is much more genius!</p>
+
+<p>In the <strong>Add New Account</strong> dialog, when prompted for e-mail address, just type something fake with <code>hotmail.com</code> domain. Hit Next. And agree to install Office Live Connector 14 :).</p>
+
+<p><img src='http://chaliy.name/files/office_live_connector_for_office_2010/outlook_connector_install_now.png' alt='Office Live Connector - Install Now' /></p>
+
+<p>Have a fun day!</p>
+	<p class="entry-info">This entry was posted on 2009-11-20T17:15:00+00:00. <a href="http://chaliy.name/blog/2009/11/office_live_connector_for_office_2010">Permalink</a></p>
+</div>
+<div id="disqus_thread"></div>
+<script type="text/javascript" src="http://disqus.com/forums/mikechaliy/embed.js"></script>
+<noscript><a href="http://mikechaliy.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+		
+	</div>
+		
+    	<div id="footer">        
+       	Mike Chaliy &copy; Copyright 2009 
+		&nbsp;|&nbsp;
+		<a href="http://www.developers.org.ua" >
+			<img width="80" height="15" border="0" alt="Ó÷àñòíèê ïëàíåòû Developers.org.ua" src="http://www.developers.org.ua/static/images/planet/80x15_green.gif" />
+		</a>
+		&nbsp;|&nbsp;			
+		<a rel="license" href="http://creativecommons.org/licenses/by/3.0/">
+			<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><br />
+			This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://chaliy.name" property="cc:attributionName" rel="cc:attributionURL">Mike Chaliy</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+    </div>
+	<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-265957-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>  
+	<title>Mike Chaliy: Data Access approaches in our application</title>
+	<meta name="description" content="We are building regular enterprise application. Domain is boring. The only interesting thing is technologies. Today is a good time to share how we do Data Access." />
+	<meta name="keywords" content="Data Access, Entity Framework, Linq2Sql, NHibernate" />
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta name="Geography" content="Kyiv, Ukraine">
+	<meta name="City" content="Kyiv">
+	<meta name="Country" content="Ukraine">
+	<meta name="Language" content="English">
+	<meta name="Author" content="Mike Chaliy" />
+	<link href="/stylesheets/style.css?1279376199" media="all" rel="stylesheet" type="text/css" />
+	<link href="/stylesheets/print.css?1254176669" media="print" rel="stylesheet" type="text/css" />	
+	<link rel="alternate" type="application/atom+xml" title="Mike Chaliy, Blog" href="http://feeds.feedburner.com/chaliy" />
+</head>
+<body>
+        
+	        <div id="menu">
+            <ul>
+            	<li><a href="/">Home</a></li>
+                <li><a href="http://blog.chaliy.name">Blog</a></li>
+				
+				<li><a href="/home/contacts">Contacts</a></li>
+            </ul>
+        </div>
+		
+        <div id="header">
+        	<p>Mike Chaliy's Personal Site</p>
+			<a class="rss" type="application/atom+xml" title="Mike Chaliy, Blog" href="http://feeds.feedburner.com/chaliy" >My RSS Feed.</a>	
+		</div>
+	       	    	       
+	
+		
+	<div id="main">
+                
+		<h1>Data Access approaches in our application</h1>
+<div class="entry">	
+	<p>We are building regular enterprise application. The Domain is boring. The only interesting thing is technologies. This night is a good time to share how we do <code>Data Access</code>.</p>
+
+<h3 id='nhibernate'>NHibernate</h3>
+
+<p>We are approaching <code>DDD</code>. So we need <code>POCO</code> and <a href='http://www.nhforge.org/'>NHibernate</a> is good choice. The only problem with NHibernate is mappings. XML mappings makes me crazy. To overcome this we use <a href='http://fluentnhibernate.org/'>FluentNHibernate</a>, in particular it&#8217;s Auto-Mapping features. All is convention based, so adding new entity does not require any further configuration.</p>
+
+<h3 id='linq_to_sql_linq2sql'>LINQ to SQL (Linq2Sql)</h3>
+
+<p>One of the problems with NHibernate is support for SQL UDFs(User Defined Functions). This is hard to get them work. Even harder to get them configured in AutoMapped way. So in situations when we need call UDF(User Defined Function) we just make hand written <a href='http://msdn.microsoft.com/en-us/library/bb386976.aspx'>LINQ to SQL</a> context.</p>
+
+<pre><code>private class ProductFunctions : DataContext
+{
+	public ProductFunctions(IDbConnection connection)
+		: base(connection) { }
+
+	[Function(IsComposable = true)]
+	public IQueryable&lt;ProductListItem&gt; QueryProductList(Guid contextId, 
+		string productNumberFilter, string titleFilter,
+		string SKUFilter, Guid? productTagIDFilter)
+	{
+		return CreateMethodCallQuery&lt;ProductListItem&gt;(this,
+			((MethodInfo)(MethodBase.GetCurrentMethod())),
+			contextId, productNumberFilter, titleFilter,
+			SKUFilter, productTagIDFilter);
+	}
+}</code></pre>
+
+<p>Name of the UDF(User Defined Function) will be the same as name of the method (e.g. QueryProductList). If you need custom name, you can do this with FunctionAttribute. Pretty easy. And seems to me this is the less overheated solution for calling functions.</p>
+
+<p>BTW, the <code>ProductListItem</code> is real <code>POCO</code>. Without attributes, without virtual properties. Just class as how you expect to see it.</p>
+
+<h3 id='entity_framework'>Entity Framework</h3>
+
+<p>While building User Interface, I started feeling that we are doing too many coding. Customer need list for this, customer need list for that, and so on and so forth. From coder perspective every list needs DTO, parsing arguments, doing some filtering. Of course, we need way to automate this. One of the solutions is to use <a href='http://msdn.microsoft.com/en-us/data/bb931106.aspx'>ADO.NET Data Services</a>. So now we have <a href='http://msdn.microsoft.com/en-us/library/aa697427(VS.80).aspx'>Entity Framework</a> Model, and then publish it with ADO.NET Data Services. Works as a charm.</p>
+
+<h3 id='that_is_it'>That is it!</h3>
+
+<p>As you can see, we try to solve problems with tool that is most applicable in particular situations. I think this is good example of the positive experience not to be strictly MS guy or Alt.NET guy. Let us see how this will work in real live.</p>
+
+<p>Happy coding!</p>
+	<p class="entry-info">This entry was posted on 2009-09-23T00:24:00+00:00. <a href="http://chaliy.name/blog/2009/9/data_access_in_our_application">Permalink</a></p>
+</div>
+<div id="disqus_thread"></div>
+<script type="text/javascript" src="http://disqus.com/forums/mikechaliy/embed.js"></script>
+<noscript><a href="http://mikechaliy.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+		
+	</div>
+		
+    	<div id="footer">        
+       	Mike Chaliy &copy; Copyright 2009 
+		&nbsp;|&nbsp;
+		<a href="http://www.developers.org.ua" >
+			<img width="80" height="15" border="0" alt="Ó÷àñòíèê ïëàíåòû Developers.org.ua" src="http://www.developers.org.ua/static/images/planet/80x15_green.gif" />
+		</a>
+		&nbsp;|&nbsp;			
+		<a rel="license" href="http://creativecommons.org/licenses/by/3.0/">
+			<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><br />
+			This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://chaliy.name" property="cc:attributionName" rel="cc:attributionURL">Mike Chaliy</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+    </div>
+	<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-265957-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>
