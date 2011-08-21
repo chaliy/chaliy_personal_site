@@ -16,19 +16,27 @@ namespace WebSite.App.Tumblr
 
         public IList<TumblrPost> ReadAll()
         {            
-            var doc = XDocument.Load("http://" + _userName + ".tumblr.com/api/read");
+            try
+            {
+                var doc = XDocument.Load("http://" + _userName + ".tumblr.com/api/read");
 
-            return doc
-                .Element("tumblr")
-                .Element("posts")
-                .Elements("post")
-                .Select(x => new TumblrPost
-                                 {
-                                     UrlWithSlug = x.Attribute("url-with-slug").Value,
-                                     RegularTitle = x.Element("regular-title").Value,
-                                     RegularBody = x.Element("regular-body").Value,
-                                 })
-                .ToList();
+                return doc
+                    .Element("tumblr")
+                    .Element("posts")
+                    .Elements("post")
+                    .Select(x => new TumblrPost
+                    {
+                        UrlWithSlug = x.Attribute("url-with-slug").Value,
+                        RegularTitle = x.Element("regular-title").Value,
+                        RegularBody = x.Element("regular-body").Value,
+                    })
+                    .ToList();
+            }
+            catch
+            {
+            }
+            
+            return new List<TumblrPost>();
         }
     }
 
